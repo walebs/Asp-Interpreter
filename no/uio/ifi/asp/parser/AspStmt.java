@@ -8,12 +8,12 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 abstract class AspStmt extends AspSyntax {
     AspStmt(int n) {
-	super(n);
+	    super(n);
     }
 
 
     static AspStmt parse(Scanner s) {
-	//-- Must be changed in part 2:
-	return null;
+        //-- Must be changed in part 2:
+        return null;
     }
 }

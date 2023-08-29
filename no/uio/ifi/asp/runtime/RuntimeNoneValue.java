@@ -8,36 +8,36 @@ import no.uio.ifi.asp.parser.AspSyntax;
 public class RuntimeNoneValue extends RuntimeValue {
     @Override
     String typeName() {
-	return "None";
+	    return "None";
     }
 
 
     @Override 
     public String toString() {
-	return "None";
+	    return "None";
     }
 
 
     @Override
     public boolean getBoolValue(String what, AspSyntax where) {
-	return false;
+	    return false;
     }
 
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
-	return new RuntimeBoolValue(v instanceof RuntimeNoneValue);
+	    return new RuntimeBoolValue(v instanceof RuntimeNoneValue);
     }
 
 
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
-	return new RuntimeBoolValue(true);
+	    return new RuntimeBoolValue(true);
     }
 
 
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-	return new RuntimeBoolValue(!(v instanceof RuntimeNoneValue));
+	    return new RuntimeBoolValue(!(v instanceof RuntimeNoneValue));
     }
 }
