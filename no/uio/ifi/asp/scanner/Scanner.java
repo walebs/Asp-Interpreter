@@ -74,6 +74,23 @@ public class Scanner {
 		}
 
 		//-- Must be changed in part 1:
+		//Innledende TAB-er oversettes til blanke.
+		tabToBlanks(line);
+
+		//Hvis linjen er tom (eventuelt blanke), ignoreres den.
+
+
+		//Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
+
+
+		//Indentering beregnes, og INDENT/DEDENT-er legges curLineTokens.
+
+
+		//Gå gjennom linjen:
+			//Blanke tegn og TAB-er ignoreres.
+			//En ’#’ angir at resten av linjen skal ignoreres.
+			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
+			
 
 		// Terminate line:
 		curLineTokens.add(new Token(newLineToken,curLineNum()));
@@ -82,6 +99,10 @@ public class Scanner {
 		for (Token t: curLineTokens) 
 			Main.log.noteToken(t);
     }
+
+	public void tabToBlanks(String line) {
+
+	}
 
     public int curLineNum() {
 		return sourceFile!=null ? sourceFile.getLineNumber() : 0;
