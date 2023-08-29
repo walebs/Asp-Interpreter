@@ -74,28 +74,40 @@ public class Scanner {
 		}
 
 		//-- Must be changed in part 1:
+
 		//Innledende TAB-er oversettes til blanke.
-		tabToBlanks(line);
+		int numberOfSpacesAtStart = tabToBlanks(line);
+		boolean isEmpty = false;		//antar at hver linje inneholder noe men endrer hvis ikke
+		int lastLineNumIndents = 0;		//legge til en variabel som holder på forrige linjes antall indents
 
 		//Hvis linjen er tom (eventuelt blanke), ignoreres den.
-
-
+		if (line.length() < numberOfSpacesAtStart) {
+			isEmpty = true;
+		}
+		
 		//Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
-
+		//legge dette inni løkken som en escape?
+		if (line.charAt(numberOfSpacesAtStart + 1) == '#') {
+			isEmpty = true;
+		}
 
 		//Indentering beregnes, og INDENT/DEDENT-er legges curLineTokens.
-
+		int indents = findIndent(line);
+		/* if (indents ) {
+			//hvis linjen har mer indent enn forrige
+		} else {
+			//hvis linjen har mindre indent enn forrige
+		} */
 
 		//Gå gjennom linjen:
 			//Blanke tegn og TAB-er ignoreres.
 			//En ’#’ angir at resten av linjen skal ignoreres.
 			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
 
-
 		// Terminate line:
 		curLineTokens.add(new Token(newLineToken,curLineNum()));
+		isEmpty = false;
 
-		//TODO: Burde ikke denne ha {} med for???
 		for (Token t: curLineTokens) 
 			Main.log.noteToken(t);
     }
@@ -103,9 +115,11 @@ public class Scanner {
 	public int tabToBlanks(String s) {
 		int n = 0;
 
-		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '	')) {
-			if (s.charAt(n) == '	') {
-				n += 4 - (n % 4);
+		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '\t')) {
+			if (s.charAt(n) == '\t') {
+				int pluss = 4 - (n % 4);
+				n = pluss;
+				System.out.println("pluss " + pluss);
 			} else {
 				n++;
 			}
