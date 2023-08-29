@@ -90,7 +90,7 @@ public class Scanner {
 			//Blanke tegn og TAB-er ignoreres.
 			//En ’#’ angir at resten av linjen skal ignoreres.
 			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
-			
+
 
 		// Terminate line:
 		curLineTokens.add(new Token(newLineToken,curLineNum()));
@@ -100,8 +100,17 @@ public class Scanner {
 			Main.log.noteToken(t);
     }
 
-	public void tabToBlanks(String line) {
+	public int tabToBlanks(String s) {
+		int n = 0;
 
+		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '	')) {
+			if (s.charAt(n) == '	') {
+				n += 4 - (n % 4);
+			} else {
+				n++;
+			}
+		}
+		return n;
 	}
 
     public int curLineNum() {
