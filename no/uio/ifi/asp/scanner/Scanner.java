@@ -86,20 +86,20 @@ public class Scanner {
 		}
 		
 		//Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
-		if (line.charAt(numberOfSpacesAtStart - 1) == '#') {
+		if (line.charAt(numberOfSpacesAtStart) == '#') {
 			isEmpty = true;
 		}
-		
+
 		//Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
 		int indents = findIndent(line);
 		if (indents > lastLineNumOfIndents) {
 			//hvis linjen har mer indent enn forrige
 			curLineTokens.add(new Token(indentToken, curLineNum()));
-		} else if (indents > lastLineNumOfIndents) {
-			//hvis det er siste linje i filen
-		} else {
+		} else if (indents < lastLineNumOfIndents) {
 			//hvis linjen har færre indent enn forrige
 			curLineTokens.add(new Token(dedentToken, curLineNum()));
+		} else if (indents > lastLineNumOfIndents && true) {
+			//hvis det er siste linje i filen
 		}
 
 		lastLineNumOfIndents = indents;
