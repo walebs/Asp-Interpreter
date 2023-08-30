@@ -21,7 +21,7 @@ public class Main {
             logE = false, logP = false, logS = false, logY = false;
 
         System.out.println("This is the IN2030 Asp interpreter (" + version + ")");
-        System.out.println("Utviklet av NN og Tobias");
+        System.out.println("Ferdig utviklet av Belal og Tobias");
 
         for (String a: arg) {
             if (a.equals("-logE")) {

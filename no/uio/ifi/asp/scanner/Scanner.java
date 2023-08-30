@@ -63,10 +63,10 @@ public class Scanner {
 		try {
 			line = sourceFile.readLine();
 			if (line == null) {
-			sourceFile.close();
-			sourceFile = null;
+				sourceFile.close();
+				sourceFile = null;
 			} else {
-			Main.log.noteSourceLine(curLineNum(), line);
+				Main.log.noteSourceLine(curLineNum(), line);
 			}
 		} catch (IOException e) {
 			sourceFile = null;
@@ -75,62 +75,59 @@ public class Scanner {
 
 		//-- Must be changed in part 1:
 
-		//Innledende TAB-er oversettes til blanke.
-		int numberOfSpacesAtStart = tabToBlanks(line);
-		boolean isEmpty = false;			//antar at hver linje inneholder noe men endrer hvis ikke
+		boolean ignoreLine = false;			//velger om man skal ignorere eller ikke
 		int lastLineNumOfIndents = 0;		//legge til en variabel som holder på forrige linjes antall indents
 
+		//Innledende TAB-er oversettes til blanke.
+		String spacesAtStart = expandLeadingTabs(line);
+
 		//Hvis linjen er tom (eventuelt blanke), ignoreres den.
-		if (line.length() <= numberOfSpacesAtStart) {
-			isEmpty = true;
+		if (line.length() == spacesAtStart.length()) {
+			ignoreLine = true;
 		}
 		
 		//Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
-		if (line.charAt(numberOfSpacesAtStart) == '#') {
-			isEmpty = true;
+		if (!ignoreLine && line.strip().charAt(0) == '#') {
+			ignoreLine = true;
 		}
 
 		//Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
-		int indents = findIndent(line);
-		if (indents > lastLineNumOfIndents) {
-			//hvis linjen har mer indent enn forrige
-			curLineTokens.add(new Token(indentToken, curLineNum()));
-		} else if (indents < lastLineNumOfIndents) {
-			//hvis linjen har færre indent enn forrige
-			curLineTokens.add(new Token(dedentToken, curLineNum()));
-		} else if (indents > lastLineNumOfIndents && true) {
-			//hvis det er siste linje i filen
-		}
+		int indentsOnLine = findIndent(spacesAtStart);
 
-		lastLineNumOfIndents = indents;
+		if (indentsOnLine > lastLineNumOfIndents) {
+			//hvis linjen har mer indent enn forrige, legge til indent
+			curLineTokens.add(new Token(indentToken, curLineNum()));
+			indents.push(indents.peek() + 1);
+		} else if (indentsOnLine < lastLineNumOfIndents) {
+			//hvis linjen har færre indent enn forrige, legge til dedent
+			curLineTokens.add(new Token(dedentToken, curLineNum()));
+			indents.pop();
+		} else if (sourceFile == null) {
+			//hvis det er siste linje i filen, legge til antall dedent
+			while (indents != null) {
+				curLineTokens.add(new Token(dedentToken, curLineNum()));
+				indents.pop();
+			}
+		}
+		
+		lastLineNumOfIndents = indentsOnLine;
+
 
 		//Gå gjennom linjen:
 			//Blanke tegn og TAB-er ignoreres.
 			//En ’#’ angir at resten av linjen skal ignoreres.
 			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
+		while (!ignoreLine) {
+
+		}
 
 		// Terminate line:
 		curLineTokens.add(new Token(newLineToken,curLineNum()));
-		isEmpty = false;
+		ignoreLine = false;
 
 		for (Token t: curLineTokens) 
 			Main.log.noteToken(t);
     }
-
-	public int tabToBlanks(String s) {
-		int n = 0;
-
-		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '\t')) {
-			if (s.charAt(n) == '\t') {
-				int pluss = 4 - (n % 4);
-				n = pluss;
-				System.out.println("pluss " + pluss);
-			} else {
-				n++;
-			}
-		}
-		return n;
-	}
 
     public int curLineNum() {
 		return sourceFile!=null ? sourceFile.getLineNumber() : 0;
@@ -145,7 +142,21 @@ public class Scanner {
 
     private String expandLeadingTabs(String s) {
 		//-- Must be changed in part 1:
-		return null;
+		int n = 0;
+		String spaces = "";
+
+		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '	')) {
+			if (s.charAt(n) == '	') {
+				for (int i = 0; i < 4 - (n % 4); i++) {
+					spaces += ' ';
+					n++;
+				}
+			} else {
+				spaces += ' ';
+				n++;
+			}
+		}
+		return spaces;
     }
 
 
