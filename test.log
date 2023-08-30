@@ -1,1 +1,15 @@
    1:     #en tab
+Scanner: INDENT token on line 1
+Scanner: NEWLINE token on line 1
+   2:  #et mellomrom
+Scanner: INDENT token on line 2
+Scanner: NEWLINE token on line 2
+   3:         #to tab
+Scanner: INDENT token on line 3
+Scanner: NEWLINE token on line 3
+   4:   #to mellom
+Scanner: INDENT token on line 4
+Scanner: NEWLINE token on line 4
+   5:     
+Scanner: INDENT token on line 5
+Scanner: NEWLINE token on line 5

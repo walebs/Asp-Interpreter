@@ -77,27 +77,32 @@ public class Scanner {
 
 		//Innledende TAB-er oversettes til blanke.
 		int numberOfSpacesAtStart = tabToBlanks(line);
-		boolean isEmpty = false;		//antar at hver linje inneholder noe men endrer hvis ikke
-		int lastLineNumIndents = 0;		//legge til en variabel som holder på forrige linjes antall indents
+		boolean isEmpty = false;			//antar at hver linje inneholder noe men endrer hvis ikke
+		int lastLineNumOfIndents = 0;		//legge til en variabel som holder på forrige linjes antall indents
 
 		//Hvis linjen er tom (eventuelt blanke), ignoreres den.
-		if (line.length() < numberOfSpacesAtStart) {
+		if (line.length() <= numberOfSpacesAtStart) {
 			isEmpty = true;
 		}
 		
 		//Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
-		//legge dette inni løkken som en escape?
-		if (line.charAt(numberOfSpacesAtStart + 1) == '#') {
+		if (line.charAt(numberOfSpacesAtStart - 1) == '#') {
 			isEmpty = true;
 		}
-
-		//Indentering beregnes, og INDENT/DEDENT-er legges curLineTokens.
+		
+		//Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
 		int indents = findIndent(line);
-		/* if (indents ) {
+		if (indents > lastLineNumOfIndents) {
 			//hvis linjen har mer indent enn forrige
+			curLineTokens.add(new Token(indentToken, curLineNum()));
+		} else if (indents > lastLineNumOfIndents) {
+			//hvis det er siste linje i filen
 		} else {
-			//hvis linjen har mindre indent enn forrige
-		} */
+			//hvis linjen har færre indent enn forrige
+			curLineTokens.add(new Token(dedentToken, curLineNum()));
+		}
+
+		lastLineNumOfIndents = indents;
 
 		//Gå gjennom linjen:
 			//Blanke tegn og TAB-er ignoreres.
