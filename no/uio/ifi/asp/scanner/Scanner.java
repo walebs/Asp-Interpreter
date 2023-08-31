@@ -76,7 +76,6 @@ public class Scanner {
 		//-- Must be changed in part 1:
 
 		boolean ignoreLine = false;			//velger om man skal ignorere eller ikke
-		int lastLineNumOfIndents = 0;		//legge til en variabel som holder på forrige linjes antall indents
 
 		//Innledende TAB-er oversettes til blanke.
 		String spacesAtStart = expandLeadingTabs(line);
@@ -94,24 +93,29 @@ public class Scanner {
 		//Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
 		int indentsOnLine = findIndent(spacesAtStart);
 
-		if (indentsOnLine > lastLineNumOfIndents) {
-			//hvis linjen har mer indent enn forrige, legge til indent
-			curLineTokens.add(new Token(indentToken, curLineNum()));
+		if (indentsOnLine > indents.peek()) {
+			//hvis linjen har mer indent
 			indents.push(indents.peek() + 1);
-		} else if (indentsOnLine < lastLineNumOfIndents) {
-			//hvis linjen har færre indent enn forrige, legge til dedent
-			curLineTokens.add(new Token(dedentToken, curLineNum()));
-			indents.pop();
-		} else if (sourceFile == null) {
-			//hvis det er siste linje i filen, legge til antall dedent
-			while (indents != null) {
-				curLineTokens.add(new Token(dedentToken, curLineNum()));
+			curLineTokens.add(new Token(indentToken, curLineNum()));
+		} else {
+			//hvis linjen har færre indents
+			while (indentsOnLine < indents.peek()) {
 				indents.pop();
+				curLineTokens.add(new Token(dedentToken, curLineNum()));
+			}
+			
+			if (indentsOnLine != indents.peek()) {
+				//hvis true indenterings feil
+				//TODO feilhåndtering
 			}
 		}
-		
-		lastLineNumOfIndents = indentsOnLine;
 
+		if (sourceFile == null) {
+			while (indents != null) {
+				indents.pop();
+				curLineTokens.add(new Token(dedentToken, curLineNum()));
+			}
+		}
 
 		//Gå gjennom linjen:
 			//Blanke tegn og TAB-er ignoreres.
@@ -143,20 +147,22 @@ public class Scanner {
     private String expandLeadingTabs(String s) {
 		//-- Must be changed in part 1:
 		int n = 0;
-		String spaces = "";
+		String text = s.stripLeading();
+		String line = "";
 
-		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '	')) {
-			if (s.charAt(n) == '	') {
+		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '\t')) {
+			if (s.charAt(n) == '\t') {
 				for (int i = 0; i < 4 - (n % 4); i++) {
-					spaces += ' ';
+					line += ' ';
 					n++;
 				}
 			} else {
-				spaces += ' ';
+				line += ' ';
 				n++;
 			}
 		}
-		return spaces;
+		line += text;
+		return line;
     }
 
 
