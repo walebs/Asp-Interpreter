@@ -122,7 +122,7 @@ public class Scanner {
 			//En ’#’ angir at resten av linjen skal ignoreres.
 			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
 		while (!ignoreLine) {
-
+			
 		}
 
 		// Terminate line:
