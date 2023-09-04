@@ -97,17 +97,14 @@ public class Scanner {
 			//hvis linjen har mer indent
 			indents.push(indents.peek() + 1);
 			curLineTokens.add(new Token(indentToken, curLineNum()));
-		} else {
+		} else if (indentsOnLine < indents.peek()) {
 			//hvis linjen har færre indents
 			while (indentsOnLine < indents.peek()) {
 				indents.pop();
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
 			}
-			
-			if (indentsOnLine != indents.peek()) {
-				//hvis true indenterings feil
-				//TODO feilhåndtering
-			}
+		} else if (indentsOnLine != indents.peek()) {
+			//TODO feilhåndtering
 		}
 
 		if (sourceFile == null) {
