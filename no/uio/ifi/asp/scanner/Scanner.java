@@ -73,8 +73,6 @@ public class Scanner {
 			scannerError("Unspecified I/O error!");
 		}
 
-		//-- Must be changed in part 1:
-
 		boolean ignoreLine = false;			//velger om man skal ignorere eller ikke
 
 		//Innledende TAB-er oversettes til blanke.
@@ -104,39 +102,64 @@ public class Scanner {
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
 			}
 		} else if (indentsOnLine != indents.peek()) {
-			//TODO feilhåndtering
+			//TODO error handling 
 		}
 
-		//Gå gjennom linjen:
-			//Blanke tegn og TAB-er ignoreres.
-			//En ’#’ angir at resten av linjen skal ignoreres.
-			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
-		
+		//Gå gjennom linjen:		
 		int pos = 0;
 		while (!ignoreLine && pos < line.length()) {
 			char c = line.charAt(pos);
 			char cNext = line.charAt(pos++);
 
-			if (Character.isWhitespace(c)) {
+			//Blanke tegn og TAB-er ignoreres.
+			if (Character.isWhitespace(c) || c == '\t') {
 				//Dont do shit
-			} else if (c == '#') {
+				pos++;
+			}
+			
+			//En ’#’ angir at resten av linjen skal ignoreres.
+			else if (c == '#') {
 				break;
-			} else if (isDigit(c)) {
-				//TODO hvis det er et tall, hva skjer hvis tallet er større enn 0-9?
+			} 
+
+			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
+			else if (isDigit(c)) {
 				// setter opp en string for å sjekke om det er int eller float
+				// les kompendiumet om dette er greit
 				String str = "";
-				while (isDigit(line.charAt(pos))) {
+				boolean isFloat = false;
+				while (isDigit(line.charAt(pos)) || line.charAt(pos) == '.') {
+					//siden floats har en . som skiller desimalene så kan vi sjekke om vi finner et ., 
+					//og da skille om vi trenger floatToken eller integerToken
+
+					//TODO error handling for å si ifra om det er et ulovlig flyttall
+					//TODO må være tall både før og etter .
+					if (line.charAt(pos) == '.'){
+						isFloat = true;
+					}
+					
 					str += line.charAt(pos);
 					pos++;
 				}
 				
 				//sjekker om det er float eller int
-				//bruk jernbanediagrammene i kompendiumet
+				if (isFloat) {
+					Token t = new Token(floatToken, curLineNum());
+					t.floatLit = Float.parseFloat(str);
+					curLineTokens.add(t);
+				} else {
+					Token t = new Token(integerToken, curLineNum());
+					t.integerLit = Integer.parseInt(str);
+					curLineTokens.add(t);
+				}
 
 			} else if (isLetterAZ(c)) {
 				//setter opp for å sjekke en string mot alle mulige keywords
 				String str = "";
 				while (isLetterAZ(line.charAt(pos))) {
+					if (line.charAt(pos) == '$') {
+						//TODO error handling ved dette tegnet
+					}
 					str += line.charAt(pos);
 					pos++;
 				}
@@ -181,6 +204,9 @@ public class Scanner {
 					curLineTokens.add(t);
 				}
 			} else if (c == '"' || c == '\'') {
+				//TODO error handling hvis det ikke kommer en slutt på stringen
+				//TODO sjekk filen test-uten-slutt.asp i feil-mappen
+				
 				//finner stringen og legger den til som et Token
 				String str = "";
 				while (line.charAt(pos) != '"' || line.charAt(pos) != '\'') {
@@ -194,60 +220,81 @@ public class Scanner {
 
 			} else if (c == '+') {
 				curLineTokens.add(new Token(plusToken, curLineNum()));
+				pos++;
 			} else if (c == '-') {
 				curLineTokens.add(new Token(minusToken, curLineNum()));
+				pos++;
 			} else if (c == '*') {
 				curLineTokens.add(new Token(astToken, curLineNum()));
+				pos++;
 			} else if (c == '/') {
 				if (cNext == '/') {
 					curLineTokens.add(new Token(doubleSlashToken, curLineNum()));
+					pos++;
 				} else {
 					curLineTokens.add(new Token(slashToken, curLineNum()));
+					pos++;
 				}
 			} else if (c == '=') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(doubleEqualToken, curLineNum()));
+					pos++;
 				} else {
 					curLineTokens.add(new Token(equalToken, curLineNum()));
+					pos++;
 				}
 			} else if (c == '>') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(greaterEqualToken, curLineNum()));
+					pos++;
 				} else {
 					curLineTokens.add(new Token(greaterToken, curLineNum()));
+					pos++;
 				}
 			} else if (c == '<') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(lessEqualToken, curLineNum()));
+					pos++;
 				} else {
 					curLineTokens.add(new Token(lessToken, curLineNum()));
+					pos++;
 				}
 			} else if (c == '!') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(notEqualToken, curLineNum()));
+					pos++;
 				}
 			} else if (c == '%') {
 				curLineTokens.add(new Token(percentToken, curLineNum()));
+				pos++;
 			} else if (c == ':') {
 				curLineTokens.add(new Token(colonToken, curLineNum()));
+				pos++;
 			} else if (c == ',') {
 				curLineTokens.add(new Token(commaToken, curLineNum()));
+				pos++;
 			} else if (c == '{') {
 				curLineTokens.add(new Token(leftBraceToken, curLineNum()));
+				pos++;
 			} else if (c == '}') {
 				curLineTokens.add(new Token(rightBraceToken, curLineNum()));
+				pos++;
 			} else if (c == '[') {
 				curLineTokens.add(new Token(leftBracketToken, curLineNum()));
+				pos++;
 			} else if (c == ']') {
 				curLineTokens.add(new Token(rightBracketToken, curLineNum()));
+				pos++;
 			} else if (c == '(') {
 				curLineTokens.add(new Token(leftParToken, curLineNum()));
+				pos++;
 			} else if (c == ')') {
 				curLineTokens.add(new Token(rightParToken, curLineNum()));
+				pos++;
 			} else if (c == ';') {
 				curLineTokens.add(new Token(semicolonToken, curLineNum()));
+				pos++;
 			}
-			pos++;
 		}
 
 		// Terminate line:
@@ -279,8 +326,10 @@ public class Scanner {
 		return indent;
     }
 
-    private String expandLeadingTabs(String s) {
-		//-- Must be changed in part 1:
+    /*
+	 * Om former TAB til antall mellomrom sånn at det er lett for findIndent() å telle antall indent
+	 */
+	private String expandLeadingTabs(String s) {
 		int n = 0;
 		String text = s.stripLeading();
 		String line = "";
