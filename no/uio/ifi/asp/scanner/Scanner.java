@@ -107,24 +107,151 @@ public class Scanner {
 			//TODO feilhåndtering
 		}
 
+		//Gå gjennom linjen:
+			//Blanke tegn og TAB-er ignoreres.
+			//En ’#’ angir at resten av linjen skal ignoreres.
+			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
+		
+		int pos = 0;
+		while (!ignoreLine && pos < line.length()) {
+			char c = line.charAt(pos);
+			char cNext = line.charAt(pos++);
+
+			if (Character.isWhitespace(c) || c == '#') {
+				//Dont do shit
+			} else if (isDigit(c)) {
+				//TODO hvis det er et tall, hva skjer hvis tallet er større enn 0-9?
+				// setter opp en string for å sjekke om det er int eller float
+				String str = "";
+				while (isDigit(line.charAt(pos))) {
+					str += line.charAt(pos);
+					pos++;
+				}
+				//sjekker om det er float eller int
+
+
+			} else if (isLetterAZ(c)) {
+				//TODO antall tegn i token-et?
+				//setter opp for å sjekke en string mot alle mulige keywords
+				String tokenWhat = "";
+				while (isLetterAZ(line.charAt(pos))) {
+					tokenWhat += line.charAt(pos);
+					pos++;
+				}
+
+				// Finner riktig keyword til stringen
+				if (tokenWhat.equals("and")) {
+					curLineTokens.add(new Token(andToken, curLineNum()));
+				} else if (tokenWhat.equals("def")) {
+					curLineTokens.add(new Token(defToken, curLineNum()));
+				} else if (tokenWhat.equals("elif")) {
+					curLineTokens.add(new Token(elifToken, curLineNum()));
+				} else if (tokenWhat.equals("else")) {
+					curLineTokens.add(new Token(elseToken, curLineNum()));
+				} else if (tokenWhat.equals("False")) {
+					curLineTokens.add(new Token(falseToken, curLineNum()));
+				} else if (tokenWhat.equals("for")) {
+					curLineTokens.add(new Token(forToken, curLineNum()));
+				} else if (tokenWhat.equals("global")) {
+					curLineTokens.add(new Token(globalToken, curLineNum()));
+				} else if (tokenWhat.equals("if")) {
+					curLineTokens.add(new Token(ifToken, curLineNum()));
+				} else if (tokenWhat.equals("in")) {
+					curLineTokens.add(new Token(inToken, curLineNum()));
+				} else if (tokenWhat.equals("None")) {
+					curLineTokens.add(new Token(noneToken, curLineNum()));
+				} else if (tokenWhat.equals("not")) {
+					curLineTokens.add(new Token(notToken, curLineNum()));
+				} else if (tokenWhat.equals("or")) {
+					curLineTokens.add(new Token(orToken, curLineNum()));
+				} else if (tokenWhat.equals("pass")) {
+					curLineTokens.add(new Token(passToken, curLineNum()));
+				} else if (tokenWhat.equals("return")) {
+					curLineTokens.add(new Token(returnToken, curLineNum()));
+				} else if (tokenWhat.equals("True")) {
+					curLineTokens.add(new Token(trueToken, curLineNum()));
+				} else if (tokenWhat.equals("while")) {
+					curLineTokens.add(new Token(whileToken, curLineNum()));
+				} else {
+					curLineTokens.add(new Token(nameToken, curLineNum()));
+				}
+			} else if (c == '"' || c == '\'') {
+				//TODO Størrelse på stringen?
+				while (line.charAt(pos) != '"' || line.charAt(pos) != '\'') {
+					pos++;
+				}
+				curLineTokens.add(new Token(stringToken, curLineNum()));
+			} else if (c == '+') {
+				curLineTokens.add(new Token(plusToken, curLineNum()));
+			} else if (c == '-') {
+				curLineTokens.add(new Token(minusToken, curLineNum()));
+			} else if (c == '*') {
+				curLineTokens.add(new Token(astToken, curLineNum()));
+			} else if (c == '/') {
+				if (cNext == '/') {
+					curLineTokens.add(new Token(doubleSlashToken, curLineNum()));
+				} else {
+					curLineTokens.add(new Token(slashToken, curLineNum()));
+				}
+			} else if (c == '=') {
+				if (cNext == '=') {
+					curLineTokens.add(new Token(doubleEqualToken, curLineNum()));
+				} else {
+					curLineTokens.add(new Token(equalToken, curLineNum()));
+				}
+			} else if (c == '>') {
+				if (cNext == '=') {
+					curLineTokens.add(new Token(greaterEqualToken, curLineNum()));
+				} else {
+					curLineTokens.add(new Token(greaterToken, curLineNum()));
+				}
+			} else if (c == '<') {
+				if (cNext == '=') {
+					curLineTokens.add(new Token(lessEqualToken, curLineNum()));
+				} else {
+					curLineTokens.add(new Token(lessToken, curLineNum()));
+				}
+			} else if (c == '!') {
+				if (cNext == '=') {
+					curLineTokens.add(new Token(notEqualToken, curLineNum()));
+				}
+			} else if (c == '%') {
+				curLineTokens.add(new Token(percentToken, curLineNum()));
+			} else if (c == ':') {
+				curLineTokens.add(new Token(colonToken, curLineNum()));
+			} else if (c == ',') {
+				curLineTokens.add(new Token(commaToken, curLineNum()));
+			} else if (c == '{') {
+				curLineTokens.add(new Token(leftBraceToken, curLineNum()));
+			} else if (c == '}') {
+				curLineTokens.add(new Token(rightBraceToken, curLineNum()));
+			} else if (c == '[') {
+				curLineTokens.add(new Token(leftBracketToken, curLineNum()));
+			} else if (c == ']') {
+				curLineTokens.add(new Token(rightBracketToken, curLineNum()));
+			} else if (c == '(') {
+				curLineTokens.add(new Token(leftParToken, curLineNum()));
+			} else if (c == ')') {
+				curLineTokens.add(new Token(rightParToken, curLineNum()));
+			} else if (c == ';') {
+				curLineTokens.add(new Token(semicolonToken, curLineNum()));
+			}
+			pos++;
+		}
+
+		// Terminate line:
+		//hvis sourceFile blir null er vi på slutten av filen
+		//må legge til nødvendige dedentoken og E-o-f token
 		if (sourceFile == null) {
 			while (indents != null) {
 				indents.pop();
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
 			}
+			curLineTokens.add(new Token(newLineToken,curLineNum()));
+			curLineTokens.add(new Token(eofToken, curLineNum()));
+		} else {
+			curLineTokens.add(new Token(newLineToken,curLineNum()));
 		}
-
-		//Gå gjennom linjen:
-			//Blanke tegn og TAB-er ignoreres.
-			//En ’#’ angir at resten av linjen skal ignoreres.
-			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
-		while (!ignoreLine) {
-			
-		}
-
-		// Terminate line:
-		curLineTokens.add(new Token(newLineToken,curLineNum()));
-		ignoreLine = false;
 
 		for (Token t: curLineTokens) 
 			Main.log.noteToken(t);
@@ -149,7 +276,7 @@ public class Scanner {
 
 		while (n < s.length() && (s.charAt(n) == ' ' || s.charAt(n) == '\t')) {
 			if (s.charAt(n) == '\t') {
-				for (int i = 0; i < 4 - (n % 4); i++) {
+				for (int i = 0; i <  TABDIST - (n % TABDIST); i++) {
 					line += ' ';
 					n++;
 				}
