@@ -117,8 +117,10 @@ public class Scanner {
 			char c = line.charAt(pos);
 			char cNext = line.charAt(pos++);
 
-			if (Character.isWhitespace(c) || c == '#') {
+			if (Character.isWhitespace(c)) {
 				//Dont do shit
+			} else if (c == '#') {
+				break;
 			} else if (isDigit(c)) {
 				//TODO hvis det er et tall, hva skjer hvis tallet er større enn 0-9?
 				// setter opp en string for å sjekke om det er int eller float
@@ -127,60 +129,69 @@ public class Scanner {
 					str += line.charAt(pos);
 					pos++;
 				}
+				
 				//sjekker om det er float eller int
-
+				//bruk jernbanediagrammene i kompendiumet
 
 			} else if (isLetterAZ(c)) {
-				//TODO antall tegn i token-et?
 				//setter opp for å sjekke en string mot alle mulige keywords
-				String tokenWhat = "";
+				String str = "";
 				while (isLetterAZ(line.charAt(pos))) {
-					tokenWhat += line.charAt(pos);
+					str += line.charAt(pos);
 					pos++;
 				}
 
 				// Finner riktig keyword til stringen
-				if (tokenWhat.equals("and")) {
+				if (str.equals("and")) {
 					curLineTokens.add(new Token(andToken, curLineNum()));
-				} else if (tokenWhat.equals("def")) {
+				} else if (str.equals("def")) {
 					curLineTokens.add(new Token(defToken, curLineNum()));
-				} else if (tokenWhat.equals("elif")) {
+				} else if (str.equals("elif")) {
 					curLineTokens.add(new Token(elifToken, curLineNum()));
-				} else if (tokenWhat.equals("else")) {
+				} else if (str.equals("else")) {
 					curLineTokens.add(new Token(elseToken, curLineNum()));
-				} else if (tokenWhat.equals("False")) {
+				} else if (str.equals("False")) {
 					curLineTokens.add(new Token(falseToken, curLineNum()));
-				} else if (tokenWhat.equals("for")) {
+				} else if (str.equals("for")) {
 					curLineTokens.add(new Token(forToken, curLineNum()));
-				} else if (tokenWhat.equals("global")) {
+				} else if (str.equals("global")) {
 					curLineTokens.add(new Token(globalToken, curLineNum()));
-				} else if (tokenWhat.equals("if")) {
+				} else if (str.equals("if")) {
 					curLineTokens.add(new Token(ifToken, curLineNum()));
-				} else if (tokenWhat.equals("in")) {
+				} else if (str.equals("in")) {
 					curLineTokens.add(new Token(inToken, curLineNum()));
-				} else if (tokenWhat.equals("None")) {
+				} else if (str.equals("None")) {
 					curLineTokens.add(new Token(noneToken, curLineNum()));
-				} else if (tokenWhat.equals("not")) {
+				} else if (str.equals("not")) {
 					curLineTokens.add(new Token(notToken, curLineNum()));
-				} else if (tokenWhat.equals("or")) {
+				} else if (str.equals("or")) {
 					curLineTokens.add(new Token(orToken, curLineNum()));
-				} else if (tokenWhat.equals("pass")) {
+				} else if (str.equals("pass")) {
 					curLineTokens.add(new Token(passToken, curLineNum()));
-				} else if (tokenWhat.equals("return")) {
+				} else if (str.equals("return")) {
 					curLineTokens.add(new Token(returnToken, curLineNum()));
-				} else if (tokenWhat.equals("True")) {
+				} else if (str.equals("True")) {
 					curLineTokens.add(new Token(trueToken, curLineNum()));
-				} else if (tokenWhat.equals("while")) {
+				} else if (str.equals("while")) {
 					curLineTokens.add(new Token(whileToken, curLineNum()));
 				} else {
-					curLineTokens.add(new Token(nameToken, curLineNum()));
+					//hvis name legge til riktig verdier til Token
+					Token t = new Token(nameToken, curLineNum());
+					t.name = str;
+					curLineTokens.add(t);
 				}
 			} else if (c == '"' || c == '\'') {
-				//TODO Størrelse på stringen?
+				//finner stringen og legger den til som et Token
+				String str = "";
 				while (line.charAt(pos) != '"' || line.charAt(pos) != '\'') {
+					str += line.charAt(pos);
 					pos++;
 				}
-				curLineTokens.add(new Token(stringToken, curLineNum()));
+
+				Token t = new Token(stringToken, curLineNum());
+				t.stringLit = str;
+				curLineTokens.add(t);
+
 			} else if (c == '+') {
 				curLineTokens.add(new Token(plusToken, curLineNum()));
 			} else if (c == '-') {
