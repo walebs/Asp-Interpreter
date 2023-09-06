@@ -104,6 +104,7 @@ public class Scanner {
 		} else if (indentsOnLine != indents.peek()) {
 			//Error-handling som jeg er usikker på
 			scannerError("Indentation Error");
+			System.exit(1);
 		}
 
 		//Gå gjennom linjen:		
@@ -175,6 +176,7 @@ public class Scanner {
 					if (line.charAt(pos) == '$') {
 						//printer melding ved $
 						scannerError("Ugyldig name token - line: " + curLineNum());
+						System.exit(1);
 					}
 					str += line.charAt(pos);
 					pos++;
@@ -226,6 +228,7 @@ public class Scanner {
 					//error-handling hvis pos indeks er lengre enn strengen.
 					if (pos >= line.length()) {
 						scannerError("Invalid String - line " + curLineNum());
+						System.exit(1);
 					}
 					str += line.charAt(pos);
 					pos++;
