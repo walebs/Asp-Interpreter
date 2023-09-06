@@ -102,7 +102,8 @@ public class Scanner {
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
 			}
 		} else if (indentsOnLine != indents.peek()) {
-			//TODO error handling 
+			//Error-handling som jeg er usikker på
+			scannerError("Indentation Error");
 		}
 
 		//Gå gjennom linjen:		
@@ -132,11 +133,25 @@ public class Scanner {
 					//siden floats har en . som skiller desimalene så kan vi sjekke om vi finner et ., 
 					//og da skille om vi trenger floatToken eller integerToken
 
-					//TODO error handling for å si ifra om det er et ulovlig flyttall
-					//TODO må være tall både før og etter .
-					if (line.charAt(pos) == '.'){
-						isFloat = true;
+					//error-handling hvis det er et ulovelig flyttal (int . int)
+					if (isDigit(line.charAt(pos))) {
+						if (line.charAt(pos++) == '.') {
+							//er en float
+							if (isDigit(line.charAt(pos+2))) {
+								isFloat = true;
+							}
+						}
+						else {
+							System.out.println("Not a float - line" + curLineNum());
+							System.exit(1);
+						}
 					}
+
+					//Tobias sin float-checker (kan fjernes hvis godkjent)
+					/*if (line.charAt(pos) == '.') {
+						isFloat = true;
+					}*/
+					
 					
 					str += line.charAt(pos);
 					pos++;
@@ -158,7 +173,8 @@ public class Scanner {
 				String str = "";
 				while (isLetterAZ(line.charAt(pos))) {
 					if (line.charAt(pos) == '$') {
-						//TODO error handling ved dette tegnet
+						//printer melding ved $
+						scannerError("Ugyldig name token - line: " + curLineNum());
 					}
 					str += line.charAt(pos);
 					pos++;
@@ -204,12 +220,13 @@ public class Scanner {
 					curLineTokens.add(t);
 				}
 			} else if (c == '"' || c == '\'') {
-				//TODO error handling hvis det ikke kommer en slutt på stringen
-				//TODO sjekk filen test-uten-slutt.asp i feil-mappen
-				
 				//finner stringen og legger den til som et Token
 				String str = "";
 				while (line.charAt(pos) != '"' || line.charAt(pos) != '\'') {
+					//error-handling hvis pos indeks er lengre enn strengen.
+					if (pos >= line.length()) {
+						scannerError("Invalid String - line " + curLineNum());
+					}
 					str += line.charAt(pos);
 					pos++;
 				}
