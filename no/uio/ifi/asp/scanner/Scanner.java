@@ -73,23 +73,11 @@ public class Scanner {
 			scannerError("Unspecified I/O error!");
 		}
 
-		boolean ignoreLine = false;			//velger om man skal ignorere eller ikke
-
 		// Innledende TAB-er oversettes til blanke.
-		String spacesAtStart = expandLeadingTabs(line);
-
-		// Hvis linjen er tom (eventuelt blanke), ignoreres den.
-		if (line.length() == spacesAtStart.length()) {
-			ignoreLine = true;
-		}
-		
-		// Hvis linjen bare inneholder en kommentar (dvs førsteikke-blanke tegn er en ’#’), ignoreres den.
-		if (!ignoreLine && line.strip().charAt(0) == '#') {
-			ignoreLine = true;
-		}
+		String noTABline = expandLeadingTabs(line);
 
 		// Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
-		int indentsOnLine = findIndent(spacesAtStart);
+		int indentsOnLine = findIndent(noTABline);
 
 		if (indentsOnLine > indents.peek()) {
 			// hvis linjen har mer indent
@@ -101,7 +89,7 @@ public class Scanner {
 				indents.pop();
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
 			}
-			
+
 			if (indentsOnLine != indents.peek()) {
 				// Error-handling som jeg er usikker på
 				scannerError("Indentation error on line: " + curLineNum()); 
@@ -111,29 +99,34 @@ public class Scanner {
 
 		// Gå gjennom linjen:		
 		int pos = 0;
-		while (!ignoreLine && pos < line.length()) {
-			char c = line.charAt(pos);
-			char cNext = line.charAt(pos++);
+		boolean commentOrBlank = false;
+
+		while (pos < noTABline.length()) {
+			//TODO fjern 
+			System.out.println("11111111111111");
+			char c = noTABline.charAt(pos);
+			char cNext = noTABline.charAt(pos++);
 
 			// Blanke tegn og TAB-er ignoreres.
-			if (Character.isWhitespace(c) || c == '\t') {
+			if (Character.isWhitespace(c)) {
 				// ikke gjør noe
 				pos++;
-			}
-			
-			// En ’#’ angir at resten av linjen skal ignoreres.
-			else if (c == '#') {
+				if (pos == noTABline.length()) {
+					commentOrBlank = true;
+				}
+			} else if (c == '#') {
+				// En ’#’ angir at resten av linjen skal ignoreres.
+				commentOrBlank = true;
 				break;
-			} 
-
-			// Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
-			else if (isDigit(c) || c == '.') {
+			} else if (isDigit(c) || c == '.') {
 				// setter opp en string for å sjekke om det er int eller float
 				String str = "";
 				boolean isFloat = false;
 				boolean isInt = true;
 
 				while (isDigit(c) || c == '.') {
+					//TODO fjern 
+					System.out.println("22222222222222222");
 					// skiller om det er int eller float når man finner '.'
 					if (c == 0) {
 						if (str == "") {
@@ -156,7 +149,7 @@ public class Scanner {
 					}
 					
 					pos++;
-					c = line.charAt(pos);
+					c = noTABline.charAt(pos);
 				}
 
 				// sjekker om det er float eller int
@@ -174,14 +167,17 @@ public class Scanner {
 				// setter opp for å sjekke en string mot alle mulige keywords
 				String str = "";
 				while (isLetterAZ(c) || isDigit(c) || c == '$') {
+					//TODO fjern 
+					System.out.println("333333333333333");
+					System.out.println("pos: " + pos);
 					if (c == '$') {
 						// kaster en error ved $
 						scannerError("Ugyldig name token on line: " + curLineNum());
 						System.exit(1);
 					}
 					str += c;
+					c = noTABline.charAt(pos);
 					pos++;
-					c = line.charAt(pos);
 				}
 
 				// Finner riktig keyword til stringen
@@ -228,14 +224,16 @@ public class Scanner {
 				String str = "";
 
 				while (cNext != '"' || cNext != '\'') {
+					//TODO fjern 
+					System.out.println("4444444444444444444444");
 					// error-handling hvis pos indeks er lengre enn linjen.
-					if (pos >= line.length()) {
+					if (pos >= noTABline.length()) {
 						scannerError("Invalid string on line: " + curLineNum());
 						System.exit(1);
 					}
 					str += cNext;
 					pos++;
-					cNext = line.charAt(pos++);
+					cNext = noTABline.charAt(pos++);
 				}
 
 				Token t = new Token(stringToken, curLineNum());
@@ -247,7 +245,7 @@ public class Scanner {
 				// og for å unngå en nullPointerException sjekker jeg om pos - line.length() == 1 og legger til 1 eller 2 til pos utifra
 				// hva sjekken gir meg.
 				// Er en failsafe i den ytterste while loopen som skal fange opp om pos == line.length()
-				if (pos - line.length() == 1) {
+				if (pos - noTABline.length() == 1) {
 					pos++;
 				} else {
 					pos += 2;
@@ -331,8 +329,7 @@ public class Scanner {
 				pos++;
 			}
 		}
-
-		// Terminate line:
+		
 		// hvis sourceFile blir null er vi på slutten av filen da må man legge til nødvendige dedentoken, newline og E-o-f tokens
 		if (sourceFile == null) {
 			while (indents != null) {
@@ -341,7 +338,8 @@ public class Scanner {
 			}
 			curLineTokens.add(new Token(newLineToken,curLineNum()));
 			curLineTokens.add(new Token(eofToken, curLineNum()));
-		} else {
+		} else if (!commentOrBlank) {
+			// Terminate line:
 			curLineTokens.add(new Token(newLineToken,curLineNum()));
 		}
 
