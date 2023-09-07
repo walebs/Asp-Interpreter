@@ -129,38 +129,36 @@ public class Scanner {
 			// Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
 			else if (isDigit(c) || c == '.') {
 				// setter opp en string for å sjekke om det er int eller float
-				// TODO les kompendiumet om jernbanediagrammene for integer literal og float literal er lovlige
 				String str = "";
 				boolean isFloat = false;
-				boolean isInt = false;
+				boolean isInt = true;
 
 				while (isDigit(c) || c == '.') {
-					/* if (c == '0' && cNext != '.') {
-						break;
-					} */
-					// siden floats har en . som skiller desimalene så kan vi sjekke om vi finner et ., 
-					// og da skille om vi trenger floatToken eller integerToken
-
-					// error-handling hvis det er et ulovelig flyttal (int . int)
-					// TODO denne vil caste error ved en int
-					if (isDigit(c) && !isFloat) {
-						if (line.charAt(pos++) == '.') {
-							if (isDigit(line.charAt(pos+2))) {
-								isFloat = true;
-							}
+					// skiller om det er int eller float når man finner '.'
+					if (c == 0) {
+						if (str == "") {
+							// legges ikke inn hvis det bare er 0			
+						} else {
+							str += c;
 						}
-						else {
+					} else if (c == '.') {
+						// error-handling hvis det er et ulovelig flyttal, hvis det starter med '.' eller slutter med '.'
+						if (str == "" || !isDigit(cNext)) {
 							scannerError("Not a valid float value on line: " + curLineNum());
 							System.exit(1);
+						} else {
+							str += c;
+							isFloat = true;
+							isInt = false;
 						}
+					} else {
+						str += c;
 					}
-		
-					str += c;
+					
 					pos++;
 					c = line.charAt(pos);
 				}
-				// TODO hva om vi gjør error handling her?
-				
+
 				// sjekker om det er float eller int
 				if (isFloat) {
 					Token t = new Token(floatToken, curLineNum());
@@ -170,8 +168,6 @@ public class Scanner {
 					Token t = new Token(integerToken, curLineNum());
 					t.integerLit = Integer.parseInt(str);
 					curLineTokens.add(t);
-				} else {
-					pos++;
 				}
 
 			} else if (isLetterAZ(c)) {
