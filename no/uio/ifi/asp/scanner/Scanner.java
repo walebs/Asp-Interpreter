@@ -127,7 +127,7 @@ public class Scanner {
 			//Andre tegn angir starten på et nytt symbol. Finn ut hvor mange tegn som inngår i symbolet. Lag et Token-objekt og legg det i curLineTokens.
 			else if (isDigit(c)) {
 				// setter opp en string for å sjekke om det er int eller float
-				// les kompendiumet om dette er greit
+				//TODO les kompendiumet om dette er greit
 				String str = "";
 				boolean isFloat = false;
 				while (isDigit(line.charAt(pos)) || line.charAt(pos) == '.') {
@@ -135,7 +135,8 @@ public class Scanner {
 					//og da skille om vi trenger floatToken eller integerToken
 
 					//error-handling hvis det er et ulovelig flyttal (int . int)
-					if (isDigit(line.charAt(pos))) {
+					//TODO denne vil caste error ved en int
+					if (isDigit(line.charAt(pos)) && !isFloat) {
 						if (line.charAt(pos++) == '.') {
 							//er en float
 							if (isDigit(line.charAt(pos+2))) {
@@ -147,16 +148,12 @@ public class Scanner {
 							System.exit(1);
 						}
 					}
-
-					//Tobias sin float-checker (kan fjernes hvis godkjent)
-					/*if (line.charAt(pos) == '.') {
-						isFloat = true;
-					}*/
-					
-					
+		
 					str += line.charAt(pos);
 					pos++;
 				}
+
+				// TODO hva om vi gjør error handling her?
 				
 				//sjekker om det er float eller int
 				if (isFloat) {
@@ -173,6 +170,7 @@ public class Scanner {
 				//setter opp for å sjekke en string mot alle mulige keywords
 				String str = "";
 				while (isLetterAZ(line.charAt(pos))) {
+					//TODO denne må flytte ut, $ er ikke definert som en bokstav så vil aldri forekomme
 					if (line.charAt(pos) == '$') {
 						//printer melding ved $
 						scannerError("Ugyldig name token - line: " + curLineNum());
@@ -224,8 +222,9 @@ public class Scanner {
 			} else if (c == '"' || c == '\'') {
 				//finner stringen og legger den til som et Token
 				String str = "";
+				//TODO dette vil aldri skje, hvis c er en string fnutt så vil den bare hoppe over denne while-loopen. Logikk feil
 				while (line.charAt(pos) != '"' || line.charAt(pos) != '\'') {
-					//error-handling hvis pos indeks er lengre enn strengen.
+					//error-handling hvis pos indeks er lengre enn linjen.
 					if (pos >= line.length()) {
 						scannerError("Invalid String - line " + curLineNum());
 						System.exit(1);
@@ -318,8 +317,7 @@ public class Scanner {
 		}
 
 		// Terminate line:
-		//hvis sourceFile blir null er vi på slutten av filen
-		//må legge til nødvendige dedentoken og E-o-f token
+		//hvis sourceFile blir null er vi på slutten av filen da må man legge til nødvendige dedentoken, newline og E-o-f tokens
 		if (sourceFile == null) {
 			while (indents != null) {
 				indents.pop();
