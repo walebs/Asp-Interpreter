@@ -233,7 +233,7 @@ public class Scanner {
 				// finner stringen og legger den til som et Token
 				String str = "";
 
-				while (pos < noTABline.length() && noTABline.charAt(pos+1) != '"' && noTABline.charAt(pos+1) != '\'') {
+				while (pos != noTABline.length() && (noTABline.charAt(pos+1) != '"' && noTABline.charAt(pos+1) != '\'')) {
 					// error-handling hvis pos indeks er lengre enn linjen.
 					if (pos+1 == noTABline.length()) {
 						scannerError("Invalid string, no ending to string");
@@ -271,7 +271,7 @@ public class Scanner {
 			} else if (c == '/') {
 				if (cNext == '/') {
 					curLineTokens.add(new Token(doubleSlashToken, curLineNum()));
-					pos++;
+					pos+=2;
 				} else {
 					curLineTokens.add(new Token(slashToken, curLineNum()));
 					pos++;
@@ -279,7 +279,7 @@ public class Scanner {
 			} else if (c == '=') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(doubleEqualToken, curLineNum()));
-					pos++;
+					pos+=2;
 				} else {
 					curLineTokens.add(new Token(equalToken, curLineNum()));
 					pos++;
@@ -287,7 +287,7 @@ public class Scanner {
 			} else if (c == '>') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(greaterEqualToken, curLineNum()));
-					pos++;
+					pos+=2;
 				} else {
 					curLineTokens.add(new Token(greaterToken, curLineNum()));
 					pos++;
@@ -295,7 +295,7 @@ public class Scanner {
 			} else if (c == '<') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(lessEqualToken, curLineNum()));
-					pos++;
+					pos+=2;
 				} else {
 					curLineTokens.add(new Token(lessToken, curLineNum()));
 					pos++;
@@ -303,7 +303,7 @@ public class Scanner {
 			} else if (c == '!') {
 				if (cNext == '=') {
 					curLineTokens.add(new Token(notEqualToken, curLineNum()));
-					pos++;
+					pos+=2;
 				}
 			} else if (c == '%') {
 				curLineTokens.add(new Token(percentToken, curLineNum()));
