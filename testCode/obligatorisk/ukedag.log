@@ -192,7 +192,6 @@ Scanner: [ token on line 17
 Scanner: name token on line 17: m_ix
 Scanner: ] token on line 17
 Scanner: == token on line 17
-Scanner: = token on line 17
 Scanner: name token on line 17: m_id
 Scanner: : token on line 17
 Scanner: return token on line 17
@@ -270,7 +269,6 @@ Scanner: name token on line 30: aa
 Scanner: % token on line 30
 Scanner: integer literal token on line 30: 4
 Scanner: == token on line 30
-Scanner: = token on line 30
 Scanner: integer literal token on line 30: 0
 Scanner: and token on line 30
 Scanner: name token on line 30: aa
@@ -281,7 +279,6 @@ Scanner: name token on line 30: aa
 Scanner: % token on line 30
 Scanner: integer literal token on line 30: 400
 Scanner: == token on line 30
-Scanner: = token on line 30
 Scanner: integer literal token on line 30: 0
 Scanner: NEWLINE token on line 30
   31: 
@@ -302,7 +299,6 @@ Scanner: INDENT token on line 34
 Scanner: if token on line 34
 Scanner: name token on line 34: m
 Scanner: == token on line 34
-Scanner: = token on line 34
 Scanner: integer literal token on line 34: 2
 Scanner: and token on line 34
 Scanner: name token on line 34: er_skuddaar
