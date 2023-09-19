@@ -55,7 +55,6 @@ Scanner: NEWLINE token on line 10
 Scanner: while token on line 11
 Scanner: name token on line 11: i2
 Scanner: <= token on line 11
-Scanner: = token on line 11
 Scanner: name token on line 11: n
 Scanner: : token on line 11
 Scanner: NEWLINE token on line 11
@@ -171,7 +170,6 @@ Scanner: name token on line 25: n_printed
 Scanner: % token on line 25
 Scanner: integer literal token on line 25: 10
 Scanner: == token on line 25
-Scanner: = token on line 25
 Scanner: integer literal token on line 25: 0
 Scanner: : token on line 25
 Scanner: NEWLINE token on line 25

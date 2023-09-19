@@ -196,9 +196,8 @@ Scanner: ( token on line 21
 Scanner: name token on line 21: day
 Scanner: ) token on line 21
 Scanner: + token on line 21
-Scanner: string literal token on line 21: ""
-Scanner: name token on line 21: mars
-Scanner: string literal token on line 21: ""
+Scanner: string literal token on line 21: ". mars"
+Scanner: , token on line 21
 Scanner: name token on line 21: y
 Scanner: ) token on line 21
 Scanner: NEWLINE token on line 21
@@ -216,9 +215,8 @@ Scanner: ( token on line 23
 Scanner: name token on line 23: day
 Scanner: ) token on line 23
 Scanner: + token on line 23
-Scanner: string literal token on line 23: ""
-Scanner: name token on line 23: april
-Scanner: string literal token on line 23: ""
+Scanner: string literal token on line 23: ". april"
+Scanner: , token on line 23
 Scanner: name token on line 23: y
 Scanner: ) token on line 23
 Scanner: NEWLINE token on line 23

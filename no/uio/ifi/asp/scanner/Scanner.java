@@ -73,17 +73,18 @@ public class Scanner {
 			scannerError("Unspecified I/O error!");
 		}
 
-		String noTABline = "";
+		// TODO: VI STARTET HER
+		
 		// Innledende TAB-er oversettes til blanke.
 		if (line != null) {
-			noTABline = expandLeadingTabs(line);
+			line = expandLeadingTabs(line);
 		}
 
 		// Sjekker om linjen er tom eller bare en kommentar
 		boolean commentOrBlank = true;
 		int posOnLine = 0;
-		while (posOnLine < noTABline.length() && commentOrBlank) {
-			char character = noTABline.charAt(posOnLine);
+		while (commentOrBlank && line != null && posOnLine < line.length()) {
+			char character = line.charAt(posOnLine);
 			if (isDigit(character) || isLetterAZ(character) || character == '$' || character == '.') {
 				commentOrBlank = false;
 			} else if (character == '#') {
@@ -93,35 +94,31 @@ public class Scanner {
 		}
 
 		// Indentering beregnes, og INDENT/DEDENT-er legges i curLineTokens.
-		int indentsOnLine = findIndent(noTABline);
+		if (!commentOrBlank) {
+			int indentsOnLine = findIndent(line);
 
-		if (!commentOrBlank && indentsOnLine > indents.peek()) {
-			// Hvis linjen har fler indents
-			indents.push(indentsOnLine);
-			curLineTokens.add(new Token(indentToken, curLineNum()));
-		} else if (!commentOrBlank && indentsOnLine < indents.peek()) {
-			// Hvis linjen har færre indents
-			while (!commentOrBlank && indentsOnLine < indents.peek()) {
-				indents.pop();
-				curLineTokens.add(new Token(dedentToken, curLineNum()));
-			}
-
-			if (!commentOrBlank && indentsOnLine != indents.peek()) {
-				// Error-handling 
-				scannerError("Indentation error"); 
-				System.exit(1);
+			if (indentsOnLine > indents.peek()) {
+				// Hvis linjen har fler indents
+				indents.push(indentsOnLine);
+				curLineTokens.add(new Token(indentToken, curLineNum()));
+			} else if (indentsOnLine < indents.peek()) {
+				// Hvis linjen har færre indents
+				while (indentsOnLine < indents.peek()) {
+					indents.pop();
+					curLineTokens.add(new Token(dedentToken, curLineNum()));
+				}
+				if (indentsOnLine != indents.peek()) {
+					// Error-handling 
+					scannerError("Indentation error"); 
+				}
 			}
 		}
-
+		
 		// Gå gjennom linjen:		
 		int pos = 0;
 
-		while (pos < noTABline.length()) {
-			char c = noTABline.charAt(pos);
-			char cNext = ' ';
-			if (pos < (noTABline.length()-1)) {
-				cNext = noTABline.charAt(pos+1);
-			}
+		while (!commentOrBlank && pos < line.length()) {
+			char c = line.charAt(pos);
 
 			// Blanke tegn og TAB-er ignoreres.
 			if (Character.isWhitespace(c)) {
@@ -136,32 +133,32 @@ public class Scanner {
 				boolean isFloat = false;
 				boolean isInt = true;
 
-				while (pos != noTABline.length() && (isDigit(noTABline.charAt(pos)) || noTABline.charAt(pos) == '.')) {
+				while (pos < line.length() && (isDigit(line.charAt(pos)) || line.charAt(pos) == '.')) {
 					// skiller om det er int eller float når man finner '.'
-					if (noTABline.charAt(pos) == '0') {
+					if (line.charAt(pos) == '0') {
 						if (str == "") {
-							if (pos+1 == noTABline.length() || noTABline.charAt(pos+1) != '.') {
-								str += noTABline.charAt(pos);
+							if (pos+1 == line.length() || line.charAt(pos+1) != '.') {
+								str += line.charAt(pos);
 								pos++;
 								break;
 							} else {
-								str += noTABline.charAt(pos);
+								str += line.charAt(pos);
 							}
 						} else {
-							str += noTABline.charAt(pos);
+							str += line.charAt(pos);
 						}
-					} else if (noTABline.charAt(pos) == '.') {
+					} else if (line.charAt(pos) == '.') {
 						// error-handling hvis det er et ulovelig flyttall, hvis det starter med '.' eller slutter med '.'
-						if (str == "" || !isDigit(noTABline.charAt(pos+1))) {
+						if (str == "" || !isDigit(line.charAt(pos+1))) {
 							scannerError("Invalid float value");
-							System.exit(1);
+	
 						} else {
-							str += noTABline.charAt(pos);
+							str += line.charAt(pos);
 							isFloat = true;
 							isInt = false;
 						}
 					} else {
-						str += noTABline.charAt(pos);
+						str += line.charAt(pos);
 					}
 					pos++;
 				}
@@ -180,13 +177,13 @@ public class Scanner {
 			} else if (isLetterAZ(c) || c == '$') {
 				// setter opp for å sjekke en string mot alle mulige keywords
 				String str = "";
-				while (pos != noTABline.length() && (isLetterAZ(noTABline.charAt(pos)) || isDigit(noTABline.charAt(pos)) || noTABline.charAt(pos) == '$')) {
-					if (noTABline.charAt(pos) == '$') {
+				while (pos != line.length() && (isLetterAZ(line.charAt(pos)) || isDigit(line.charAt(pos)) || line.charAt(pos) == '$')) {
+					if (line.charAt(pos) == '$') {
 						// kaster en error ved $
-						scannerError("$ is an invalid char for a variabel");
-						System.exit(1);
+						scannerError("'$' is an invalid char for a variabel");
+
 					}
-					str += noTABline.charAt(pos);
+					str += line.charAt(pos);
 					pos++;
 				}
 
@@ -232,33 +229,21 @@ public class Scanner {
 			} else if (c == '"' || c == '\'') {
 				// finner stringen og legger den til som et Token
 				String str = "";
+				pos++;
 
-				while (pos != noTABline.length() && (noTABline.charAt(pos+1) != '"' && noTABline.charAt(pos+1) != '\'')) {
-					// error-handling hvis pos indeks er lengre enn linjen.
-					if (pos+1 == noTABline.length()) {
-						scannerError("Invalid string, no ending to string");
-						System.exit(1);
-					} 
-
-					str += noTABline.charAt(pos+1);
+				while (pos < line.length() && (line.charAt(pos) != '"' && line.charAt(pos) != '\'')) {
+					str += line.charAt(pos);
 					pos++;
+				}
+
+				if (pos >= line.length()) {
+					scannerError("Invalid string, no ending to string");
 				}
 
 				Token t = new Token(stringToken, curLineNum());
 				t.stringLit = str;
 				curLineTokens.add(t);
-
-				// For å komme seg forbi siste anførselstegnet og fortsette på resten av linjen hvis det er mer.
-				// Med logikken som er her, så vil pos være den siste char i stringen før anførselstegnet
-				// og for å unngå at programmet vil tro det kommer en til streng sjekker jeg om pos - line.length() == 1 og 
-				// legger til 1 eller 2 til pos utifra hva sjekken gir meg.
-				// Er en failsafe i den ytterste while loopen som skal fange opp om pos == line.length()
-				if (pos - noTABline.length() == 1) {
-					pos++;
-				} else {
-					pos += 2;
-				}
-
+				pos++;
 			} else if (c == '+') {
 				curLineTokens.add(new Token(plusToken, curLineNum()));
 				pos++;
@@ -269,7 +254,7 @@ public class Scanner {
 				curLineTokens.add(new Token(astToken, curLineNum()));
 				pos++;
 			} else if (c == '/') {
-				if (cNext == '/') {
+				if (line.charAt(pos+1) == '/') {
 					curLineTokens.add(new Token(doubleSlashToken, curLineNum()));
 					pos+=2;
 				} else {
@@ -277,7 +262,7 @@ public class Scanner {
 					pos++;
 				}
 			} else if (c == '=') {
-				if (cNext == '=') {
+				if (line.charAt(pos+1) == '=') {
 					curLineTokens.add(new Token(doubleEqualToken, curLineNum()));
 					pos+=2;
 				} else {
@@ -285,7 +270,7 @@ public class Scanner {
 					pos++;
 				}
 			} else if (c == '>') {
-				if (cNext == '=') {
+				if (line.charAt(pos+1) == '=') {
 					curLineTokens.add(new Token(greaterEqualToken, curLineNum()));
 					pos+=2;
 				} else {
@@ -293,7 +278,7 @@ public class Scanner {
 					pos++;
 				}
 			} else if (c == '<') {
-				if (cNext == '=') {
+				if (line.charAt(pos+1) == '=') {
 					curLineTokens.add(new Token(lessEqualToken, curLineNum()));
 					pos+=2;
 				} else {
@@ -301,7 +286,7 @@ public class Scanner {
 					pos++;
 				}
 			} else if (c == '!') {
-				if (cNext == '=') {
+				if (line.charAt(pos+1) == '=') {
 					curLineTokens.add(new Token(notEqualToken, curLineNum()));
 					pos+=2;
 				}
