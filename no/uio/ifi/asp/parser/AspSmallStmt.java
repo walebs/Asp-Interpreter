@@ -4,7 +4,6 @@ import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.*;
-import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 abstract class AspSmallStmt extends AspSyntax {
 
@@ -24,8 +23,25 @@ abstract class AspSmallStmt extends AspSyntax {
             case passToken:
                 ass = AspPassStmt.parse(s);
                 break;
+            case nameToken:
+                ass = AspAssignment.parse(s);
+                break;
+            case notToken:
+            case plusToken:
+            case minusToken:
+            // TODO hvordan funker det når både assignment og expr har name token i seg?
+            case integerToken:
+            case floatToken:
+            case stringToken:
+            case falseToken:
+            case trueToken:
+            case noneToken:
+            case leftBraceToken:
+            case leftBracketToken:
+            case leftParToken:
+                ass = AspExprStmt.parse(s);
+                break;
 
-        // TODO må legge til flere, må ha med assignment og expr stmt
         default:
             parserError("Expected an expression atom but found a " + s.curToken().kind + "!", s.curLineNum());
         }
