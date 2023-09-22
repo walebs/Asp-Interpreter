@@ -4,22 +4,21 @@ import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
-import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
-public class AspNotTest extends AspSyntax {
-    static AspComparison comparison;
+public class AspCompOpr extends AspSyntax {
 
-    AspNotTest(int n) {
+    AspCompOpr(int n) {
         super(n);
     }
 
-    static AspNotTest parse(Scanner s) {
-        enterParser("not test");
-        AspNotTest ant = new AspNotTest(s.curLineNum());
-        if (s.curToken().kind == notToken) skip(s, notToken);
-        comparison = AspComparison.parse(s);
-        leaveParser("not test");
-        return ant;
+    // sender inn hvilket token som er compOpr for å slippe å sjekke igjen
+    static AspCompOpr parse(Scanner s, TokenKind token) {
+        enterParser("comp opr");
+        AspCompOpr aco = new AspCompOpr(s.curLineNum());
+        skip(s, token);
+        leaveParser("comp opr");
+        return aco;
     }
 
     @Override

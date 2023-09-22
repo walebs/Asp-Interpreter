@@ -8,8 +8,6 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
 
 class AspDictDisplay extends AspAtom {
     ArrayList<AspStringLiteral> string = new ArrayList<>();
@@ -17,21 +15,8 @@ class AspDictDisplay extends AspAtom {
 
 	AspDictDisplay(int s) {
 		super(s);
-		// Auto-generated
 	}
 
-	@Override
-	void prettyPrint() {
-		//Auto-generated
-	}
-
-	@Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// Auto-generated
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
-    
-    // Må sjekke logikken her engang til
     static AspDictDisplay parse(Scanner s) {
         enterParser("dict display");
         AspDictDisplay add = new AspDictDisplay(s.curLineNum());
@@ -41,12 +26,23 @@ class AspDictDisplay extends AspAtom {
             add.string.add(AspStringLiteral.parse(s));
             skip(s, colonToken);
             add.expr.add(AspExpr.parse(s));
-            if (s.curToken().kind != rightBraceToken) {
-                skip(s, commaToken);
-            }
+            if (s.curToken().kind == rightBraceToken) break;
+            skip(s, commaToken);
         }
         skip(s, rightBraceToken);
+
         leaveParser("dict display");
         return add;
+    }
+
+	@Override
+	void prettyPrint() {
+		//TODO Auto-generated
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		//TODO Auto-generated
+        return null;
     }
 }

@@ -4,15 +4,13 @@ import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
-
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspIntegerLiteral extends AspAtom {
-    static long i;
+    static long value;
 
 	AspIntegerLiteral(int s) {
 		super(s);
-		//TODO Auto-generated
 	}
 
 	@Override
@@ -29,7 +27,7 @@ public class AspIntegerLiteral extends AspAtom {
     static AspIntegerLiteral parse(Scanner s) {
         enterParser("integer literal");
         AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
-        i = s.curToken().integerLit;
+		value = s.curToken().integerLit;
         skip(s, integerToken);
         leaveParser("integer literal");
         return ail;

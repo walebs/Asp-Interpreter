@@ -13,7 +13,6 @@ public class AspStringLiteral extends AspAtom {
 
 	AspStringLiteral(int s) {
 		super(s);
-		// Auto-generated
 	}
 
 	@Override
@@ -34,6 +33,5 @@ public class AspStringLiteral extends AspAtom {
 		skip(s, nameToken);
 		leaveParser("string literal");
 		return asl;
-
 	}
 }

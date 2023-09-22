@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class AspIfStmt extends AspCompoundStmt {
     ArrayList<AspSuite> suits = new ArrayList<>();
-    static AspExpr expr = null;
+    ArrayList<AspExpr> exprs = new ArrayList<>();
 
     AspIfStmt(int n) {
         super(n);
@@ -18,14 +18,14 @@ public class AspIfStmt extends AspCompoundStmt {
 
     static AspIfStmt parse(Scanner s) {
         enterParser("if stmt");
-
         AspIfStmt ais = new AspIfStmt(s.curLineNum());
+        
         skip(s, ifToken);
         while (s.curToken().kind != elifToken) {
-            if (s.curToken().kind == elifToken) skip(s, elifToken);
-            expr = AspExpr.parse(s);
+            ais.exprs.add(AspExpr.parse(s));
             skip(s, colonToken);
             ais.suits.add(AspSuite.parse(s));
+            if (s.curToken().kind == elifToken) skip(s, elifToken);
         }
         if (s.curToken().kind == elseToken) {
             skip(s, elseToken);

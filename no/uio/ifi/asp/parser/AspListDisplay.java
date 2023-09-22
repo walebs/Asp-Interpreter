@@ -4,7 +4,6 @@ import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
-
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 import java.util.ArrayList;
@@ -12,10 +11,8 @@ import java.util.ArrayList;
 public class AspListDisplay extends AspAtom {
     ArrayList<AspExpr> expr = new ArrayList<>();
 
-
 	AspListDisplay(int s) {
 		super(s);
-		//TODO Auto-generated
 	}
 
 	@Override
@@ -37,10 +34,11 @@ public class AspListDisplay extends AspAtom {
         skip(s, leftBracketToken);
         while (s.curToken().kind != rightBracketToken) {
             ald.expr.add(AspExpr.parse(s));
-            if (s.curToken().kind != rightBracketToken) {
-                skip(s, commaToken);
-            }
+            if (s.curToken().kind == rightBracketToken) break;
+            skip(s, commaToken);
         }
+        skip(s, rightBracketToken);
+
         leaveParser("list display");
         return ald;
     }

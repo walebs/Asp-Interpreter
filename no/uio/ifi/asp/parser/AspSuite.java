@@ -9,7 +9,7 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspSuite extends AspSyntax {
-    static AspSmallStmtList assl = null;
+    static AspSmallStmtList assl;
     ArrayList<AspStmt> stmts = new ArrayList<>();
 
     AspSuite(int n) {

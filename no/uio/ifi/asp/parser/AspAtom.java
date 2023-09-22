@@ -2,13 +2,10 @@ package no.uio.ifi.asp.parser;
 
 import no.uio.ifi.asp.scanner.Scanner;
 
-
 abstract class AspAtom extends AspSyntax {
     
-    // Måtte implementeres idk why
     AspAtom(int s) {
 		super(s);
-		//TODO Auto-generated constructor
 	}
 
     static AspAtom parse(Scanner s) {

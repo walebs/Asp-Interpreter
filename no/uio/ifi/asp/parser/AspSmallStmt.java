@@ -43,7 +43,7 @@ abstract class AspSmallStmt extends AspSyntax {
                 break;
 
         default:
-            parserError("Expected an expression atom but found a " + s.curToken().kind + "!", s.curLineNum());
+            parserError("Expected a small stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }
 
         return ass;

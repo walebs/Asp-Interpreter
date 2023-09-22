@@ -7,8 +7,8 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspWhileStmt extends AspCompoundStmt {
-    static AspExpr expr = null;
-    static AspSuite suite = null;
+    static AspExpr expr;
+    static AspSuite suite;
 
     AspWhileStmt(int n) {
         super(n);

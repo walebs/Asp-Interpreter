@@ -6,20 +6,29 @@ import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
-public class AspNotTest extends AspSyntax {
-    static AspComparison comparison;
+import java.util.ArrayList;
 
-    AspNotTest(int n) {
+public class AspArguments extends AspPrimarySuffix {
+    ArrayList<AspExpr> exprs = new ArrayList<>();
+
+    AspArguments(int n) {
         super(n);
     }
 
-    static AspNotTest parse(Scanner s) {
-        enterParser("not test");
-        AspNotTest ant = new AspNotTest(s.curLineNum());
-        if (s.curToken().kind == notToken) skip(s, notToken);
-        comparison = AspComparison.parse(s);
-        leaveParser("not test");
-        return ant;
+    static AspArguments parse(Scanner s) {
+        enterParser("arguments");
+        AspArguments aa = new AspArguments(s.curLineNum());
+
+        skip(s, leftParToken);
+        while (s.curToken().kind != rightParToken) {
+            aa.exprs.add(AspExpr.parse(s));
+            if (s.curToken().kind == rightParToken) break;
+            skip(s, commaToken);
+        }
+        skip(s, rightParToken);
+        
+        leaveParser("arguments");
+        return aa;
     }
 
     @Override

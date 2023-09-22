@@ -32,7 +32,7 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-	    //-- Must be changed in part 2:
+	    //TODO -- Must be changed in part 2:
     }
 
 

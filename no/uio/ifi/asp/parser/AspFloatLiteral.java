@@ -11,7 +11,6 @@ public class AspFloatLiteral extends AspAtom {
 
 	AspFloatLiteral(int s) {
 		super(s);
-		//TODO Auto-generated
 	}
 
 	@Override
@@ -22,14 +21,16 @@ public class AspFloatLiteral extends AspAtom {
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		// TODO:  Auto-generated
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+		return null;
 	}
     
     static AspFloatLiteral parse(Scanner s) {
         enterParser("float literal");
         AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
+
         afl.value = s.curToken().floatLit;
         skip(s, floatToken);
+		
         leaveParser("float literal");
         return afl;
     }

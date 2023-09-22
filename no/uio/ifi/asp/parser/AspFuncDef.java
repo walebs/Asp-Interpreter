@@ -8,33 +8,32 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 import java.util.ArrayList;
 
-public class AspFuncStmt extends AspCompoundStmt {
-    static AspName name = null;
-    static AspSuite suite = null;
+public class AspFuncDef extends AspCompoundStmt {
+    static AspName name;
+    static AspSuite suite;
     ArrayList<AspName> nameList = new ArrayList<>();
 
-    AspFuncStmt(int n) {
+    AspFuncDef(int n) {
         super(n);
     }
 
-    static AspFuncStmt parse(Scanner s) {
-        enterParser("fun stmt");
+    static AspFuncDef parse(Scanner s) {
+        enterParser("func def");
 
-        AspFuncStmt afs = new AspFuncStmt(s.curLineNum());
+        AspFuncDef afs = new AspFuncDef(s.curLineNum());
         skip(s, defToken);
         name = AspName.parse(s);
         skip(s, leftParToken);
         while (s.curToken().kind != rightParToken) {
             afs.nameList.add(AspName.parse(s));
-            if (s.curToken().kind == commaToken) {
-                skip(s, commaToken);
-            }
+            if (s.curToken().kind != commaToken) break;
+            skip(s, commaToken);
         }
         skip(s, rightParToken);
         skip(s, colonToken);
         suite = AspSuite.parse(s);
 
-        leaveParser("fun stmt");
+        leaveParser("func def");
         return afs;
     }
 

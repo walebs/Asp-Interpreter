@@ -6,20 +6,21 @@ import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
-public class AspName extends AspAtom {
-    String value;
+public class AspSubscription extends AspPrimarySuffix {
+    static AspExpr expr;
 
-    AspName(int s) {
-        super(s);
+    AspSubscription(int n) {
+        super(n);
     }
 
-    static AspName parse(Scanner s) {
-        enterParser("name");
-        AspName an = new AspName(s.curLineNum());
-        an.value = s.curToken().name;
-        skip(s, nameToken);
-        leaveParser("name");
-        return an;
+    static AspSubscription parse(Scanner s) {
+        enterParser("subscription");
+        AspSubscription as = new AspSubscription(s.curLineNum());
+        skip(s, leftBracketToken);
+        expr = AspExpr.parse(s);
+        skip(s, rightBracketToken);
+        leaveParser("subscription");
+        return as;
     }
 
     @Override

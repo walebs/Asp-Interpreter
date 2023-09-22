@@ -10,18 +10,19 @@ public class AspGlobalStmt extends AspSmallStmt {
 
     AspGlobalStmt(int n) {
         super(n);
-        //TODO Auto-generated constructor stub
     }
 
     static AspGlobalStmt parse(Scanner s) {
         enterParser("global stmt");
         AspGlobalStmt ags = new AspGlobalStmt(s.curLineNum());
+        
+        skip(s, globalToken);
         while (true) {
-            skip(s, globalToken);
             ags.names.add(AspName.parse(s));
             if (s.curToken().kind != commaToken) break;
             skip(s, commaToken);
         }
+        
         leaveParser("global stmt");
         return ags;
     }

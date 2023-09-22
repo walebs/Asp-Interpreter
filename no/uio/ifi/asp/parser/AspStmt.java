@@ -5,7 +5,6 @@ package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.scanner.*;
 import no.uio.ifi.asp.scanner.Scanner;
-import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 abstract class AspStmt extends AspSyntax {
     
@@ -41,7 +40,7 @@ abstract class AspStmt extends AspSyntax {
                 as = AspCompoundStmt.parse(s);
                 break;
         default:
-            parserError("Expected an expression atom but found a " + s.curToken().kind + "!", s.curLineNum());
+            parserError("Expected a stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }
         return as;
     }

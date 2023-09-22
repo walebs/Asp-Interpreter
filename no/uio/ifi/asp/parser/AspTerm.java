@@ -1,25 +1,32 @@
 package no.uio.ifi.asp.parser;
 
+import java.util.ArrayList;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
-import static no.uio.ifi.asp.scanner.TokenKind.*;
 
-public class AspNotTest extends AspSyntax {
-    static AspComparison comparison;
+public class AspTerm extends AspSyntax {
+    ArrayList<AspFactor> factors = new ArrayList<>();
+    ArrayList<AspTermOpr> termOpr = new ArrayList<>();
 
-    AspNotTest(int n) {
+    AspTerm(int n) {
         super(n);
     }
 
-    static AspNotTest parse(Scanner s) {
-        enterParser("not test");
-        AspNotTest ant = new AspNotTest(s.curLineNum());
-        if (s.curToken().kind == notToken) skip(s, notToken);
-        comparison = AspComparison.parse(s);
-        leaveParser("not test");
-        return ant;
+    static AspTerm parse(Scanner s) {
+        enterParser("term");
+        AspTerm at = new AspTerm(s.curLineNum());
+        
+        while (true) {
+            at.factors.add(AspFactor.parse(s));
+            if (s.isTermOpr()) {
+                at.termOpr.add(AspTermOpr.parse(s, s.curToken().kind));
+            } else break;
+        }
+
+        leaveParser("term");
+        return at;
     }
 
     @Override

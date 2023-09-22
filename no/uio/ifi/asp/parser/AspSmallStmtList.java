@@ -13,7 +13,6 @@ public class AspSmallStmtList extends AspStmt {
 
     AspSmallStmtList(int n) {
         super(n);
-        //TODO Auto-generated constructor stub
     }
 
     static AspSmallStmtList parse(Scanner s) {
@@ -25,8 +24,9 @@ public class AspSmallStmtList extends AspStmt {
             if (s.curToken().kind == semicolonToken) skip(s, semicolonToken);
             if (s.curToken().kind == newLineToken) break;
         }
+        skip(s, newLineToken);
 
-        leaveParser("small stms list");
+        leaveParser("small stmt list");
         return assl;
     }
 

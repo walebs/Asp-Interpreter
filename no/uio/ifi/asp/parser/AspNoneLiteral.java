@@ -8,10 +8,8 @@ import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspNoneLiteral extends AspAtom {
 
-
 	AspNoneLiteral(int s) {
 		super(s);
-		//TODO Auto-generated
 	}
 
 	@Override
