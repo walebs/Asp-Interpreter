@@ -14,7 +14,7 @@ public class AspArguments extends AspPrimarySuffix {
     AspArguments(int n) {
         super(n);
     }
-
+    
     static AspArguments parse(Scanner s) {
         enterParser("arguments");
         AspArguments aa = new AspArguments(s.curLineNum());
@@ -22,7 +22,7 @@ public class AspArguments extends AspPrimarySuffix {
         skip(s, leftParToken);
         while (s.curToken().kind != rightParToken) {
             aa.exprs.add(AspExpr.parse(s));
-            if (s.curToken().kind == rightParToken) break;
+            if (s.curToken().kind == rightParToken) break;  //TODO: Burde ikke denne være over linjen over? fordi da bli ikke expr lagt til?
             skip(s, commaToken);
         }
         skip(s, rightParToken);
