@@ -26,6 +26,7 @@ abstract class AspSmallStmt extends AspSyntax {
             case nameToken:
                 ass = AspAssignment.parse(s);
                 break;
+            // TODO: Case for expr statement? eller er d pga TODOen under
             case notToken:
             case plusToken:
             case minusToken:
