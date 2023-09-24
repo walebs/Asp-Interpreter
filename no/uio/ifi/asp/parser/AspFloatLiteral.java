@@ -12,6 +12,18 @@ public class AspFloatLiteral extends AspAtom {
 	AspFloatLiteral(int s) {
 		super(s);
 	}
+	
+	// Flytta bare opp Toby-style!
+	static AspFloatLiteral parse(Scanner s) {
+	enterParser("float literal");
+	AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
+
+	afl.value = s.curToken().floatLit;
+	skip(s, floatToken);
+
+	leaveParser("float literal");
+	return afl;
+	}
 
 	@Override
 	void prettyPrint() {
@@ -23,15 +35,4 @@ public class AspFloatLiteral extends AspAtom {
 		// TODO:  Auto-generated
 		return null;
 	}
-    
-    static AspFloatLiteral parse(Scanner s) {
-        enterParser("float literal");
-        AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
-
-        afl.value = s.curToken().floatLit;
-        skip(s, floatToken);
-		
-        leaveParser("float literal");
-        return afl;
-    }
 }
