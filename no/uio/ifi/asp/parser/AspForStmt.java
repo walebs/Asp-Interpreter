@@ -14,18 +14,8 @@ public class AspForStmt extends AspCompoundStmt {
     AspForStmt(int n) {
         super(n);
     }
-
-    @Override
-    void prettyPrint() {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
-    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
+    
+    //Flytta opp toby-style!
     static AspForStmt parse(Scanner s) {
         enterParser("for stmt");
         AspForStmt afs = new AspForStmt(s.curLineNum());
@@ -40,5 +30,15 @@ public class AspForStmt extends AspCompoundStmt {
         leaveParser("for stmt");
         return afs;
     }
-    
+
+    @Override
+    void prettyPrint() {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
