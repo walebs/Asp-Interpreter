@@ -12,6 +12,16 @@ public class AspIntegerLiteral extends AspAtom {
 	AspIntegerLiteral(int s) {
 		super(s);
 	}
+	
+	// Toby style
+	static AspIntegerLiteral parse(Scanner s) {
+        enterParser("integer literal");
+        AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
+		value = s.curToken().integerLit;
+        skip(s, integerToken);
+        leaveParser("integer literal");
+        return ail;
+    	} 
 
 	@Override
 	void prettyPrint() {
@@ -23,13 +33,4 @@ public class AspIntegerLiteral extends AspAtom {
 		// TODO Auto-generated
 		throw new UnsupportedOperationException("Unimplemented method 'eval'");
 	}
-
-    static AspIntegerLiteral parse(Scanner s) {
-        enterParser("integer literal");
-        AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
-		value = s.curToken().integerLit;
-        skip(s, integerToken);
-        leaveParser("integer literal");
-        return ail;
-    } 
 }
