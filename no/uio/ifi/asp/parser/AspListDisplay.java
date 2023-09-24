@@ -14,20 +14,9 @@ public class AspListDisplay extends AspAtom {
 	AspListDisplay(int s) {
 		super(s);
 	}
-
-	@Override
-	void prettyPrint() {
-		// TODO Auto-generated
-	}
-
-	@Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
-
-
-    static AspListDisplay parse(Scanner s) {
+	
+	// Toby style
+	static AspListDisplay parse(Scanner s) {
         enterParser("list display");
         AspListDisplay ald = new AspListDisplay(s.curLineNum());
 
@@ -41,5 +30,16 @@ public class AspListDisplay extends AspAtom {
 
         leaveParser("list display");
         return ald;
-    }
+    	}
+
+	@Override
+	void prettyPrint() {
+		// TODO Auto-generated
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		// TODO Auto-generated
+		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+	}
 }
