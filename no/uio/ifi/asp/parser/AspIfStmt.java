@@ -25,7 +25,7 @@ public class AspIfStmt extends AspCompoundStmt {
             ais.exprs.add(AspExpr.parse(s));
             skip(s, colonToken);
             ais.suits.add(AspSuite.parse(s));
-            if (s.curToken().kind == elifToken) skip(s, elifToken);
+            if (s.curToken().kind == elifToken) skip(s, elifToken); //TODO: Denne loopen skækker meg ut. kommer ikke loop til å breake m engang det er en elif, og dette aldri skjer???
         }
         if (s.curToken().kind == elseToken) {
             skip(s, elseToken);
