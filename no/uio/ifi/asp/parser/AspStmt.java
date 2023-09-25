@@ -13,6 +13,7 @@ abstract class AspStmt extends AspSyntax {
     }
 
     static AspStmt parse(Scanner s) {
+        enterParser("stmt");
         AspStmt as = null;
         switch (s.curToken().kind) {
             case nameToken:
@@ -42,6 +43,7 @@ abstract class AspStmt extends AspSyntax {
         default:
             parserError("Expected a stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }
+        leaveParser("stmt");
         return as;
     }
 }

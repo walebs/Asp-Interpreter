@@ -15,6 +15,15 @@ public class AspStringLiteral extends AspAtom {
 		super(s);
 	}
 
+	static AspStringLiteral parse(Scanner s) {
+		enterParser("string literal");
+		AspStringLiteral asl = new AspStringLiteral(s.curLineNum());
+		asl.value = s.curToken().stringLit;
+		skip(s, stringToken);
+		leaveParser("string literal");
+		return asl;
+	}
+
 	@Override
 	void prettyPrint() {
 		// Auto-generated
@@ -24,14 +33,5 @@ public class AspStringLiteral extends AspAtom {
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
 		// Auto-generated
 		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
-
-    static AspStringLiteral parse(Scanner s) {
-		enterParser("string literal");
-		AspStringLiteral asl = new AspStringLiteral(s.curLineNum());
-		asl.value = s.curToken().name;
-		skip(s, nameToken);
-		leaveParser("string literal");
-		return asl;
 	}
 }

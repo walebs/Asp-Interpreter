@@ -12,20 +12,9 @@ abstract class AspSmallStmt extends AspSyntax {
     }
 
     static AspSmallStmt parse(Scanner s) {
+        enterParser("small stmt");
         AspSmallStmt ass = null;
         switch (s.curToken().kind) {
-            case returnToken:
-                ass = AspReturnStmt.parse(s);
-                break;
-            case globalToken:
-                ass = AspGlobalStmt.parse(s);
-                break;
-            case passToken:
-                ass = AspPassStmt.parse(s);
-                break;
-            case nameToken:
-                ass = AspAssignment.parse(s);
-                break;
             case notToken:
             case plusToken:
             case minusToken:
@@ -39,12 +28,25 @@ abstract class AspSmallStmt extends AspSyntax {
             case leftBraceToken:
             case leftBracketToken:
             case leftParToken:
+            case nameToken:
                 ass = AspExprStmt.parse(s);
                 break;
+            case returnToken:
+                ass = AspReturnStmt.parse(s);
+                break;
+            case globalToken:
+                ass = AspGlobalStmt.parse(s);
+                break;
+            case passToken:
+                ass = AspPassStmt.parse(s);
+                break;
+            /* case nameToken:
+                ass = AspAssignment.parse(s);
+                break; */
         default:
             parserError("Expected a small stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }
-
+        leaveParser("small stmt");
         return ass;
     }
 
