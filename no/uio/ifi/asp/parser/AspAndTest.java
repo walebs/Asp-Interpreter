@@ -30,7 +30,13 @@ public class AspAndTest extends AspSyntax {
     
     @Override
     public void prettyPrint() {
-        // TODO do
+        // TODO riktig?
+        /* int nPrinted = 0;
+        for (AspNotTest ant : notTests) {
+            if (nPrinted > 0) prettyWrite("and");
+            ant.prettyPrint();
+            ++nPrinted;
+        } */
     }
 
     @Override

@@ -25,7 +25,7 @@ public class AspNotTest extends AspSyntax {
     @Override
     void prettyPrint() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'prettyPrint'");
+        
     }
 
     @Override
