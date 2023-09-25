@@ -15,7 +15,6 @@ public class AspForStmt extends AspCompoundStmt {
         super(n);
     }
     
-    //Flytta opp toby-style!
     static AspForStmt parse(Scanner s) {
         enterParser("for stmt");
         AspForStmt afs = new AspForStmt(s.curLineNum());

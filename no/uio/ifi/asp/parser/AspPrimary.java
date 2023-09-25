@@ -20,7 +20,7 @@ public class AspPrimary extends AspSyntax {
         AspPrimary ap = new AspPrimary(s.curLineNum());
         
         atom = AspAtom.parse(s);
-        while (s.curToken().kind == leftParToken || s.curToken().kind == leftBracketToken) {    //TODO: Denne ser good ut, men kunne den ikke bare vært "while (s.curToken().kind == AspPrimarySuffixTokenKind blabla"?
+        while (s.curToken().kind == leftParToken || s.curToken().kind == leftBracketToken) {
             ap.primarySuffixs.add(AspPrimarySuffix.parse(s));
         }
 

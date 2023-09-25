@@ -13,16 +13,15 @@ public class AspFloatLiteral extends AspAtom {
 		super(s);
 	}
 	
-	// Flytta bare opp Toby-style!
 	static AspFloatLiteral parse(Scanner s) {
-	enterParser("float literal");
-	AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
+		enterParser("float literal");
+		AspFloatLiteral afl = new AspFloatLiteral(s.curLineNum());
 
-	afl.value = s.curToken().floatLit;
-	skip(s, floatToken);
+		afl.value = s.curToken().floatLit;
+		skip(s, floatToken);
 
-	leaveParser("float literal");
-	return afl;
+		leaveParser("float literal");
+		return afl;
 	}
 
 	@Override

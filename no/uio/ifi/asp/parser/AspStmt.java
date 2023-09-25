@@ -12,7 +12,7 @@ abstract class AspStmt extends AspSyntax {
 	    super(n);
     }
 
-    static AspStmt parse(Scanner s) {		//TODO: denne confusa meg egentlig. idk hvorfor casen skjer på leftbrace og while. 
+    static AspStmt parse(Scanner s) {
         AspStmt as = null;
         switch (s.curToken().kind) {
             case nameToken:

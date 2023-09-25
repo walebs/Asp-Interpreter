@@ -26,7 +26,7 @@ class AspDictDisplay extends AspAtom {
             add.string.add(AspStringLiteral.parse(s));
             skip(s, colonToken);
             add.expr.add(AspExpr.parse(s));
-            if (s.curToken().kind == rightBraceToken) break;	//TODO: Kanskje litt rendundant med tanke på at while hadde breaket ved en rightBraceToken?
+            if (s.curToken().kind == rightBraceToken) break;
             skip(s, commaToken);
         }
         skip(s, rightBraceToken);

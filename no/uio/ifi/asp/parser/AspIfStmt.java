@@ -21,11 +21,12 @@ public class AspIfStmt extends AspCompoundStmt {
         AspIfStmt ais = new AspIfStmt(s.curLineNum());
         
         skip(s, ifToken);
-        while (s.curToken().kind != elifToken) {
+        while (true) {
             ais.exprs.add(AspExpr.parse(s));
             skip(s, colonToken);
             ais.suits.add(AspSuite.parse(s));
-            if (s.curToken().kind == elifToken) skip(s, elifToken); //TODO: Denne loopen skækker meg ut. kommer ikke loop til å breake m engang det er en elif, og dette aldri skjer???
+            if (s.curToken().kind != elifToken) break;
+            skip(s, elifToken);
         }
         if (s.curToken().kind == elseToken) {
             skip(s, elseToken);
@@ -47,5 +48,4 @@ public class AspIfStmt extends AspCompoundStmt {
         // TODO Auto-generated method stub
         return null;
     }
-
 }

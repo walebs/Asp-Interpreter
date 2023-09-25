@@ -12,14 +12,13 @@ public class AspNoneLiteral extends AspAtom {
 		super(s);
 	}
 	
-	// Toby style
 	static AspNoneLiteral parse(Scanner s) {
         enterParser("none literal");
         AspNoneLiteral anl = new AspNoneLiteral(s.curLineNum());
         skip(s, TokenKind.noneToken);
         leaveParser("none literal");
         return anl;
-    	}
+	}
 
 	@Override
 	void prettyPrint() {

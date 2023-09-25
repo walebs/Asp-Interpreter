@@ -13,7 +13,6 @@ public class AspIntegerLiteral extends AspAtom {
 		super(s);
 	}
 	
-	// Toby style
 	static AspIntegerLiteral parse(Scanner s) {
         enterParser("integer literal");
         AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
@@ -21,7 +20,7 @@ public class AspIntegerLiteral extends AspAtom {
         skip(s, integerToken);
         leaveParser("integer literal");
         return ail;
-    	} 
+	} 
 
 	@Override
 	void prettyPrint() {

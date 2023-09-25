@@ -9,10 +9,10 @@ abstract class AspPrimarySuffix extends AspSyntax {
     }
 
     static AspPrimarySuffix parse(Scanner s) {
-        AspPrimarySuffix aps = null;            //TODO: Skal den ikke lagres som en lokal variabel? ^^^ liksom?
+        AspPrimarySuffix aps = null;
         switch (s.curToken().kind) {
             case leftParToken:
-                aps = AspArguments.parse(s);    //Flytta denne casen over bare fordi rekkefølge er viktig for meg (ocd-problem asså!)
+                aps = AspArguments.parse(s);
                 break;
             case leftBracketToken:
                 aps = AspSubscription.parse(s);

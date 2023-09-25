@@ -15,7 +15,6 @@ public class AspListDisplay extends AspAtom {
 		super(s);
 	}
 	
-	// Toby style
 	static AspListDisplay parse(Scanner s) {
         enterParser("list display");
         AspListDisplay ald = new AspListDisplay(s.curLineNum());
@@ -30,7 +29,7 @@ public class AspListDisplay extends AspAtom {
 
         leaveParser("list display");
         return ald;
-    	}
+	}
 
 	@Override
 	void prettyPrint() {
