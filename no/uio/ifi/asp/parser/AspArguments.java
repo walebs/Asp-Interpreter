@@ -33,8 +33,16 @@ public class AspArguments extends AspPrimarySuffix {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'prettyPrint'");
+        prettyWrite("(");
+        if (!exprs.isEmpty()) {
+            for (int i = 0; i < exprs.size(); i++) {
+                exprs.get(i).prettyPrint();
+                if (i+1 < exprs.size()) {
+                    prettyWrite(",");
+                }
+            }
+        }
+        prettyWrite(")");
     }
 
     @Override

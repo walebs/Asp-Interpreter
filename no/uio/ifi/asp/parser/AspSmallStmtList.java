@@ -32,7 +32,11 @@ public class AspSmallStmtList extends AspStmt {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
+        for (int i = 0; i < smallStmts.size(); i++) {
+            smallStmts.get(i).prettyPrint();
+            if (i+1 < smallStmts.size()) prettyWrite("; ");
+        }
+        //TODO kanskje ha med slutt semicolon??
     }
 
     @Override

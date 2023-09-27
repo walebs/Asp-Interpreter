@@ -31,12 +31,9 @@ public class AspTerm extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        // Fra Uke 38 forslag
-        // Ikke 100% ferdig kanskje pga vi lurer på om vi skal gjøre operators til tokens som i ukeforslaget
-        factors.get(0).prettyPrint();
         for (int i = 0; i < factors.size(); i++) {
-            System.out.println(" " + termOpr.get(i - 1) + " ");
             factors.get(i).prettyPrint();
+            if (i+1 < factors.size()) termOpr.get(i).prettyPrint();
         }
     }
 

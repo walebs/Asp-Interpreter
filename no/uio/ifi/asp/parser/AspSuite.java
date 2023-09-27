@@ -37,7 +37,14 @@ public class AspSuite extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
+        if (stmts.isEmpty()) {
+            prettyWriteLn();
+            prettyIndent();
+            for (int i = 0; i < stmts.size(); i++) {
+                stmts.get(i).prettyPrint();
+            }
+            prettyDedent();
+        }
     }
 
     @Override

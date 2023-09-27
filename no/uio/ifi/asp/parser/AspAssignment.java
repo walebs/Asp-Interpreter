@@ -2,6 +2,9 @@ package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
 
+import no.uio.ifi.asp.runtime.RuntimeReturnValue;
+import no.uio.ifi.asp.runtime.RuntimeScope;
+import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
@@ -28,5 +31,24 @@ public class AspAssignment extends AspSmallStmt {
         leaveParser("assignment");
         return ass;
     }
+
+    // Belal made
+	@Override
+	void prettyPrint() {
+		name.prettyPrint();
+        if (!subscriptions.isEmpty()) {
+            for (int i = 0; i < subscriptions.size(); i++) {
+                subscriptions.get(i).prettyPrint();
+            }
+        }
+        prettyWrite("=");
+        expr.prettyPrint();
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+	}
 
 }

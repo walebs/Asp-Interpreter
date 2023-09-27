@@ -7,15 +7,29 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspInnerExpr extends AspAtom {
-    AspExpr ae;
+    AspExpr expr;
 
 	AspInnerExpr(int s) {
 		super(s);
 	}
 
+	static AspInnerExpr parse(Scanner s) {
+        enterParser("inner expr");
+        AspInnerExpr aie = new AspInnerExpr(s.curLineNum());
+
+        skip(s, leftParToken);
+        aie.expr = AspExpr.parse(s);
+        skip(s, rightParToken);
+        
+        leaveParser("inner expr");
+        return aie;
+    }
+
 	@Override
 	void prettyPrint() {
-		// TODO Auto-generated
+		prettyWrite("(");
+		expr.prettyPrint();
+		prettyWrite(")");
 	}
 
 	@Override
@@ -23,16 +37,4 @@ public class AspInnerExpr extends AspAtom {
 		// TODO Auto-generated
 		return null;
 	}
-
-    static AspInnerExpr parse(Scanner s) {
-        enterParser("inner expr");
-        AspInnerExpr aie = new AspInnerExpr(s.curLineNum());
-
-        skip(s, leftParToken);
-        aie.ae = AspExpr.parse(s);
-        skip(s, rightParToken);
-        
-        leaveParser("inner expr");
-        return aie;
-    }
 }

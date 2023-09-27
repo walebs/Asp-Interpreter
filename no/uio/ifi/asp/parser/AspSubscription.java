@@ -25,7 +25,9 @@ public class AspSubscription extends AspPrimarySuffix {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
+        prettyWrite("[");
+        expr.prettyPrint();
+        prettyWrite("]");
     }
 
     @Override
