@@ -36,7 +36,7 @@ public class AspSmallStmtList extends AspStmt {
             smallStmts.get(i).prettyPrint();
             if (i+1 < smallStmts.size()) prettyWrite("; ");
         }
-        //TODO kanskje ha med slutt semicolon??
+        //TODO kanskje ha med slutt semicolon?? (Tror også mer må gjøres? - Belal)
     }
 
     @Override
