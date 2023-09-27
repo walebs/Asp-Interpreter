@@ -6,8 +6,8 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspAssignment extends AspSmallStmt {
-    static AspName name;
-    static AspExpr expr;
+    AspName name;
+    AspExpr expr;
     ArrayList<AspSubscription> subscriptions = new ArrayList<>();
 
     AspAssignment(int n) {
@@ -18,12 +18,12 @@ public class AspAssignment extends AspSmallStmt {
         enterParser("assignment");
 
         AspAssignment ass = new AspAssignment(s.curLineNum());
-        name = AspName.parse(s);
+        ass.name = AspName.parse(s);
         while (s.curToken().kind != equalToken) {
             ass.subscriptions.add(AspSubscription.parse(s));
         }
         skip(s, equalToken);
-        expr = AspExpr.parse(s);
+        ass.expr = AspExpr.parse(s);
 
         leaveParser("assignment");
         return ass;

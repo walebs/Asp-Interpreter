@@ -12,24 +12,12 @@ abstract class AspSmallStmt extends AspSyntax {
     }
 
     static AspSmallStmt parse(Scanner s) {
+        enterParser("small stmt");
         AspSmallStmt ass = null;
         switch (s.curToken().kind) {
-            case returnToken:
-                ass = AspReturnStmt.parse(s);
-                break;
-            case globalToken:
-                ass = AspGlobalStmt.parse(s);
-                break;
-            case passToken:
-                ass = AspPassStmt.parse(s);
-                break;
-            case nameToken:
-                ass = AspAssignment.parse(s);
-                break;
             case notToken:
             case plusToken:
             case minusToken:
-            // TODO hvordan funker det når både assignment og expr har name token i seg?
             case integerToken:
             case floatToken:
             case stringToken:
@@ -41,10 +29,23 @@ abstract class AspSmallStmt extends AspSyntax {
             case leftParToken:
                 ass = AspExprStmt.parse(s);
                 break;
+            case returnToken:
+                ass = AspReturnStmt.parse(s);
+                break;
+            case globalToken:
+                ass = AspGlobalStmt.parse(s);
+                break;
+            case passToken:
+                ass = AspPassStmt.parse(s);
+                break;
+            case nameToken:
+                if (s.anyEqualToken()) ass = AspAssignment.parse(s);
+                else ass = AspExprStmt.parse(s);
+                break;
         default:
             parserError("Expected a small stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }
-
+        leaveParser("small stmt");
         return ass;
     }
 

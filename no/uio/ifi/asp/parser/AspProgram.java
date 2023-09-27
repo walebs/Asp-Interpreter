@@ -24,6 +24,7 @@ public class AspProgram extends AspSyntax {
         while (s.curToken().kind != eofToken) {
             ap.stmts.add(AspStmt.parse(s));
         }
+        skip(s, eofToken);
 
         leaveParser("program");
         return ap;

@@ -4,7 +4,7 @@ import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspReturnStmt extends AspSmallStmt {
-    static AspExpr expr;
+    AspExpr expr;
 
     AspReturnStmt(int n) {
         super(n);
@@ -14,7 +14,7 @@ public class AspReturnStmt extends AspSmallStmt {
         enterParser("return stmt");
         AspReturnStmt ars = new AspReturnStmt(s.curLineNum());
         skip(s, returnToken);
-        expr = AspExpr.parse(s);
+        ars.expr = AspExpr.parse(s);
         leaveParser("return stmt");
         return ars;
     }

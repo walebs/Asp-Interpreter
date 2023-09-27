@@ -7,6 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspCompOpr extends AspSyntax {
+    String value;
 
     AspCompOpr(int n) {
         super(n);
@@ -16,6 +17,7 @@ public class AspCompOpr extends AspSyntax {
     static AspCompOpr parse(Scanner s, TokenKind token) {
         enterParser("comp opr");
         AspCompOpr aco = new AspCompOpr(s.curLineNum());
+        aco.value = token.toString();
         skip(s, token);
         leaveParser("comp opr");
         return aco;

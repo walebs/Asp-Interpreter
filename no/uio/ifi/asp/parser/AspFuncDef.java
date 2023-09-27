@@ -9,8 +9,8 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspFuncDef extends AspCompoundStmt {
-    static AspName name;
-    static AspSuite suite;
+    AspName name;
+    AspSuite suite;
     ArrayList<AspName> nameList = new ArrayList<>();
 
     AspFuncDef(int n) {
@@ -22,7 +22,7 @@ public class AspFuncDef extends AspCompoundStmt {
 
         AspFuncDef afs = new AspFuncDef(s.curLineNum());
         skip(s, defToken);
-        name = AspName.parse(s);
+        afs.name = AspName.parse(s);
         skip(s, leftParToken);
         while (s.curToken().kind != rightParToken) {
             afs.nameList.add(AspName.parse(s));
@@ -31,7 +31,7 @@ public class AspFuncDef extends AspCompoundStmt {
         }
         skip(s, rightParToken);
         skip(s, colonToken);
-        suite = AspSuite.parse(s);
+        afs.suite = AspSuite.parse(s);
 
         leaveParser("func def");
         return afs;

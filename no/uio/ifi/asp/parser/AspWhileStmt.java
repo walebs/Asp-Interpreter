@@ -7,8 +7,8 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspWhileStmt extends AspCompoundStmt {
-    static AspExpr expr;
-    static AspSuite suite;
+    AspExpr expr;
+    AspSuite suite;
 
     AspWhileStmt(int n) {
         super(n);
@@ -19,9 +19,9 @@ public class AspWhileStmt extends AspCompoundStmt {
 
         AspWhileStmt aws = new AspWhileStmt(s.curLineNum());
         skip(s, whileToken);
-        expr = AspExpr.parse(s);
+        aws.expr = AspExpr.parse(s);
         skip(s, colonToken);
-        suite = AspSuite.parse(s);
+        aws.suite = AspSuite.parse(s);
 
         leaveParser("while stmt");
         return aws;

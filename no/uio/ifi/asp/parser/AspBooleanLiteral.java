@@ -7,7 +7,6 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 class AspBooleanLiteral extends AspAtom {
-	// TODO: Trengs for del 3 sin prettyprint tydeligvis
 	boolean value;
 
 	AspBooleanLiteral(int s) {

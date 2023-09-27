@@ -9,6 +9,7 @@ abstract class AspAtom extends AspSyntax {
 	}
 
     static AspAtom parse(Scanner s) {
+        enterParser("atom");
         AspAtom aa = null;
         switch (s.curToken().kind) {
         case falseToken:
@@ -42,7 +43,7 @@ abstract class AspAtom extends AspSyntax {
         default:
             parserError("Expected an expression atom but found a " + s.curToken().kind + "!", s.curLineNum());
         }
-
+        leaveParser("atom");
         return aa;
     }
 }

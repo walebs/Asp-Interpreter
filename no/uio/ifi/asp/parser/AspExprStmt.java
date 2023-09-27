@@ -3,7 +3,7 @@ package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.scanner.Scanner;
 
 public class AspExprStmt extends AspSmallStmt {
-    static AspExpr expr;
+    AspExpr expr;
 
     AspExprStmt(int n) {
         super(n);
@@ -13,7 +13,7 @@ public class AspExprStmt extends AspSmallStmt {
         enterParser("expr stmt");
 
         AspExprStmt aes = new AspExprStmt(s.curLineNum());
-        expr = AspExpr.parse(s);
+        aes.expr = AspExpr.parse(s);
 
         leaveParser("expr stmt");
         return aes;
