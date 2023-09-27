@@ -9,7 +9,7 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspSuite extends AspSyntax {
-    static AspSmallStmtList assl;
+    AspSmallStmtList assl;
     ArrayList<AspStmt> stmts = new ArrayList<>();
 
     AspSuite(int n) {
@@ -21,7 +21,7 @@ public class AspSuite extends AspSyntax {
 
         AspSuite as = new AspSuite(s.curLineNum());
         if (s.curToken().kind != newLineToken) {
-            assl = new AspSmallStmtList(s.curLineNum());
+            as.assl = AspSmallStmtList.parse(s);
         } else {
             skip(s, newLineToken);
             skip(s, indentToken);

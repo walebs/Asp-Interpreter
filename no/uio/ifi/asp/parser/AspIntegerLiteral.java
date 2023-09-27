@@ -7,7 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspIntegerLiteral extends AspAtom {
-    static long value;
+    long value;
 
 	AspIntegerLiteral(int s) {
 		super(s);
@@ -16,7 +16,7 @@ public class AspIntegerLiteral extends AspAtom {
 	static AspIntegerLiteral parse(Scanner s) {
         enterParser("integer literal");
         AspIntegerLiteral ail = new AspIntegerLiteral(s.curLineNum());
-		value = s.curToken().integerLit;
+		ail.value = s.curToken().integerLit;
         skip(s, integerToken);
         leaveParser("integer literal");
         return ail;

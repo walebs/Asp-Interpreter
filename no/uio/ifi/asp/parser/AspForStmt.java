@@ -7,9 +7,9 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspForStmt extends AspCompoundStmt {
-    static AspName name;
-    static AspExpr expr;
-    static AspSuite suite;
+    AspName name;
+    AspExpr expr;
+    AspSuite suite;
 
     AspForStmt(int n) {
         super(n);
@@ -20,11 +20,11 @@ public class AspForStmt extends AspCompoundStmt {
         AspForStmt afs = new AspForStmt(s.curLineNum());
 
         skip(s, forToken);
-        name = AspName.parse(s);
+        afs.name = AspName.parse(s);
         skip(s, inToken);
-        expr = AspExpr.parse(s);
+        afs.expr = AspExpr.parse(s);
         skip(s, colonToken);
-        suite = AspSuite.parse(s);
+        afs.suite = AspSuite.parse(s);
 
         leaveParser("for stmt");
         return afs;

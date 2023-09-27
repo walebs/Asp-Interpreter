@@ -7,6 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspTermOpr extends AspSyntax {
+    String value;
 
     AspTermOpr(int n) {
         super(n);
@@ -15,6 +16,7 @@ public class AspTermOpr extends AspSyntax {
     static AspTermOpr parse(Scanner s, TokenKind token) {
         enterParser("term opr");
         AspTermOpr ato = new AspTermOpr(s.curLineNum());
+        ato.value = token.toString();
         skip(s, token);
         leaveParser("term opr");
         return ato;

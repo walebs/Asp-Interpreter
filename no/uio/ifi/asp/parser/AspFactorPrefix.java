@@ -7,7 +7,8 @@ import no.uio.ifi.asp.scanner.Scanner;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspFactorPrefix extends AspSyntax {
-
+    String value;
+    
     AspFactorPrefix(int n) {
         super(n);
     }
@@ -15,6 +16,7 @@ public class AspFactorPrefix extends AspSyntax {
     static AspFactorPrefix parse(Scanner s, TokenKind token) {
         enterParser("factor prefix");
         AspFactorPrefix afp = new AspFactorPrefix(s.curLineNum());
+        afp.value = token.toString();
         skip(s, token);
         leaveParser("factor prefix");
         return afp;

@@ -31,6 +31,7 @@ public class AspAndTest extends AspSyntax {
     @Override
     public void prettyPrint() {
         // TODO riktig?
+        // Fra kompendiet
         /* int nPrinted = 0;
         for (AspNotTest ant : notTests) {
             if (nPrinted > 0) prettyWrite("and");

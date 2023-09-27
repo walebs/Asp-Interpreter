@@ -14,12 +14,16 @@ abstract class AspCompoundStmt extends AspStmt {
         switch (s.curToken().kind) {
             case forToken:
                 acs = AspForStmt.parse(s);
+                break;
             case ifToken:
                 acs = AspIfStmt.parse(s);
-            case defToken:
-                acs = AspFuncDef.parse(s);
+                break;
             case whileToken:
                 acs = AspWhileStmt.parse(s);
+                break;
+            case defToken:
+                acs = AspFuncDef.parse(s);
+                break;
         default:
             parserError("Expected a compound stmt but found a " + s.curToken().kind + "!", s.curLineNum());
         }

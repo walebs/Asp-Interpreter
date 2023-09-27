@@ -323,9 +323,9 @@ public class Scanner {
 		
 		// hvis sourceFile blir null er vi på slutten av filen da må man legge til nødvendige dedentokens og E-o-f token ellers bare et newLineToken
 		if (sourceFile == null) {
-			while (line != null && indents != null) {
-				indents.pop();
+			while (indents.peek() > 0) {
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
+				indents.pop();
 			}
 			curLineTokens.add(new Token(eofToken, curLineNum()));
 		} else if (!commentOrBlank) {

@@ -7,7 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspFactorOpr extends AspSyntax {
-    //TODO lagre hvilken factorOpr som blir brukt?
+    String value;
 
     AspFactorOpr(int n) {
         super(n);
@@ -16,6 +16,7 @@ public class AspFactorOpr extends AspSyntax {
     static AspFactorOpr parse(Scanner s, TokenKind token) {
         enterParser("factor opr");
         AspFactorOpr afo = new AspFactorOpr(s.curLineNum());
+        afo.value = token.toString();
         skip(s, token);
         leaveParser("factor opr");
         return afo;
