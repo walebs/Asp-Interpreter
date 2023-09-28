@@ -41,7 +41,7 @@ public class AspAssignment extends AspSmallStmt {
                 subscriptions.get(i).prettyPrint();
             }
         }
-        prettyWrite("=");
+        prettyWrite(" = ");
         expr.prettyPrint();
 	}
 

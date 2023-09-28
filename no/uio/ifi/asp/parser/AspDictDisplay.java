@@ -22,7 +22,7 @@ class AspDictDisplay extends AspAtom {
         AspDictDisplay add = new AspDictDisplay(s.curLineNum());
 
         skip(s, leftBraceToken);
-        while (s.curToken().kind != rightBraceToken) {
+        while (true) {
             add.string.add(AspStringLiteral.parse(s));
             skip(s, colonToken);
             add.expr.add(AspExpr.parse(s));

@@ -97,3 +97,6 @@
     </small stmt list>
   </stmt>
 </program>
+
+navn = "Dag"
+print("Hei, ", navn)

@@ -25,7 +25,10 @@ public class AspFactor extends AspSyntax {
             else af.factorPrefs.add(null);
             af.primary.add(AspPrimary.parse(s));
             if (s.isFactorOpr()) af.factorOprs.add(AspFactorOpr.parse(s, s.curToken().kind));
-            else break;
+            else {
+                af.factorOprs.add(null); 
+                break;
+            }
         }
 
         leaveParser("factor");
@@ -34,11 +37,14 @@ public class AspFactor extends AspSyntax {
 
     @Override
     void prettyPrint() {
+        /* System.out.println("factorPrefs: " + factorPrefs);
+        System.out.println("primary: " + primary);
+        System.out.println("factorOpers: " + factorOprs + "\n"); */
+
         for (int i = 0; i < primary.size(); i++) {
-            // TODO kan lage problemer
             if (factorPrefs.get(i) != null) factorPrefs.get(i).prettyPrint();
             primary.get(i).prettyPrint();
-            if (i+1 < factorOprs.size()) factorOprs.get(i).prettyPrint();
+            if (factorOprs.get(i) != null) factorOprs.get(i).prettyPrint();
         }
     }
 

@@ -34,7 +34,7 @@ public class AspExpr extends AspSyntax {
     public void prettyPrint() {
         for (int i = 0; i < andTests.size(); i++) {
             andTests.get(i).prettyPrint();
-            if (i+1 < andTests.size()) prettyWrite("or");
+            if (i+1 < andTests.size()) prettyWrite(" or ");
         }
     }
 
