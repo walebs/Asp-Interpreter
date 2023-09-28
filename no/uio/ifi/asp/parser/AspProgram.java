@@ -33,7 +33,9 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-	    //TODO -- Must be changed in part 2:
+	    for (int i = 0; i < stmts.size(); i++) {
+            stmts.get(i).prettyPrint();
+        }
     }
 
 

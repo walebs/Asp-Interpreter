@@ -26,7 +26,7 @@ public class AspStringLiteral extends AspAtom {
 
 	@Override
 	void prettyPrint() {
-		// Auto-generated
+		prettyWrite(value);
 	}
 
 	@Override

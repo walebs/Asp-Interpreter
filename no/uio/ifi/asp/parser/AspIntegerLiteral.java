@@ -22,9 +22,10 @@ public class AspIntegerLiteral extends AspAtom {
         return ail;
 	} 
 
+	// TODO: Fikk ikke lov til å bare prettywrite(value.toString())? 
 	@Override
 	void prettyPrint() {
-		// TODO Auto-generated
+		prettyWrite(Long.toString(value));
 	}
 
 	@Override

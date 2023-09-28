@@ -29,7 +29,10 @@ public class AspWhileStmt extends AspCompoundStmt {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
+        prettyWrite("while ");
+        expr.prettyPrint();
+        prettyWrite(" : ");
+        suite.prettyPrint();
     }
 
     @Override

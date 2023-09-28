@@ -40,7 +40,22 @@ public class AspIfStmt extends AspCompoundStmt {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
+        int suitCounter = 0;
+
+        prettyWrite("if");
+        for (int i = 0; i < exprs.size(); i++) {
+            exprs.get(i).prettyPrint();
+            prettyWrite(":");
+            suits.get(i).prettyPrint();
+
+            suitCounter++;
+            if (i+1 < exprs.size()) prettyWrite("elif");
+        }
+        if (suitCounter < suits.size()) {
+            prettyWrite("else");
+            prettyWrite(":");
+            suits.get(suitCounter).prettyPrint();
+        }
     }
 
     @Override

@@ -3,6 +3,10 @@ package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
+import no.uio.ifi.asp.runtime.RuntimeReturnValue;
+import no.uio.ifi.asp.runtime.RuntimeScope;
+import no.uio.ifi.asp.runtime.RuntimeValue;
+
 public class AspReturnStmt extends AspSmallStmt {
     AspExpr expr;
 
@@ -18,4 +22,15 @@ public class AspReturnStmt extends AspSmallStmt {
         leaveParser("return stmt");
         return ars;
     }
+
+    @Override
+    void prettyPrint() {
+        prettyWrite("return ");
+        expr.prettyPrint();
+    }
+
+    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+	}
 }

@@ -24,8 +24,7 @@ public class AspFactorOpr extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'prettyPrint'");
+        prettyWrite(value);
     }
 
     @Override

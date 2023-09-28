@@ -30,8 +30,12 @@ public class AspPrimary extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'prettyPrint'");
+        atom.prettyPrint();
+        if (!primarySuffixs.isEmpty()) {
+            for (int i = 0; i < primarySuffixs.size(); i++) {
+                primarySuffixs.get(i).prettyPrint();
+            }
+        }
     }
 
     @Override

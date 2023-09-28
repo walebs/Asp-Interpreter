@@ -2,6 +2,9 @@ package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
 
+import no.uio.ifi.asp.runtime.RuntimeReturnValue;
+import no.uio.ifi.asp.runtime.RuntimeScope;
+import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
@@ -26,4 +29,20 @@ public class AspGlobalStmt extends AspSmallStmt {
         leaveParser("global stmt");
         return ags;
     }
+
+	@Override
+	void prettyPrint() {
+		prettyWrite("global");
+        for (int i = 0; i < names.size(); i++) {
+            names.get(i).prettyPrint();
+
+            if (i+1 < names.size()) prettyWrite(",");
+        }
+	}
+
+	@Override
+	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+	}
 }

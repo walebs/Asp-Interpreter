@@ -32,7 +32,10 @@ public class AspExpr extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-	    //TODO -- Must be changed in part 2:
+        for (int i = 0; i < andTests.size(); i++) {
+            andTests.get(i).prettyPrint();
+            if (i+1 < andTests.size()) prettyWrite("or");
+        }
     }
 
 

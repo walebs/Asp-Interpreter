@@ -26,7 +26,7 @@ public class AspFloatLiteral extends AspAtom {
 
 	@Override
 	void prettyPrint() {
-		// TODO: Auto-generated 
+		prettyWrite(value.toString());
 	}
 
 	@Override

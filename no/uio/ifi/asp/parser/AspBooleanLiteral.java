@@ -32,7 +32,8 @@ class AspBooleanLiteral extends AspAtom {
 
 	@Override
 	void prettyPrint() {
-		// TODO: Auto-generated 
+		if (value) prettyWrite("true");
+		else prettyWrite("false");
 	}
 
 	@Override
