@@ -7,7 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspIntegerLiteral extends AspAtom {
-    long value;
+    Long value;
 
 	AspIntegerLiteral(int s) {
 		super(s);
@@ -22,10 +22,9 @@ public class AspIntegerLiteral extends AspAtom {
         return ail;
 	} 
 
-	// TODO: Fikk ikke lov til å bare prettywrite(value.toString())? 
 	@Override
 	void prettyPrint() {
-		prettyWrite(Long.toString(value));
+		prettyWrite(value.toString());
 	}
 
 	@Override
