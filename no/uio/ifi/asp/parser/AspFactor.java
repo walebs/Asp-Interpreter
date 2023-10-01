@@ -37,10 +37,6 @@ public class AspFactor extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        /* System.out.println("factorPrefs: " + factorPrefs);
-        System.out.println("primary: " + primary);
-        System.out.println("factorOpers: " + factorOprs + "\n"); */
-
         for (int i = 0; i < primary.size(); i++) {
             if (factorPrefs.get(i) != null) factorPrefs.get(i).prettyPrint();
             primary.get(i).prettyPrint();
