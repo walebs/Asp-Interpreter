@@ -25,7 +25,7 @@ public class AspCompOpr extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        prettyWrite(value);
+        prettyWrite(" " + value + " ");
     }
 
     @Override

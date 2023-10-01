@@ -24,7 +24,7 @@ public class AspTermOpr extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        prettyWrite(value);
+        prettyWrite(" " + value + " ");
     }
 
     @Override

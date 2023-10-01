@@ -21,7 +21,8 @@ public class AspSmallStmtList extends AspStmt {
 
         while (true) {
             assl.smallStmts.add(AspSmallStmt.parse(s));
-            if (s.curToken().kind == semicolonToken) skip(s, semicolonToken);
+            if (s.curToken().kind == newLineToken) break;
+            skip(s, semicolonToken);
             if (s.curToken().kind == newLineToken) break;
         }
         skip(s, newLineToken);
@@ -36,7 +37,6 @@ public class AspSmallStmtList extends AspStmt {
             smallStmts.get(i).prettyPrint();
             if (i+1 < smallStmts.size()) prettyWrite("; ");
         }
-        //TODO kanskje ha med slutt semicolon?? (Tror også mer må gjøres? - Belal)
         prettyWriteLn();
     }
 

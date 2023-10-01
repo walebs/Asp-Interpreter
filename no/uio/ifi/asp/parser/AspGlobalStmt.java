@@ -32,7 +32,7 @@ public class AspGlobalStmt extends AspSmallStmt {
 
 	@Override
 	void prettyPrint() {
-		prettyWrite("global");
+		prettyWrite("global ");
         for (int i = 0; i < names.size(); i++) {
             names.get(i).prettyPrint();
 

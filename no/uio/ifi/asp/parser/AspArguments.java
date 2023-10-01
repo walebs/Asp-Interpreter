@@ -20,10 +20,12 @@ public class AspArguments extends AspPrimarySuffix {
         AspArguments aa = new AspArguments(s.curLineNum());
 
         skip(s, leftParToken);
-        while (s.curToken().kind != rightParToken) {
-            aa.exprs.add(AspExpr.parse(s));
-            if (s.curToken().kind == rightParToken) break;
-            skip(s, commaToken);
+        if (s.curToken().kind != rightParToken) {
+            while (true) {
+                aa.exprs.add(AspExpr.parse(s));
+                if (s.curToken().kind == rightParToken) break;
+                skip(s, commaToken);
+            }
         }
         skip(s, rightParToken);
         
@@ -38,7 +40,7 @@ public class AspArguments extends AspPrimarySuffix {
             for (int i = 0; i < exprs.size(); i++) {
                 exprs.get(i).prettyPrint();
                 if (i+1 < exprs.size()) {
-                    prettyWrite(",");
+                    prettyWrite(", ");
                 }
             }
         }

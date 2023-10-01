@@ -7,7 +7,6 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 
-// Idk om ferdig
 public class AspStringLiteral extends AspAtom {
 	String value;
 
@@ -16,17 +15,18 @@ public class AspStringLiteral extends AspAtom {
 	}
 
 	static AspStringLiteral parse(Scanner s) {
-		enterParser("string literal");
 		AspStringLiteral asl = new AspStringLiteral(s.curLineNum());
 		asl.value = s.curToken().stringLit;
 		skip(s, stringToken);
+		// når vi bruker ref-asp.jar på gal-ordbok gir den </expr> som siste, hvis man enterParser på toppen vil siste være <string literal>
+		enterParser("string literal");
 		leaveParser("string literal");
 		return asl;
 	}
 
 	@Override
 	void prettyPrint() {
-		prettyWrite(value);
+		prettyWrite("\"" + value + "\"");
 	}
 
 	@Override
