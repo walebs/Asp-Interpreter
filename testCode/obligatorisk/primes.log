@@ -569,7 +569,7 @@
         <name>
         </name>
         <suite>
-  21:     n_printed = 0
+  21:    n_printed = 0
           <stmt>
             <small stmt list>
               <small stmt>
@@ -598,7 +598,7 @@
               </small stmt>
             </small stmt list>
           </stmt>
-  22:     line_buf = ''
+  22:    line_buf = ''
           <stmt>
             <small stmt list>
               <small stmt>
@@ -627,7 +627,7 @@
               </small stmt>
             </small stmt list>
           </stmt>
-  23:     for i in range(2,n+1):
+  23:    for i in range(2,n+1):
           <stmt>
             <compound stmt>
               <for stmt>
@@ -702,7 +702,7 @@
                   </and test>
                 </expr>
                 <suite>
-  24:        if primes[i]:
+  24:       if primes[i]:
                   <stmt>
                     <compound stmt>
                       <if stmt>
@@ -747,7 +747,7 @@
                           </and test>
                         </expr>
                         <suite>
-  25:           if n_printed > 0 and n_printed%10 == 0:
+  25:          if n_printed > 0 and n_printed%10 == 0:
                           <stmt>
                             <compound stmt>
                               <if stmt>
@@ -816,7 +816,7 @@
                                   </and test>
                                 </expr>
                                 <suite>
-  26:              print(line_buf)
+  26:             print(line_buf)
                                   <stmt>
                                     <small stmt list>
                                       <small stmt>
@@ -865,7 +865,7 @@
                                       </small stmt>
                                     </small stmt list>
                                   </stmt>
-  27:              line_buf = ''
+  27:             line_buf = ''
                                   <stmt>
                                     <small stmt list>
                                       <small stmt>
@@ -894,7 +894,7 @@
                                       </small stmt>
                                     </small stmt list>
                                   </stmt>
-  28:           line_buf = line_buf + format(i,4)
+  28:          line_buf = line_buf + format(i,4)
                                 </suite>
                               </if stmt>
                             </compound stmt>
@@ -977,7 +977,7 @@
                               </small stmt>
                             </small stmt list>
                           </stmt>
-  29:           n_printed = n_printed + 1
+  29:          n_printed = n_printed + 1
                           <stmt>
                             <small stmt list>
                               <small stmt>
@@ -1016,7 +1016,7 @@
                               </small stmt>
                             </small stmt list>
                           </stmt>
-  30:     print(line_buf)
+  30:    print(line_buf)
                         </suite>
                       </if stmt>
                     </compound stmt>
