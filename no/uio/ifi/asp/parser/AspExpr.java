@@ -3,26 +3,27 @@
 package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
-
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
 import no.uio.ifi.asp.scanner.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspExpr extends AspSyntax {
-    //-- Must be changed in part 2:
-    // ArrayList<AspAndTest> andTests = new ArrayList<>();
+    ArrayList<AspAndTest> andTests = new ArrayList<>();
 
     AspExpr(int n) {
 	    super(n);
     }
 
-
     public static AspExpr parse(Scanner s) {
         enterParser("expr");
+        AspExpr ae = new AspExpr(s.curLineNum());
 
-        //-- Must be changed in part 2:
-        AspExpr ae = null;
+        while (true) {
+            ae.andTests.add(AspAndTest.parse(s));
+            if (s.curToken().kind != orToken) break;
+            skip(s, orToken);
+        }
 
         leaveParser("expr");
         return ae;
@@ -31,13 +32,16 @@ public class AspExpr extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-	    //-- Must be changed in part 2:
+        for (int i = 0; i < andTests.size(); i++) {
+            andTests.get(i).prettyPrint();
+            if (i+1 < andTests.size()) prettyWrite(" or ");
+        }
     }
 
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 3:
+        //TODO -- Must be changed in part 3:
         return null;
     }
 }

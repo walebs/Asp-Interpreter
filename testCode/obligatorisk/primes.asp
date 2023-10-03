@@ -18,16 +18,16 @@ def format (n, w):
    return res
 
 def list_primes():
-    n_printed = 0
-    line_buf = ''
-    for i in range(2,n+1):
-       if primes[i]:
-          if n_printed > 0 and n_printed%10 == 0:
-             print(line_buf)
-             line_buf = ''
-          line_buf = line_buf + format(i,4)
-          n_printed = n_printed + 1
-    print(line_buf)
+   n_printed = 0
+   line_buf = ''
+   for i in range(2,n+1):
+      if primes[i]:
+         if n_printed > 0 and n_printed%10 == 0:
+            print(line_buf)
+            line_buf = ''
+         line_buf = line_buf + format(i,4)
+         n_printed = n_printed + 1
+   print(line_buf)
 
 find_primes()
 list_primes()

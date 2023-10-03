@@ -72,8 +72,6 @@ public class Scanner {
 			sourceFile = null;
 			scannerError("Unspecified I/O error!");
 		}
-
-		// TODO: VI STARTET HER
 		
 		// Innledende TAB-er oversettes til blanke.
 		if (line != null) {
@@ -325,9 +323,9 @@ public class Scanner {
 		
 		// hvis sourceFile blir null er vi på slutten av filen da må man legge til nødvendige dedentokens og E-o-f token ellers bare et newLineToken
 		if (sourceFile == null) {
-			while (line != null && indents != null) {
-				indents.pop();
+			while (indents.peek() > 0) {
 				curLineTokens.add(new Token(dedentToken, curLineNum()));
+				indents.pop();
 			}
 			curLineTokens.add(new Token(eofToken, curLineNum()));
 		} else if (!commentOrBlank) {
@@ -385,28 +383,28 @@ public class Scanner {
 
     public boolean isCompOpr() {
 		TokenKind k = curToken().kind;
-		//-- Must be changed in part 2:
+		if (k == greaterToken || k == lessToken || k == greaterEqualToken || k == lessEqualToken || k == doubleEqualToken || k == notEqualToken) return true;
 		return false;
     }
 
 
     public boolean isFactorPrefix() {
 		TokenKind k = curToken().kind;
-		//-- Must be changed in part 2:
+		if (k == plusToken || k == minusToken) return true;
 		return false;
     }
 
 
     public boolean isFactorOpr() {
 		TokenKind k = curToken().kind;
-		//-- Must be changed in part 2:
+		if (k == astToken || k == slashToken || k == doubleSlashToken || k == percentToken) return true;
 		return false;
     }
 	
 
     public boolean isTermOpr() {
 		TokenKind k = curToken().kind;
-		//-- Must be changed in part 2:
+		if (k == plusToken || k == minusToken) return true;
 		return false;
     }
 
