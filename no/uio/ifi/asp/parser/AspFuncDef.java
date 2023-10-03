@@ -52,6 +52,7 @@ public class AspFuncDef extends AspCompoundStmt {
         prettyWrite(")");
         prettyWrite(": ");
         suite.prettyPrint();
+        prettyWriteLn();
     }
 
     @Override

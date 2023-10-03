@@ -1150,10 +1150,12 @@ def find_primes ():
     while i2 <= n: 
       primes[i2] = False
       i2 = i2 + i1
+
 def format (n, w): 
   res = str(n)
   while len(res) < w: res = " " + res
   return res
+
 def list_primes (): 
   n_printed = 0
   line_buf = ""
@@ -1165,5 +1167,6 @@ def list_primes ():
       line_buf = line_buf + format(i, 4)
       n_printed = n_printed + 1
   print(line_buf)
+
 find_primes()
 list_primes()

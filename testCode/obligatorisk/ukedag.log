@@ -2755,17 +2755,21 @@ def finn_maaned (m_id):
   for m_ix in range(1, len(m_navn)): 
     if m_navn[m_ix] == m_id: return m_ix
   return 0
+
 def les_maaned (): 
   while True: 
     m_id = input("Oppgi en måned: ")
     m_num = finn_maaned(m_id)
     if m_num > 0: return m_num
     print("Ulovlig måned!")
+
 def er_skuddaar (aa): 
   return aa % 4 == 0 and aa % 100 or aa % 400 == 0
+
 def finn_m_leng (m, aa): 
   if m == 2 and er_skuddaar(aa): return 29
   return m_leng[m]
+
 def finn_dag_nr (aa, m, d): 
   d_nr = d
   for aax in range(1900, aa): 
@@ -2774,6 +2778,7 @@ def finn_dag_nr (aa, m, d):
   for mx in range(1, m): 
     d_nr = d_nr + finn_m_leng(mx, aa)
   return d_nr
+
 aar = int(input("Oppgi et år: "))
 maaned = les_maaned()
 dag = int(input("Oppgi en dag: "))
