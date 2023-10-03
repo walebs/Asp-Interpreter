@@ -4,7 +4,6 @@ package no.uio.ifi.asp.parser;
 
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.scanner.*;
-import no.uio.ifi.asp.scanner.Scanner;
 
 abstract class AspStmt extends AspSyntax {
     
