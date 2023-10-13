@@ -52,7 +52,11 @@ class AspDictDisplay extends AspAtom {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		//TODO Auto-generated
-        return null;
+		RuntimeValue v = expr.get(0).eval(curScope);
+        for (int i = 1; i < expr.size(); i++) {
+            String k = string.get(i-1).value;
+            //Idk what to do ni-
+        }
+        return v;
     }
 }

@@ -41,7 +41,11 @@ public class AspExpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //TODO -- Must be changed in part 3:
-        return null;
+        RuntimeValue v = andTests.get(0).eval(curScope);
+        for (int i = 1; i < andTests.size(); ++i) {
+            if (!v.getBoolValue("or operand", this)) return v;
+            v = andTests.get(i).eval(curScope);
+        }
+        return v;
     }
 }

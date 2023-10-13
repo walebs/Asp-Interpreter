@@ -46,8 +46,11 @@ public class AspFactor extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
+        RuntimeValue v = primary.get(0).eval(curScope);
+        for (int i = 1; i < primary.size(); i++) {
+            
+        }
+        return v;
     }
 
 }
