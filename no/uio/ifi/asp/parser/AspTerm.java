@@ -44,7 +44,7 @@ public class AspTerm extends AspSyntax {
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = factors.get(0).eval(curScope);
         for (int i = 1; i < factors.size(); i++) {
-            String k = termOpr.get(i-1).value;   //TODO: Usikkert om dette er et problem
+            String k = termOpr.get(i-1).value;
             switch (k) {
                 case "-":
                     v = v.evalSubtract(factors.get(i).eval(curScope), this); break;

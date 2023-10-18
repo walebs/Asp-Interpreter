@@ -28,8 +28,6 @@ public class AspNoneLiteral extends AspAtom {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		RuntimeNoneValue v = new RuntimeNoneValue();
-		
-		return v;
+		return new RuntimeNoneValue();
 	}
 }

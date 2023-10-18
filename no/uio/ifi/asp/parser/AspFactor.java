@@ -2,6 +2,7 @@ package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
 
+import no.uio.ifi.asp.main.Main;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -48,9 +49,37 @@ public class AspFactor extends AspSyntax {
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = primary.get(0).eval(curScope);
         for (int i = 1; i < primary.size(); i++) {
-            
+            if (factorPrefs.get(i-1) != null) {
+                String k = factorPrefs.get(i-1).value;
+             
+                switch(k) {
+                    case "+":
+                        break;
+                    case "-":
+                        break;
+                    default:
+                        Main.panic("Illegal factor prefix: " + k + "!");
+                }
+            }
+
+            String s = "";
+            if (factorOprs.get(i-1) != null) {
+                s = factorOprs.get(i-1).value;
+            }
+
+            switch(s) {
+                case "*":
+                    v = v.evalMultiply(primary.get(i).eval(curScope), this); break;
+                case "//":
+                    v = v.evalIntDivide(primary.get(i).eval(curScope), this); break;
+                case "/":
+                    v = v.evalDivide(primary.get(i).eval(curScope), this); break;
+                case "%":
+                    v = v.evalModulo(primary.get(i).eval(curScope), this); break;
+                default:
+                    Main.panic("Illegal factor operator: " + s + "!");
+            }            
         }
         return v;
     }
-
 }
