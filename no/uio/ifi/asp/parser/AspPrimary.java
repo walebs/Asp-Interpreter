@@ -40,8 +40,8 @@ public class AspPrimary extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
+        RuntimeValue v = atom.eval(curScope);
+        return v;
     }
 
 }
