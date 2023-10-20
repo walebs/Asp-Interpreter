@@ -54,30 +54,28 @@ public class AspFactor extends AspSyntax {
              
                 switch(k) {
                     case "+":
-                        break;
+                        v = v.evalPositive(this); break;
                     case "-":
-                        break;
+                        v = v.evalNegate(this); break;
                     default:
                         Main.panic("Illegal factor prefix: " + k + "!");
                 }
             }
 
-            String s = "";
             if (factorOprs.get(i-1) != null) {
-                s = factorOprs.get(i-1).value;
-            }
-
-            switch(s) {
-                case "*":
-                    v = v.evalMultiply(primary.get(i).eval(curScope), this); break;
-                case "//":
-                    v = v.evalIntDivide(primary.get(i).eval(curScope), this); break;
-                case "/":
-                    v = v.evalDivide(primary.get(i).eval(curScope), this); break;
-                case "%":
-                    v = v.evalModulo(primary.get(i).eval(curScope), this); break;
-                default:
-                    Main.panic("Illegal factor operator: " + s + "!");
+                String s = factorOprs.get(i-1).value;
+                switch(s) {
+                    case "*":
+                        v = v.evalMultiply(primary.get(i).eval(curScope), this); break;
+                    case "//":
+                        v = v.evalIntDivide(primary.get(i).eval(curScope), this); break;
+                    case "/":
+                        v = v.evalDivide(primary.get(i).eval(curScope), this); break;
+                    case "%":
+                        v = v.evalModulo(primary.get(i).eval(curScope), this); break;
+                    default:
+                        Main.panic("Illegal factor operator: " + s + "!");
+                }
             }            
         }
         return v;
