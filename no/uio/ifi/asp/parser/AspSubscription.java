@@ -32,8 +32,6 @@ public class AspSubscription extends AspPrimarySuffix {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        return null;
+        return expr.eval(curScope);
     }
-
 }

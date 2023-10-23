@@ -1,18 +1,28 @@
 package no.uio.ifi.asp.runtime;
 
+import java.util.HashMap;
+
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeDictValue extends RuntimeValue {
-    //TODO hva skal valuen være????
-
+    HashMap<String, RuntimeValue> value = new HashMap<>();
+    
+    public RuntimeDictValue(HashMap<String, RuntimeValue> v) {
+        value = v;
+    }
     @Override
     String typeName() {
         return "dict";
     }
 
     @Override
+    public String showInfo() {
+        return value.toString();
+    }
+
+    @Override
     public boolean getBoolValue(String what, AspSyntax where) {
-        //TODO sjekke om value et tom
+        if (value.isEmpty()) return false;
         return true;
     }
 

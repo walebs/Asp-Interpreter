@@ -48,10 +48,22 @@ public class AspFactor extends AspSyntax {
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = primary.get(0).eval(curScope);
+
+        if (factorPrefs.get(0) != null) {
+            String ss = factorPrefs.get(0).value;
+            switch(ss) {
+                case "+":
+                    v = v.evalPositive(this); break;
+                case "-":
+                    v = v.evalNegate(this); break;
+                default:
+                    Main.panic("Illegal factor prefix: " + ss + "!");
+            }
+        }
+
         for (int i = 1; i < primary.size(); i++) {
-            if (factorPrefs.get(i-1) != null) {
-                String k = factorPrefs.get(i-1).value;
-             
+            if (factorPrefs.get(i) != null) {
+                String k = factorPrefs.get(i).value;
                 switch(k) {
                     case "+":
                         v = v.evalPositive(this); break;

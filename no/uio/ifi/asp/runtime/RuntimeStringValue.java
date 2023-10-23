@@ -10,8 +10,18 @@ public class RuntimeStringValue extends RuntimeValue {
     }
 
     @Override
-    String typeName() {
+    public String showInfo() {
+        return toString();
+    }
+
+    @Override
+    public String typeName() {
         return "String";
+    }
+
+    @Override
+    public String toString() {
+        return "'" + value + "'";
     }
 
     @Override

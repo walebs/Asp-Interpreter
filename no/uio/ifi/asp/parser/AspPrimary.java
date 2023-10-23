@@ -1,8 +1,13 @@
 package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
+
+import no.uio.ifi.asp.runtime.RuntimeDictValue;
+import no.uio.ifi.asp.runtime.RuntimeLibrary;
+import no.uio.ifi.asp.runtime.RuntimeListValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
+import no.uio.ifi.asp.runtime.RuntimeStringValue;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
@@ -41,7 +46,11 @@ public class AspPrimary extends AspSyntax {
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = atom.eval(curScope);
+        for (AspPrimarySuffix aps : primarySuffixs) {
+            if (v instanceof RuntimeDictValue || v instanceof RuntimeListValue || v instanceof RuntimeStringValue) {
+                v = v.evalSubscription(aps.eval(curScope), this);
+            }
+        }
         return v;
     }
-
 }

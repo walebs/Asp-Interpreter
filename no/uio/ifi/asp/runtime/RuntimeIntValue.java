@@ -10,8 +10,18 @@ public class RuntimeIntValue extends RuntimeValue {
     }
 
     @Override
-    String typeName() {
+    public String showInfo() {
+        return toString();
+    }
+
+    @Override
+    public String typeName() {
         return "int";
+    }
+
+    @Override
+    public String toString() {
+        return Long.toString(value);
     }
 
     @Override
@@ -35,18 +45,19 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue((double)value + v.getFloatValue("", where));
+        if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(value + v.getFloatValue("", where));
         return new RuntimeIntValue(value + v.getIntValue("", where));
     }
 
     @Override
     public RuntimeValue evalDivide(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue((double)value / v.getFloatValue("", where));
-        return new RuntimeIntValue(value / v.getIntValue("", where));
+        return new RuntimeFloatValue(value / v.getFloatValue("", where));
     }
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
+        System.out.println("Value this: " + value);
+        System.out.println("value v: " + v.getIntValue("", where));
         if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
         if (v instanceof RuntimeFloatValue) return new RuntimeBoolValue(value == v.getFloatValue("", where));
         return new RuntimeBoolValue(value == v.getIntValue("", where));
@@ -66,7 +77,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalIntDivide(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(Math.floor((double)value / v.getFloatValue("", where)));
+        if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(Math.floor(value / v.getFloatValue("", where)));
         return new RuntimeIntValue(Math.floorDiv(value, v.getIntValue("", where)));
     }
 

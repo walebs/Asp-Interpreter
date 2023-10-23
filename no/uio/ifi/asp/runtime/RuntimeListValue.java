@@ -1,23 +1,43 @@
 package no.uio.ifi.asp.runtime;
 
+import java.util.ArrayList;
+
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeListValue extends RuntimeValue {
-    //TODO må ha en verdi, vet ikke hvordan det skal implementeres
+    ArrayList<RuntimeValue> value;
+
+    public RuntimeListValue(ArrayList<RuntimeValue> v) {
+        value = v;
+    }
 
     @Override
-    String typeName() {
+    public String typeName() {
         return "list";
     }
 
     @Override
+    public String showInfo() {
+        return value.toString();
+    }
+
+    @Override
     public boolean getBoolValue(String what, AspSyntax where) {
-        //TODO må sjekke om veriden i klassen er tom
+        if (value.isEmpty()) return false;
         return true;
     }
 
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            ArrayList<RuntimeValue> result = new ArrayList<>();
+            for (int i = 0; i < v.getIntValue("", where); i++) {
+                result.addAll(value);
+            }
+            return new RuntimeListValue(result);
+        }
+        
+        runtimeError("Type error for *.", where);
         return null;
     }
 

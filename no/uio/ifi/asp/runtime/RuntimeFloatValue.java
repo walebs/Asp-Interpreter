@@ -10,7 +10,12 @@ public class RuntimeFloatValue extends RuntimeValue {
     }
     
     @Override
-    String typeName() {
+    public String showInfo() {
+        return "" + value + "";
+    }
+
+    @Override
+    public String typeName() {
         return "float";
     }
 
