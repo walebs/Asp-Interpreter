@@ -11,7 +11,7 @@ public class RuntimeFloatValue extends RuntimeValue {
     
     @Override
     public String showInfo() {
-        return "" + value + "";
+        return toString();
     }
 
     @Override
@@ -20,8 +20,13 @@ public class RuntimeFloatValue extends RuntimeValue {
     }
 
     @Override
-    public String getStringValue(String what, AspSyntax where) {
+    public String toString() {
         return Double.toString(value);
+    }
+
+    @Override
+    public String getStringValue(String what, AspSyntax where) {
+        return toString();
     }
 
     @Override
@@ -107,13 +112,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
-        if (value == 0.0) return new RuntimeBoolValue(true);
+        if (!getBoolValue("", where)) return new RuntimeBoolValue(true);
         return new RuntimeBoolValue(false);
     }
 
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
         if (v instanceof RuntimeIntValue) return new RuntimeBoolValue(value != v.getIntValue("", where));
         return new RuntimeBoolValue(value != v.getFloatValue("", where));
     }

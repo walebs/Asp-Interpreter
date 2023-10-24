@@ -22,25 +22,28 @@ public class RuntimeDictValue extends RuntimeValue {
 
     @Override
     public boolean getBoolValue(String what, AspSyntax where) {
-        if (value.isEmpty()) return false;
-        return true;
+        return value.isEmpty();
     }
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
-        return new RuntimeBoolValue(true);
+        return new RuntimeBoolValue(false);
     }
 
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-        if (!(v instanceof RuntimeNoneValue)) return new RuntimeBoolValue(false);
-        return new RuntimeBoolValue(true);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
+        return new RuntimeBoolValue(false);
     }
 
     @Override
     public RuntimeValue evalNot(AspSyntax where){
-        if (!getBoolValue("", where)) return new RuntimeBoolValue(false);
-        return new RuntimeBoolValue(true);
+        return new RuntimeBoolValue(getBoolValue("", where));
+    }
+
+    @Override
+    public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+        return null;
     }
 }

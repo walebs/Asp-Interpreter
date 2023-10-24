@@ -26,7 +26,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public String getStringValue(String what, AspSyntax where) {
-        return Long.toString(value);
+        return toString();
     }
 
     @Override
@@ -56,8 +56,6 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
-        System.out.println("Value this: " + value);
-        System.out.println("value v: " + v.getIntValue("", where));
         if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
         if (v instanceof RuntimeFloatValue) return new RuntimeBoolValue(value == v.getFloatValue("", where));
         return new RuntimeBoolValue(value == v.getIntValue("", where));
@@ -112,14 +110,13 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalNot(AspSyntax where) {
-        // dette kan hende at det må byttes på, obs på feil når vi tester
         if (!getBoolValue("", where)) return new RuntimeBoolValue(true);
         return new RuntimeBoolValue(false);
     }
 
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
         if (v instanceof RuntimeFloatValue) return new RuntimeBoolValue(value != v.getFloatValue("", where));
         return new RuntimeBoolValue(value != v.getIntValue("", where));
     }

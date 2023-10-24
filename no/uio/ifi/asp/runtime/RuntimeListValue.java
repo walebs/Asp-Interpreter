@@ -22,9 +22,13 @@ public class RuntimeListValue extends RuntimeValue {
     }
 
     @Override
+    public String toString() {
+        return value.toString();
+    }
+
+    @Override
     public boolean getBoolValue(String what, AspSyntax where) {
-        if (value.isEmpty()) return false;
-        return true;
+        return value.isEmpty();
     }
 
     @Override
@@ -36,26 +40,31 @@ public class RuntimeListValue extends RuntimeValue {
             }
             return new RuntimeListValue(result);
         }
-        
+
         runtimeError("Type error for *.", where);
         return null;
     }
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeValue) return new RuntimeBoolValue(true);
-        return new RuntimeBoolValue(false);
-    }
-
-    @Override
-    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-        if (!(v instanceof RuntimeValue)) return new RuntimeBoolValue(false);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
         return new RuntimeBoolValue(true);
     }
 
     @Override
-    public RuntimeValue evalNot(AspSyntax where) {
-        if (!getBoolValue("", where)) return new RuntimeBoolValue(true);
+    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
         return new RuntimeBoolValue(false);
+    }
+
+    @Override
+    public RuntimeValue evalNot(AspSyntax where) {
+        return new RuntimeBoolValue(getBoolValue("", where));
+    }
+
+    @Override
+    public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+        int index = (int) v.getIntValue("", where);
+        return null;
     }
 }

@@ -4,9 +4,14 @@ import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeStringValue extends RuntimeValue {
     String value;
+    char chara;
 
     public RuntimeStringValue(String v) {
         value = v;
+    }
+
+    public RuntimeStringValue(char c) {
+        chara = c;
     }
 
     @Override
@@ -16,7 +21,7 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public String typeName() {
-        return "String";
+        return "string";
     }
 
     @Override
@@ -30,8 +35,14 @@ public class RuntimeStringValue extends RuntimeValue {
     }
 
     @Override
+    public boolean getBoolValue(String what, AspSyntax where) {
+        if (value == "") return false;
+        return true;
+    }
+
+    @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
-        String str = value + v.getStringValue("", where);   //"" for å passe getStringValue()
+        String str = value + v.getStringValue("", where);
         return new RuntimeStringValue(str);
     }
 
@@ -46,53 +57,44 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeNoneValue) {
-            return new RuntimeBoolValue(false);
-        }
-        if (value == v.getStringValue("", where)) { 
-            return new RuntimeBoolValue(false);
-        }
-        return new RuntimeBoolValue(true);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
+        return new RuntimeBoolValue(value != v.getStringValue("", where));
     }
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
-        if (v instanceof RuntimeNoneValue) {
-            return new RuntimeBoolValue(false);
-        }
-        if (value == v.getStringValue("", where)) {
-            return new RuntimeBoolValue(true);
-        }
-        return new RuntimeBoolValue(false);
+        if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
+        return new RuntimeBoolValue(value == v.getStringValue("", where));
     }
     
     @Override
     public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where) {
-        if (value.length() > v.getStringValue("", where).length()) {
-            return new RuntimeBoolValue(true);
-        }
-        return new RuntimeBoolValue(false);
+        return new RuntimeBoolValue(value.compareTo(v.getStringValue("", where)) > 0);
     }
 
+    @Override
     public RuntimeValue evalGreaterEqual(RuntimeValue v, AspSyntax where) {
-        if (value.length() >= v.getStringValue("", where).length()) {
-            return new RuntimeBoolValue(true);
-        }
-        return new RuntimeBoolValue(false);
+        return new RuntimeBoolValue(value.compareTo(v.getStringValue("", where)) >= 0);
     }
     
     @Override
     public RuntimeValue evalLess(RuntimeValue v, AspSyntax where) {
-        if (value.length() < v.getStringValue("", where).length()) {
-            return new RuntimeBoolValue(true);
-        }
-        return new RuntimeBoolValue(false);
+        return new RuntimeBoolValue(value.compareTo(v.getStringValue("", where)) < 0);
     }
 
+    @Override
     public RuntimeValue evalLessEqual(RuntimeValue v, AspSyntax where) {
-        if (value.length() <= v.getStringValue("", where).length()) {
-            return new RuntimeBoolValue(true);
-        }
-        return new RuntimeBoolValue(false);
+        return new RuntimeBoolValue(value.compareTo(v.getStringValue("", where)) <= 0);
+    }
+
+    @Override
+    public RuntimeValue evalNot(AspSyntax where) {
+        return new RuntimeBoolValue(!getBoolValue("", where));
+    }
+
+    @Override
+    public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+        int index = (int) v.getIntValue("", where);
+        return new RuntimeStringValue(value.charAt(index));
     }
 }

@@ -46,7 +46,7 @@ class AspDictDisplay extends AspAtom {
                 prettyWrite(":");
                 expr.get(i).prettyPrint();
 
-                if (i+1 < string.size()) prettyWrite(",");
+                if (i+1 < string.size()) prettyWrite(", ");
             }
         }
         prettyWrite("}");

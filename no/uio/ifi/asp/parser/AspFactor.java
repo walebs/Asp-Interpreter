@@ -49,28 +49,36 @@ public class AspFactor extends AspSyntax {
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = primary.get(0).eval(curScope);
 
+        if (lineNum > 43 && lineNum < 47) {
+            System.out.println("Linenum: " + lineNum);
+            System.out.println("primary: " + primary);
+            System.out.println("factor prefs: " + factorPrefs);
+            System.out.println("factor opers: " + factorOprs + "\n");
+        }
+
         if (factorPrefs.get(0) != null) {
             String ss = factorPrefs.get(0).value;
             switch(ss) {
                 case "+":
-                    v = v.evalPositive(this); break;
+                    v = v.evalPositive(primary.get(0)); break;
                 case "-":
-                    v = v.evalNegate(this); break;
+                    v = v.evalNegate(primary.get(0)); break;
                 default:
-                    Main.panic("Illegal factor prefix: " + ss + "!");
+                    Main.panic("Illegal factor prefix, 1: " + ss + "!");
             }
         }
 
         for (int i = 1; i < primary.size(); i++) {
+            RuntimeValue v2 = primary.get(i).eval(curScope);
             if (factorPrefs.get(i) != null) {
                 String k = factorPrefs.get(i).value;
                 switch(k) {
                     case "+":
-                        v = v.evalPositive(this); break;
+                        v2 = v2.evalPositive(this); break;
                     case "-":
-                        v = v.evalNegate(this); break;
+                        v2 = v2.evalNegate(this); break;
                     default:
-                        Main.panic("Illegal factor prefix: " + k + "!");
+                        Main.panic("Illegal factor prefix, 2: " + k + "!");
                 }
             }
 
@@ -78,13 +86,13 @@ public class AspFactor extends AspSyntax {
                 String s = factorOprs.get(i-1).value;
                 switch(s) {
                     case "*":
-                        v = v.evalMultiply(primary.get(i).eval(curScope), this); break;
+                        v = v.evalMultiply(v2, this); break;
                     case "//":
-                        v = v.evalIntDivide(primary.get(i).eval(curScope), this); break;
+                        v = v.evalIntDivide(v2, this); break;
                     case "/":
-                        v = v.evalDivide(primary.get(i).eval(curScope), this); break;
+                        v = v.evalDivide(v2, this); break;
                     case "%":
-                        v = v.evalModulo(primary.get(i).eval(curScope), this); break;
+                        v = v.evalModulo(v2, this); break;
                     default:
                         Main.panic("Illegal factor operator: " + s + "!");
                 }
