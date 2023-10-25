@@ -149,4 +149,4 @@ Trace line 105: 'nei'
 False or False or False ==>
 Trace line 108: False
 0 or 3.140000104904175 or (1 + 1 == 2) ==>
-Trace line 109: 0
+Trace line 109: 3.140000104904175

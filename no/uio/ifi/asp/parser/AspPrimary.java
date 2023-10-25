@@ -3,6 +3,7 @@ package no.uio.ifi.asp.parser;
 import java.util.ArrayList;
 
 import no.uio.ifi.asp.runtime.RuntimeDictValue;
+import no.uio.ifi.asp.runtime.RuntimeIntValue;
 import no.uio.ifi.asp.runtime.RuntimeLibrary;
 import no.uio.ifi.asp.runtime.RuntimeListValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;

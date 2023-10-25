@@ -62,8 +62,6 @@ public class AspComparison extends AspSyntax {
                     Main.panic("Illegal term operator: " + k + "!");
             }
             if (!(v.getBoolValue("", this))) return v;
-            //TODO fjern
-            System.out.println("linenum " + lineNum + ": " +  v + " !!!!!!!!!!!!!!! " + v2);
         }
         return v;
     }

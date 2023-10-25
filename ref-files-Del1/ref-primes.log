@@ -125,18 +125,18 @@ Scanner: ( token on line 20
 Scanner: ) token on line 20
 Scanner: : token on line 20
 Scanner: NEWLINE token on line 20
-  21:     n_printed = 0
+  21:    n_printed = 0
 Scanner: INDENT token on line 21
 Scanner: name token on line 21: n_printed
 Scanner: = token on line 21
 Scanner: integer literal token on line 21: 0
 Scanner: NEWLINE token on line 21
-  22:     line_buf = ''
+  22:    line_buf = ''
 Scanner: name token on line 22: line_buf
 Scanner: = token on line 22
 Scanner: string literal token on line 22: ""
 Scanner: NEWLINE token on line 22
-  23:     for i in range(2,n+1):
+  23:    for i in range(2,n+1):
 Scanner: for token on line 23
 Scanner: name token on line 23: i
 Scanner: in token on line 23
@@ -150,7 +150,7 @@ Scanner: integer literal token on line 23: 1
 Scanner: ) token on line 23
 Scanner: : token on line 23
 Scanner: NEWLINE token on line 23
-  24:        if primes[i]:
+  24:       if primes[i]:
 Scanner: INDENT token on line 24
 Scanner: if token on line 24
 Scanner: name token on line 24: primes
@@ -159,7 +159,7 @@ Scanner: name token on line 24: i
 Scanner: ] token on line 24
 Scanner: : token on line 24
 Scanner: NEWLINE token on line 24
-  25:           if n_printed > 0 and n_printed%10 == 0:
+  25:          if n_printed > 0 and n_printed%10 == 0:
 Scanner: INDENT token on line 25
 Scanner: if token on line 25
 Scanner: name token on line 25: n_printed
@@ -173,19 +173,19 @@ Scanner: == token on line 25
 Scanner: integer literal token on line 25: 0
 Scanner: : token on line 25
 Scanner: NEWLINE token on line 25
-  26:              print(line_buf)
+  26:             print(line_buf)
 Scanner: INDENT token on line 26
 Scanner: name token on line 26: print
 Scanner: ( token on line 26
 Scanner: name token on line 26: line_buf
 Scanner: ) token on line 26
 Scanner: NEWLINE token on line 26
-  27:              line_buf = ''
+  27:             line_buf = ''
 Scanner: name token on line 27: line_buf
 Scanner: = token on line 27
 Scanner: string literal token on line 27: ""
 Scanner: NEWLINE token on line 27
-  28:           line_buf = line_buf + format(i,4)
+  28:          line_buf = line_buf + format(i,4)
 Scanner: DEDENT token on line 28
 Scanner: name token on line 28: line_buf
 Scanner: = token on line 28
@@ -198,14 +198,14 @@ Scanner: , token on line 28
 Scanner: integer literal token on line 28: 4
 Scanner: ) token on line 28
 Scanner: NEWLINE token on line 28
-  29:           n_printed = n_printed + 1
+  29:          n_printed = n_printed + 1
 Scanner: name token on line 29: n_printed
 Scanner: = token on line 29
 Scanner: name token on line 29: n_printed
 Scanner: + token on line 29
 Scanner: integer literal token on line 29: 1
 Scanner: NEWLINE token on line 29
-  30:     print(line_buf)
+  30:    print(line_buf)
 Scanner: DEDENT token on line 30
 Scanner: DEDENT token on line 30
 Scanner: name token on line 30: print

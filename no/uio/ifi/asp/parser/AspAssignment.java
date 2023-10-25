@@ -32,7 +32,6 @@ public class AspAssignment extends AspSmallStmt {
         return ass;
     }
 
-    // Belal made
 	@Override
 	void prettyPrint() {
 		name.prettyPrint();

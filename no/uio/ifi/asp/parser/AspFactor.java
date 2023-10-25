@@ -48,14 +48,6 @@ public class AspFactor extends AspSyntax {
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = primary.get(0).eval(curScope);
-
-        if (lineNum > 43 && lineNum < 47) {
-            System.out.println("Linenum: " + lineNum);
-            System.out.println("primary: " + primary);
-            System.out.println("factor prefs: " + factorPrefs);
-            System.out.println("factor opers: " + factorOprs + "\n");
-        }
-
         if (factorPrefs.get(0) != null) {
             String ss = factorPrefs.get(0).value;
             switch(ss) {

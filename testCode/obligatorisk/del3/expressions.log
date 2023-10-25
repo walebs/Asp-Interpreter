@@ -21,23 +21,26 @@ Trace line 15: 'xxxxxx'
 "Abra" + "ka" + "dabra" ==>
 Trace line 16: 'Abrakadabra'
 "abcdefghij"[4] ==>
-Trace line 17: 'null'
+Trace line 17: 'e'
 not False ==>
 Trace line 20: True
 "To be" or "not to be" ==>
-Trace line 21: 'not to be'
+Trace line 21: 'To be'
 "Yes" and 3.140000104904175 ==>
 Trace line 22: 3.140000104904175
 False or True or 144 or "?" ==>
-Trace line 23: False
+Trace line 23: True
 1 < 0 ==>
 Trace line 26: False
 1 <= 2 <= 3 ==>
 Trace line 27: True
+[] ==>
+Trace line 30: []
 [- 1, 0, 1] * (2) ==>
 Trace line 31: [-1, 0, 1, -1, 0, 1]
 [101, 102, 103][1] ==>
-Trace line 32: [102]
+Trace line 32: 102
 {"A":"a", "B":1 + 2} ==>
-Trace line 35: {A='a', B=3}
+Trace line 35: {'A': 'a', 'B': 3}
 {"Ja":17, "Nei":22}["Ja"] ==>
+Trace line 36: 17

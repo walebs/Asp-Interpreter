@@ -4,14 +4,9 @@ import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeStringValue extends RuntimeValue {
     String value;
-    char chara;
 
     public RuntimeStringValue(String v) {
         value = v;
-    }
-
-    public RuntimeStringValue(char c) {
-        chara = c;
     }
 
     @Override
@@ -95,6 +90,7 @@ public class RuntimeStringValue extends RuntimeValue {
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
         int index = (int) v.getIntValue("", where);
-        return new RuntimeStringValue(value.charAt(index));
+        String indexValue = "" + value.charAt(index) + "";
+        return new RuntimeStringValue(indexValue);
     }
 }

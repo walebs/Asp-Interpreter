@@ -1,6 +1,7 @@
 package no.uio.ifi.asp.runtime;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import no.uio.ifi.asp.parser.AspSyntax;
 
@@ -17,7 +18,19 @@ public class RuntimeDictValue extends RuntimeValue {
 
     @Override
     public String showInfo() {
-        return value.toString();
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        String str = "{";
+        int counter = 0;
+        for (Map.Entry<String,RuntimeValue> set : value.entrySet()) {
+            str += "'" + set.getKey() + "'" + ": " + set.getValue();
+            if (counter != value.size()-1) str += ", ";
+            counter++;
+        }
+        return str + "}";
     }
 
     @Override
@@ -44,6 +57,7 @@ public class RuntimeDictValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
-        return null;
+        String index = v.getStringValue("", where);
+        return value.get(index);
     }
 }

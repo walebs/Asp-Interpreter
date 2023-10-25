@@ -1,7 +1,5 @@
 package no.uio.ifi.asp.runtime;
-
 import java.util.ArrayList;
-
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeListValue extends RuntimeValue {
@@ -18,12 +16,17 @@ public class RuntimeListValue extends RuntimeValue {
 
     @Override
     public String showInfo() {
-        return value.toString();
+        return toString();
     }
 
     @Override
     public String toString() {
-        return value.toString();
+        String str = "[";
+        for (int i = 0; i < value.size(); i++) {
+            str += value.get(i);
+            if (i < value.size()-1) str += ", ";
+        }
+        return str + "]";
     }
 
     @Override
@@ -65,6 +68,6 @@ public class RuntimeListValue extends RuntimeValue {
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
         int index = (int) v.getIntValue("", where);
-        return null;
+        return value.get(index);
     }
 }

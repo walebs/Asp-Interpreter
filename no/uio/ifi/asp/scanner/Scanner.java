@@ -81,9 +81,15 @@ public class Scanner {
 		// Sjekker om linjen er tom eller bare en kommentar
 		boolean commentOrBlank = true;
 		int posOnLine = 0;
+
+		// Løser problem der noen av disse characterene kommer først i linjen eller linjen bare inneholder noen slike characters
+		// Dette kan lage problmer, vi vet ikke
+		Character[] symbols  = {'$', '.', '[', '{', '(', '-', '+', '\''};
+		List<Character> list = new ArrayList<>(List.of(symbols));
+
 		while (commentOrBlank && line != null && posOnLine < line.length()) {
 			char character = line.charAt(posOnLine);
-			if (isDigit(character) || isLetterAZ(character) || character == '$' || character == '.') {
+			if (isDigit(character) || isLetterAZ(character) || list.contains(character)) {
 				commentOrBlank = false;
 			} else if (character == '#') {
 				break;
@@ -107,7 +113,7 @@ public class Scanner {
 				}
 				if (indentsOnLine != indents.peek()) {
 					// Error-handling 
-					scannerError("Indentation error"); 
+					scannerError("Indentation error!"); 
 				}
 			}
 		}
