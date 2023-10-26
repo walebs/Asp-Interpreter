@@ -29,7 +29,7 @@ public class AspName extends AspAtom {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
+        //TODO til del 4
         return null;
     }
 

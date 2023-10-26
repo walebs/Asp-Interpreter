@@ -13,7 +13,12 @@ public class RuntimeBoolValue extends RuntimeValue {
     }
 
     @Override
-    String typeName() {
+    public String showInfo() {
+        return toString();
+    }
+
+    @Override
+    public String typeName() {
 	    return "boolean";
     }
 

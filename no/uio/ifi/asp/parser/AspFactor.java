@@ -2,6 +2,7 @@ package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
 
+import no.uio.ifi.asp.main.Main;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -46,8 +47,49 @@ public class AspFactor extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
-    }
+        RuntimeValue v = primary.get(0).eval(curScope);
+        if (factorPrefs.get(0) != null) {
+            String ss = factorPrefs.get(0).value;
+            switch(ss) {
+                case "+":
+                    v = v.evalPositive(primary.get(0)); break;
+                case "-":
+                    v = v.evalNegate(primary.get(0)); break;
+                default:
+                    Main.panic("Illegal factor prefix, 1: " + ss + "!");
+            }
+        }
 
+        for (int i = 1; i < primary.size(); i++) {
+            RuntimeValue v2 = primary.get(i).eval(curScope);
+            if (factorPrefs.get(i) != null) {
+                String k = factorPrefs.get(i).value;
+                switch(k) {
+                    case "+":
+                        v2 = v2.evalPositive(this); break;
+                    case "-":
+                        v2 = v2.evalNegate(this); break;
+                    default:
+                        Main.panic("Illegal factor prefix, 2: " + k + "!");
+                }
+            }
+
+            if (factorOprs.get(i-1) != null) {
+                String s = factorOprs.get(i-1).value;
+                switch(s) {
+                    case "*":
+                        v = v.evalMultiply(v2, this); break;
+                    case "//":
+                        v = v.evalIntDivide(v2, this); break;
+                    case "/":
+                        v = v.evalDivide(v2, this); break;
+                    case "%":
+                        v = v.evalModulo(v2, this); break;
+                    default:
+                        Main.panic("Illegal factor operator: " + s + "!");
+                }
+            }            
+        }
+        return v;
+    }
 }

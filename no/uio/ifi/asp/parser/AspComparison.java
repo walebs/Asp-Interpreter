@@ -2,6 +2,7 @@ package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
 
+import no.uio.ifi.asp.main.Main;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -40,8 +41,28 @@ public class AspComparison extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        return null;
+        RuntimeValue v = terms.get(0).eval(curScope);
+        for (int i = 1; i < terms.size(); i++) {
+            String k = compOprs.get(i-1).value;
+            RuntimeValue v2 = terms.get(i-1).eval(curScope);
+            switch (k) {
+                case "<":
+                    v = v2.evalLess(terms.get(i).eval(curScope), this); break;
+                case ">":
+                    v = v2.evalGreater(terms.get(i).eval(curScope), this); break;
+                case "<=":
+                    v = v2.evalLessEqual(terms.get(i).eval(curScope), this); break;
+                case ">=":
+                    v = v2.evalGreaterEqual(terms.get(i).eval(curScope), this); break;
+                case "==":
+                    v = v2.evalEqual(terms.get(i).eval(curScope), this); break;
+                case "!=":
+                    v = v2.evalNotEqual(terms.get(i).eval(curScope), this); break;
+                default:
+                    Main.panic("Illegal term operator: " + k + "!");
+            }
+            if (!(v.getBoolValue("", this))) return v;
+        }
+        return v;
     }
-    
 }

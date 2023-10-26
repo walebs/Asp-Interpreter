@@ -1,10 +1,13 @@
 package no.uio.ifi.asp.parser;
 
 import java.util.ArrayList;
+
+import no.uio.ifi.asp.main.Main;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspTerm extends AspSyntax {
     ArrayList<AspFactor> factors = new ArrayList<>();
@@ -39,8 +42,18 @@ public class AspTerm extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
+        RuntimeValue v = factors.get(0).eval(curScope);
+        for (int i = 1; i < factors.size(); i++) {
+            String k = termOpr.get(i-1).value;
+            switch (k) {
+                case "-":
+                    v = v.evalSubtract(factors.get(i).eval(curScope), this); break;
+                case "+":
+                    v = v.evalAdd(factors.get(i).eval(curScope), this); break;
+                default:
+                    Main.panic("Illegal term operator: " + k + "!");
+            }
+        }
+        return v;
     }
-
 }

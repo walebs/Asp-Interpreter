@@ -1,5 +1,6 @@
 package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.runtime.RuntimeIntValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -29,7 +30,6 @@ public class AspIntegerLiteral extends AspAtom {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+		return new RuntimeIntValue(value);
 	}
 }

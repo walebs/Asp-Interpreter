@@ -1,5 +1,6 @@
 package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.runtime.RuntimeListValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -20,11 +21,13 @@ public class AspListDisplay extends AspAtom {
         AspListDisplay ald = new AspListDisplay(s.curLineNum());
 
         skip(s, leftBracketToken);
-        while (true) {
-            ald.expr.add(AspExpr.parse(s));
-            if (s.curToken().kind == rightBracketToken) break;
-            skip(s, commaToken);
-        }
+		if (s.curToken().kind != rightBracketToken) {
+			while (true) {
+				ald.expr.add(AspExpr.parse(s));
+            	if (s.curToken().kind == rightBracketToken) break;
+            	skip(s, commaToken);
+			}
+		}
         skip(s, rightBracketToken);
 
         leaveParser("list display");
@@ -46,7 +49,10 @@ public class AspListDisplay extends AspAtom {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+		ArrayList<RuntimeValue> value = new ArrayList<>();
+		for (AspExpr ae : expr) {
+			value.add(ae.eval(curScope));
+		}
+		return new RuntimeListValue(value);
 	}
 }

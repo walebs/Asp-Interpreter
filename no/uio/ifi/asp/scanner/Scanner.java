@@ -81,13 +81,11 @@ public class Scanner {
 		// Sjekker om linjen er tom eller bare en kommentar
 		boolean commentOrBlank = true;
 		int posOnLine = 0;
+
 		while (commentOrBlank && line != null && posOnLine < line.length()) {
 			char character = line.charAt(posOnLine);
-			if (isDigit(character) || isLetterAZ(character) || character == '$' || character == '.') {
-				commentOrBlank = false;
-			} else if (character == '#') {
-				break;
-			}
+			if (character == '#') break;
+			else if (!Character.isWhitespace(character)) commentOrBlank = false;
 			posOnLine++;
 		}
 
@@ -107,7 +105,7 @@ public class Scanner {
 				}
 				if (indentsOnLine != indents.peek()) {
 					// Error-handling 
-					scannerError("Indentation error"); 
+					scannerError("Indentation error!"); 
 				}
 			}
 		}

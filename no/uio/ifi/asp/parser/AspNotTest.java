@@ -34,8 +34,8 @@ public class AspNotTest extends AspSyntax {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
+        RuntimeValue v = comparison.eval(curScope);
+        if(isNot) v = v.evalNot(this);
+        return v;
     }
-
 }
