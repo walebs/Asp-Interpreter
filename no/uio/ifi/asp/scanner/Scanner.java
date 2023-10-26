@@ -82,21 +82,6 @@ public class Scanner {
 		boolean commentOrBlank = true;
 		int posOnLine = 0;
 
-		/* // Løser et problem der vi kun har en tom liste eller en tom ordbok
-		// Ser ut til at det funker til nå
-		Character[] symbols  = {'$', '.', '[', '{', '(', '-', '+', '\''};
-		List<Character> list = new ArrayList<>(List.of(symbols));
-
-		while (commentOrBlank && line != null && posOnLine < line.length()) {
-			char character = line.charAt(posOnLine);
-			if (isDigit(character) || isLetterAZ(character) || list.contains(character)) {
-				commentOrBlank = false;
-			} else if (character == '#') {
-				break;
-			}
-			posOnLine++;
-		} */
-
 		while (commentOrBlank && line != null && posOnLine < line.length()) {
 			char character = line.charAt(posOnLine);
 			if (character == '#') break;
