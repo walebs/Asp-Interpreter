@@ -37,6 +37,8 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) runtimeError("String can't add with integer: " + v.showInfo(), where);
+        if (v instanceof RuntimeFloatValue) runtimeError("String can't add with float: " + v.showInfo(), where);
         String str = value + v.getStringValue("", where);
         return new RuntimeStringValue(str);
     }
@@ -89,6 +91,7 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeFloatValue) runtimeError("A string index must be an integer!", where);
         int index = (int) v.getIntValue("", where);
         String indexValue = "" + value.charAt(index) + "";
         return new RuntimeStringValue(indexValue);

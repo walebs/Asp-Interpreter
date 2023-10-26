@@ -67,7 +67,9 @@ public class RuntimeListValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeFloatValue) runtimeError("A list index must be an integer!", where);
         int index = (int) v.getIntValue("", where);
+        if (index >= value.size()) runtimeError("List index " + index + " out of range!", where);
         return value.get(index);
     }
 }

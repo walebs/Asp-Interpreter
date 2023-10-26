@@ -58,6 +58,7 @@ public class RuntimeDictValue extends RuntimeValue {
     @Override
     public RuntimeValue evalSubscription(RuntimeValue v, AspSyntax where) {
         String index = v.getStringValue("", where);
+        if (!value.keySet().contains(index)) runtimeError("Dictionary key \'" + index + "\' undefined!", where);
         return value.get(index);
     }
 }

@@ -45,12 +45,14 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeStringValue) runtimeError("Type error for +. Unable to add integer with string: " + v.showInfo(), where);
         if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(value + v.getFloatValue("", where));
         return new RuntimeIntValue(value + v.getIntValue("", where));
     }
 
     @Override
     public RuntimeValue evalDivide(RuntimeValue v, AspSyntax where) {
+        if (v.showInfo().equals("0")) runtimeError("Type error for /. Unable to divide int with 0", where);
         return new RuntimeFloatValue(value / v.getFloatValue("", where));
     }
 
@@ -99,6 +101,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeStringValue) runtimeError("Type error for *. Unable to multiply int and string: " + v.showInfo(), where);
         if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(value * v.getFloatValue("", where));
         return new RuntimeIntValue(value * v.getIntValue("", where));
     }
@@ -128,6 +131,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalSubtract(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeStringValue) runtimeError("Type error for -. Unable to subtract integer with string: " + v.showInfo(), where);
         if (v instanceof RuntimeFloatValue) return new RuntimeFloatValue(value - v.getFloatValue("", where));
         return new RuntimeIntValue(value - v.getIntValue("", where));
     }
