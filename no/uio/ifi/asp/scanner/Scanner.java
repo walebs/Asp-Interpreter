@@ -82,8 +82,8 @@ public class Scanner {
 		boolean commentOrBlank = true;
 		int posOnLine = 0;
 
-		// Løser problem der noen av disse characterene kommer først i linjen eller linjen bare inneholder noen slike characters
-		// Dette kan lage problmer, vi vet ikke
+		/* // Løser et problem der vi kun har en tom liste eller en tom ordbok
+		// Ser ut til at det funker til nå
 		Character[] symbols  = {'$', '.', '[', '{', '(', '-', '+', '\''};
 		List<Character> list = new ArrayList<>(List.of(symbols));
 
@@ -94,6 +94,13 @@ public class Scanner {
 			} else if (character == '#') {
 				break;
 			}
+			posOnLine++;
+		} */
+
+		while (commentOrBlank && line != null && posOnLine < line.length()) {
+			char character = line.charAt(posOnLine);
+			if (character == '#') break;
+			else if (!Character.isWhitespace(character)) commentOrBlank = false;
 			posOnLine++;
 		}
 

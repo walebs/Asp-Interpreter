@@ -26,4 +26,4 @@ Scanner: string literal token on line 7: "Ja"
 Scanner: ) token on line 7
 Scanner: NEWLINE token on line 7
    8:     a = 4   # Gal indentering (ikke brukt før)
-Asp scanner error on line 8: Indentation error
+Asp scanner error on line 8: Indentation error!

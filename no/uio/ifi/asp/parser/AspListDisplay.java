@@ -21,12 +21,13 @@ public class AspListDisplay extends AspAtom {
         AspListDisplay ald = new AspListDisplay(s.curLineNum());
 
         skip(s, leftBracketToken);
-        while (true) {
-			if (s.curToken().kind == rightBracketToken) break;
-            ald.expr.add(AspExpr.parse(s));
-            if (s.curToken().kind == rightBracketToken) break;
-            skip(s, commaToken);
-        }
+		if (s.curToken().kind != rightBracketToken) {
+			while (true) {
+				ald.expr.add(AspExpr.parse(s));
+            	if (s.curToken().kind == rightBracketToken) break;
+            	skip(s, commaToken);
+			}
+		}
         skip(s, rightBracketToken);
 
         leaveParser("list display");
