@@ -29,8 +29,8 @@ public class AspExprStmt extends AspSmallStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eval'");
+        trace("expr stmt");
+        return expr.eval(curScope);
     }
 
 }
