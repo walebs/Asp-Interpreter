@@ -29,7 +29,6 @@ public class AspExpr extends AspSyntax {
         return ae;
     }
 
-
     @Override
     public void prettyPrint() {
         for (int i = 0; i < andTests.size(); i++) {
@@ -38,7 +37,6 @@ public class AspExpr extends AspSyntax {
         }
     }
 
-
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = andTests.get(0).eval(curScope);
@@ -46,6 +44,7 @@ public class AspExpr extends AspSyntax {
             if (v.getBoolValue("or operand", this)) return v;
             v = andTests.get(i).eval(curScope);
         }
+        trace("expr");
         return v;
     }
 }

@@ -42,7 +42,8 @@ public class AspSmallStmtList extends AspStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
+        for (AspSmallStmt ass : smallStmts) ass.eval(curScope);
+        trace("small stmt list");
         return null;
     }
 }

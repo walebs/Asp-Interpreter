@@ -25,7 +25,6 @@ public class RuntimeScope {
 		outer = oScope;
     }
 
-
     public void assign(String id, RuntimeValue val) {
 		if (globalNames.contains(id))
 			Main.globalScope.decls.put(id, val);

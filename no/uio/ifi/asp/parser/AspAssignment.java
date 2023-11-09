@@ -46,8 +46,11 @@ public class AspAssignment extends AspSmallStmt {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
-
+        RuntimeValue v = name.eval(curScope);
+        curScope.assign(name.value, v);
+        
+        
+        trace("assignment");
+        return null;
+    }
 }

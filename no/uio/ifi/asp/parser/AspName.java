@@ -29,8 +29,6 @@ public class AspName extends AspAtom {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //TODO til del 4
-        return null;
+        return curScope.find(value, this);
     }
-
 }

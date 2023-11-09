@@ -60,5 +60,4 @@ public class AspFuncDef extends AspCompoundStmt {
         // TODO Auto-generated method stub
         return null;
     }
-    
 }
