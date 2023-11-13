@@ -7,7 +7,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 
 public class AspName extends AspAtom {
-    String value;
+    public String value;
 
     AspName(int s) {
         super(s);

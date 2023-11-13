@@ -9,9 +9,9 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspFuncDef extends AspCompoundStmt {
-    AspName name;
-    AspSuite suite;
-    ArrayList<AspName> nameList = new ArrayList<>();
+    public AspName name;
+    public AspSuite suite;
+    public ArrayList<AspName> nameList = new ArrayList<>();
 
     AspFuncDef(int n) {
         super(n);
@@ -57,7 +57,8 @@ public class AspFuncDef extends AspCompoundStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
+        //TODO hva skal skjer her?
+        trace("func def");
         return null;
     }
 }

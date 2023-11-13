@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeListValue extends RuntimeValue {
-    ArrayList<RuntimeValue> value;
+    public ArrayList<RuntimeValue> value;
 
     public RuntimeListValue(ArrayList<RuntimeValue> v) {
         value = v;

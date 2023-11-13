@@ -50,6 +50,10 @@ public class AspPrimary extends AspSyntax {
                 v = v.evalSubscription(aps.eval(curScope), this);
             }
         }
+        // hvordan skal vi få en liste her?
+        if (v instanceof RuntimeListValue) {
+            v.evalFuncCall(null, atom);
+        }
         return v;
     }
 }
