@@ -36,6 +36,11 @@ public class RuntimeStringValue extends RuntimeValue {
     }
 
     @Override
+    public RuntimeValue evalLen(AspSyntax where) {
+        return new RuntimeIntValue((long) value.length());
+    }
+
+    @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) runtimeError("String can't add with integer: " + v.showInfo(), where);
         if (v instanceof RuntimeFloatValue) runtimeError("String can't add with float: " + v.showInfo(), where);

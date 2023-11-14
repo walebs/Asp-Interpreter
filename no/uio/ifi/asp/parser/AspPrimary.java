@@ -46,13 +46,12 @@ public class AspPrimary extends AspSyntax {
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue v = atom.eval(curScope);
         for (AspPrimarySuffix aps : primarySuffixs) {
-            if (v instanceof RuntimeDictValue || v instanceof RuntimeListValue || v instanceof RuntimeStringValue) {
+            if (aps instanceof AspSubscription) {
                 v = v.evalSubscription(aps.eval(curScope), this);
+            } else if (aps instanceof AspArguments) {
+                RuntimeListValue rlv = (RuntimeListValue) aps.eval(curScope);
+                v = v.evalFuncCall(rlv.value, this);
             }
-        }
-        // hvordan skal vi få en liste her?
-        if (v instanceof RuntimeListValue) {
-            v.evalFuncCall(null, atom);
         }
         return v;
     }

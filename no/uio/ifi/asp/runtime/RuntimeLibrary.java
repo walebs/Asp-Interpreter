@@ -39,7 +39,17 @@ public class RuntimeLibrary extends RuntimeScope {
         assign("float", new RuntimeFunc("float") {
             @Override
             public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
-                
+                //TODO: Usikker på om dette bør inn i en for-loop (tenker på print biblioteksfunksjonen)
+                checkNumParams(actualParams, 1, "float", where);
+                if (actualParams.get(0) instanceof RuntimeIntValue) {
+                    double val = (double) actualParams.get(0).getIntValue("", where);
+                    return new RuntimeFloatValue(val);
+                }
+                else if (actualParams.get(0) instanceof RuntimeStringValue) {
+                    double val = Double.parseDouble(actualParams.get(0).getStringValue("", where));
+                    return new RuntimeFloatValue(val);
+                }
+                else return actualParams.get(0);
             }
         });
 
@@ -47,7 +57,17 @@ public class RuntimeLibrary extends RuntimeScope {
         assign("int", new RuntimeFunc("int") {
             @Override
             public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
-
+                //Samme som float
+                checkNumParams(actualParams, 1, "int", where);
+                if (actualParams.get(0) instanceof RuntimeFloatValue) {
+                    long val = (long) actualParams.get(0).getFloatValue("", where);
+                    return new RuntimeIntValue(val);
+                }
+                else if (actualParams.get(0) instanceof RuntimeStringValue) {
+                    long val = Long.parseLong(actualParams.get(0).getStringValue("", where));
+                    return new RuntimeIntValue(val);
+                }
+                else return actualParams.get(0);
             }
         });
 
@@ -55,7 +75,8 @@ public class RuntimeLibrary extends RuntimeScope {
         assign("str", new RuntimeFunc("str") {
             @Override
             public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
-
+                checkNumParams(actualParams, 1, "string", where);
+                return new RuntimeStringValue(actualParams.get(0).toString());
             }
         });
         
@@ -63,7 +84,10 @@ public class RuntimeLibrary extends RuntimeScope {
         assign("input", new RuntimeFunc("input") {
             @Override
             public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
-                
+                checkNumParams(actualParams, 1, "input", where);
+                System.out.println(actualParams.get(0).toString());
+                String result = keyboard.nextLine();
+                return new RuntimeStringValue(result);
             }
         });
 
@@ -71,7 +95,19 @@ public class RuntimeLibrary extends RuntimeScope {
         assign("range", new RuntimeFunc("range") {
             @Override
             public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
+                //TODO: Hvis params = 1, gå fra 0 - params
+                if (actualParams.size() == 1) {
+                    ArrayList<RuntimeValue> values = new ArrayList<>();
+                    
+                }
+                else if (actualParams.size() == 2) {
+                    ArrayList<RuntimeValue> values = new ArrayList<>();
 
+                } 
+                else {
+                    RuntimeValue.runtimeError("Wrong number of parameters to range!",where);
+                }
+                return new RuntimeNoneValue();
             }
         });
     }

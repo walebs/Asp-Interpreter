@@ -35,6 +35,21 @@ public class RuntimeListValue extends RuntimeValue {
     }
 
     @Override
+    public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+        /* TODO gjøre her og i RuntimeDictValue
+        liste = [[0, 2, 1], 3, 4]
+        liste[0][1] = 5
+        liste = [[0, 5, 1], 3, 4] 
+        */
+
+    }
+
+    @Override
+    public RuntimeValue evalLen(AspSyntax where) {
+        return new RuntimeIntValue((long) value.size());
+    }
+
+    @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
             ArrayList<RuntimeValue> result = new ArrayList<>();

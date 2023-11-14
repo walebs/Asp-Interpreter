@@ -1,5 +1,6 @@
 package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.runtime.RuntimeFunc;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -57,7 +58,7 @@ public class AspFuncDef extends AspCompoundStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //TODO hva skal skjer her?
+        curScope.assign(name.value, new RuntimeFunc(name.value, this, curScope));
         trace("func def");
         return null;
     }

@@ -42,12 +42,14 @@ public class AspForStmt extends AspCompoundStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        RuntimeValue v = null;
-        if (expr.andTests.size() > 1) v = expr.eval(curScope);
         //TODO garra feil, vi får se hva som skal skje her senere
-        for (AspAndTest aat : expr.andTests) {
-            curScope.assign(null, v);
-            suite.eval(curScope);
+        RuntimeValue v = null;
+        if (expr.andTests.size() > 1) {
+            v = expr.eval(curScope);
+            for (AspAndTest aat : expr.andTests) {
+                curScope.assign(null, v);
+                suite.eval(curScope);
+            }
         }
         trace("for stmt");
         return null;

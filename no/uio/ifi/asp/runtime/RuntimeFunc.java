@@ -9,13 +9,19 @@ public class RuntimeFunc extends RuntimeValue {
     RuntimeScope defScope;
     String name;
 
+    public RuntimeFunc(String string, AspFuncDef afd, RuntimeScope scope) {
+        name = string;
+        def = afd;
+        defScope = scope;
+    }
+
     public RuntimeFunc(String string) {
         name = string;
     }
 
     @Override
     String typeName() {
-        return "Func";
+        return "func";
     }
 
     @Override
@@ -29,11 +35,6 @@ public class RuntimeFunc extends RuntimeValue {
     }
 
     @Override
-    public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
-        
-    }
-
-    @Override
     public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actPars, AspSyntax where) {
         if (actPars.size() == def.nameList.size()) {
             RuntimeScope newScope = new RuntimeScope(defScope);
@@ -43,9 +44,10 @@ public class RuntimeFunc extends RuntimeValue {
 
             try {
                 def.suite.eval(newScope);
-            } catch (RuntimeReturnValue e) {
-                e.printStackTrace();
+            } catch (RuntimeReturnValue rrv) {
+                return rrv.value;
             }
+            return new RuntimeNoneValue();
         }
         return null;
     }
