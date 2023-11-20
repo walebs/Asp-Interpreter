@@ -46,14 +46,22 @@ public class AspAssignment extends AspSmallStmt {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        /*TODO gjøre
-         * finne riktig element i subscriptions
-         * kalle på assignElem (assignElem skal implementers i ListValue og DictValue)
-         */
         RuntimeValue v = name.eval(curScope);
-        curScope.assign(name.value, v);
-        
-        
+        RuntimeValue inx = null;
+        RuntimeValue val = null;
+
+        if (subscriptions.size() == 1) {
+            inx = subscriptions.get(0).eval(curScope);
+            val = expr.eval(curScope);
+            curScope.assign(name.value, val);
+            v.evalAssignElem(inx, val, expr);
+        } else {
+            inx = subscriptions.get(-1).eval(curScope);
+            val = expr.eval(curScope);
+            curScope.assign(name.value, val);
+            v.evalAssignElem(inx, val, expr);
+        }
+
         trace("assignment");
         return null;
     }

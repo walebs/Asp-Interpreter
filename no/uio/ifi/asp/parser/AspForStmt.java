@@ -1,5 +1,6 @@
 package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.runtime.RuntimeListValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -42,12 +43,10 @@ public class AspForStmt extends AspCompoundStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //TODO garra feil, vi får se hva som skal skje her senere
-        RuntimeValue v = null;
-        if (expr.andTests.size() > 1) {
-            v = expr.eval(curScope);
-            for (AspAndTest aat : expr.andTests) {
-                curScope.assign(null, v);
+        RuntimeListValue v = (RuntimeListValue) expr.eval(curScope);
+        if (v instanceof RuntimeListValue) {
+            for (RuntimeValue x : v.value) {
+                curScope.assign(name.value, x);
                 suite.eval(curScope);
             }
         }

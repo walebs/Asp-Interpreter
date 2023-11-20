@@ -38,6 +38,11 @@ public class RuntimeDictValue extends RuntimeValue {
     }
 
     @Override
+    public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+        value.replace(inx.getStringValue("", where), val);
+    }
+
+    @Override
     public RuntimeValue evalLen(AspSyntax where) {
         return new RuntimeIntValue((long) value.size());
     }
