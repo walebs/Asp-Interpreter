@@ -55,7 +55,7 @@ public class AspAssignment extends AspSmallStmt {
             val = expr.eval(curScope);
             curScope.assign(name.value, val);
             v.evalAssignElem(inx, val, expr);
-        } else {
+        } else if (subscriptions.size() > 1) {
             inx = subscriptions.get(-1).eval(curScope);
             val = expr.eval(curScope);
             curScope.assign(name.value, val);
