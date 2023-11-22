@@ -5,9 +5,9 @@ import no.uio.ifi.asp.parser.AspFuncDef;
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeFunc extends RuntimeValue {
+    String name;
     AspFuncDef def;
     RuntimeScope defScope;
-    String name;
 
     public RuntimeFunc(String string, AspFuncDef afd, RuntimeScope scope) {
         name = string;

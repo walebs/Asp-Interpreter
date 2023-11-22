@@ -58,7 +58,7 @@ public class AspFuncDef extends AspCompoundStmt {
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         curScope.assign(name.value, new RuntimeFunc(name.value, this, curScope));
-        trace("func def");
+        trace("def " + name.value);
         return null;
     }
 }

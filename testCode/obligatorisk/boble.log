@@ -1,8 +1,3 @@
-Trace line 4: func def
+Trace line 4: def boblesorter
 Trace line 15: assignment
 Trace line 15: small stmt list
-Trace line 16: assignment
-Trace line 16: small stmt list
-Trace line 17: expr stmt
-Trace line 17: expr
-Asp runtime error on line 17: Function call '(...)' undefined for string!

@@ -36,7 +36,7 @@ public class RuntimeListValue extends RuntimeValue {
 
     @Override
     public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
-        value.set((int) inx.getIntValue("", where), val);
+        value.add(val);
     }
 
     @Override

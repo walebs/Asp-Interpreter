@@ -2,7 +2,6 @@ package no.uio.ifi.asp.parser;
 
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
-import no.uio.ifi.asp.runtime.RuntimeStringValue;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
@@ -30,9 +29,6 @@ public class AspName extends AspAtom {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //TODO hva skal denne returnere?
-        //Denne må kanskje returnere en runtimeklasse hvor func kan skje?
-        //Kan være en dum ting å returnere null
         return curScope.find(value, this);
     }
 }
