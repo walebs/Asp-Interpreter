@@ -23,7 +23,7 @@ public class RuntimeListValue extends RuntimeValue {
     public String toString() {
         String str = "[";
         for (int i = 0; i < value.size(); i++) {
-            str += value.get(i);
+            str += value.get(i).showInfo();
             if (i < value.size()-1) str += ", ";
         }
         return str + "]";
@@ -36,7 +36,14 @@ public class RuntimeListValue extends RuntimeValue {
 
     @Override
     public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
-        value.add(val);
+        //value.add(val);
+        long index = inx.getIntValue("", where);
+        if (index < value.size() && index >= 0) {
+            value.set((int) index, val);
+        } 
+        else {
+            runtimeError("Index out of range", where);
+        }
     }
 
     @Override

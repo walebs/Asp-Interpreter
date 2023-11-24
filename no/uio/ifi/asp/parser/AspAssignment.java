@@ -44,14 +44,43 @@ public class AspAssignment extends AspSmallStmt {
         expr.prettyPrint();
 	}
 
-	@Override
+    //TODO: Endre variabler/struktur
+    @Override
+    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        if(subscriptions.size() > 0) {
+            String trcstr = name.value;
+            RuntimeValue nmeval = name.eval(curScope);
+
+            for(int i = 0; i < subscriptions.size() - 1; i++) {
+                RuntimeValue key = subscriptions.get(i).eval(curScope);
+                trcstr += "[" + key.showInfo() + "]";
+                nmeval = nmeval.evalSubscription(key, this);
+            }
+
+            RuntimeValue key = subscriptions.get(subscriptions.size() - 1).eval(curScope);
+            trcstr += "[" + key.showInfo() + "]";
+            RuntimeValue val = expr.eval(curScope);
+            trace(trcstr + " = " + val.showInfo());
+            nmeval.evalAssignElem(key, val, this);
+        } 
+        else {
+            RuntimeValue evaledexpr = expr.eval(curScope);
+            curScope.assign(name.value, evaledexpr);
+            trace(name.value + " = " + evaledexpr.showInfo());
+        }
+
+        return null;
+    }
+
+    //TODO Forrige assignement eval som ikke fungerer
+	/* @Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue inx = null;
         RuntimeValue val = expr.eval(curScope);
         curScope.assign(name.value, val);
         RuntimeValue v = name.eval(curScope);
 
-        if (subscriptions.size() == 1) {
+        if (subscriptions.size() > 0) {
             inx = subscriptions.get(0).eval(curScope);
             v.evalAssignElem(inx, val, this);
         } else if (subscriptions.size() > 1) {
@@ -61,5 +90,5 @@ public class AspAssignment extends AspSmallStmt {
 
         trace("assignment");
         return null;
-    }
+    } */
 }

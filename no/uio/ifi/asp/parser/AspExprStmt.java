@@ -29,8 +29,8 @@ public class AspExprStmt extends AspSmallStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        trace("expr stmt");
-        return expr.eval(curScope);
+        RuntimeValue rv = expr.eval(curScope);
+        trace("Expression statement produced " + rv.showInfo());
+        return null;
     }
-
 }

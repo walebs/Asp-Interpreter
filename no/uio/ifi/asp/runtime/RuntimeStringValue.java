@@ -66,7 +66,7 @@ public class RuntimeStringValue extends RuntimeValue {
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(false);
-        return new RuntimeBoolValue(value == v.getStringValue("", where));
+        return new RuntimeBoolValue(value.equals(v.getStringValue("", where)));
     }
     
     @Override

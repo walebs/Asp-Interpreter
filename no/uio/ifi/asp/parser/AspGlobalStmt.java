@@ -45,7 +45,7 @@ public class AspGlobalStmt extends AspSmallStmt {
 		for (AspName an : names) {
             curScope.registerGlobalName(an.value);
         }
-        trace("global stmt");
+        //trace("global stmt");
         return null;
 	}
 }

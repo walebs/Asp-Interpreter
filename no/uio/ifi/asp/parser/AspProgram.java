@@ -45,7 +45,7 @@ public class AspProgram extends AspSyntax {
             try {
                 as.eval(curScope);
             } catch (RuntimeReturnValue rrv) {
-                RuntimeValue.runtimeError("Return statements outside function!", rrv.lineNum);
+                RuntimeValue.runtimeError("Return statement outside function!", rrv.lineNum);
             }
         }
         return null;

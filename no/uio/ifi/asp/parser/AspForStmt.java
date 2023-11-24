@@ -44,13 +44,13 @@ public class AspForStmt extends AspCompoundStmt {
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeListValue v = (RuntimeListValue) expr.eval(curScope);
-        if (v instanceof RuntimeListValue) {
-            for (RuntimeValue x : v.value) {
-                curScope.assign(name.value, x);
-                suite.eval(curScope);
-            }
+        int inx = 0;
+        for (RuntimeValue x : v.value) {
+            inx++;
+            curScope.assign(name.value, x);
+            trace("For #" + Integer.toString(inx) + ": " + name.value + " = " + x.showInfo());
+            suite.eval(curScope);
         }
-        trace("for stmt");
         return null;
     }
 }

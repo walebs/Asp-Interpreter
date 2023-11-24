@@ -50,6 +50,7 @@ public class AspPrimary extends AspSyntax {
                 v = v.evalSubscription(aps.eval(curScope), this);
             } else if (aps instanceof AspArguments) {
                 RuntimeListValue rlv = (RuntimeListValue) aps.eval(curScope);
+                trace("Call function " + v.showInfo() + " with params " + rlv.showInfo());
                 v = v.evalFuncCall(rlv.value, this);
             }
         }

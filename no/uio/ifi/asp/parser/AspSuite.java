@@ -51,8 +51,6 @@ public class AspSuite extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         if (stmts.isEmpty()) assl.eval(curScope);
         else for (AspStmt as : stmts) as.eval(curScope);
-        trace("suite");
         return null;
     }
-    
 }
