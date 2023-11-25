@@ -1,0 +1,55 @@
+Trace line 5: def pow
+Trace line 14: def rough_log
+Trace line 22: def sqrt
+Trace line 38: Call function input with params ['Give a number: ']
+Trace line 38: Call function float with params ['15']
+Trace line 38: v = 15.0
+Trace line 39: Call function sqrt with params [15.0]
+Trace line 23: x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Trace line 25: Call function rough_log with params [15.0]
+Trace line 15: if True alt #1: ...
+Trace line 16: Call function rough_log with params [1.5]
+Trace line 19: return 1
+Trace line 16: return 2
+Trace line 25: d = 2
+Trace line 26: else: ...
+Trace line 29: Call function pow with params [60, 0]
+Trace line 6: if True alt #2: ...
+Trace line 9: Call function pow with params [60, 1]
+Trace line 6: else: ...
+Trace line 11: return 60
+Trace line 9: return 1.0
+Trace line 29: x[0] = 1.0
+Trace line 31: Call function range with params [0, 11]
+Trace line 31: For #1: ix = 0
+Trace line 32: x[1] = 8.0
+Trace line 31: For #2: ix = 1
+Trace line 32: x[2] = 4.9375
+Trace line 31: For #3: ix = 2
+Trace line 32: x[3] = 3.987737341772152
+Trace line 31: For #4: ix = 3
+Trace line 32: x[4] = 3.87463446793002
+Trace line 31: For #5: ix = 4
+Trace line 32: x[5] = 3.872983698008724
+Trace line 31: For #6: ix = 5
+Trace line 32: x[6] = 3.872983346207433
+Trace line 31: For #7: ix = 6
+Trace line 32: x[7] = 3.872983346207417
+Trace line 31: For #8: ix = 7
+Trace line 32: x[8] = 3.872983346207417
+Trace line 31: For #9: ix = 8
+Trace line 32: x[9] = 3.872983346207417
+Trace line 31: For #10: ix = 9
+Trace line 32: x[10] = 3.872983346207417
+Trace line 31: For #11: ix = 10
+Trace line 32: x[11] = 3.872983346207417
+Trace line 34: return 3.872983346207417
+Trace line 39: sq2 = 3.872983346207417
+Trace line 40: Call function pow with params [3.872983346207417, 2]
+Trace line 6: if True alt #1: ...
+Trace line 7: Call function pow with params [3.872983346207417, 1]
+Trace line 6: else: ...
+Trace line 11: return 3.872983346207417
+Trace line 7: return 15.000000000000002
+Trace line 40: Call function print with params [3.872983346207417, 'squared is', 15.000000000000002]
+Trace line 40: Expression statement produced None

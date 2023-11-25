@@ -1,0 +1,653 @@
+Trace line 4: ukedag = ['man', 'tirs', 'ons', 'tors', 'fre', 'lør', 'søn']
+Trace line 5: m_leng = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+Trace line 7: m_navn = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Trace line 8: m_navn[1] = 'januar'
+Trace line 8: m_navn[2] = 'februar'
+Trace line 8: m_navn[3] = 'mars'
+Trace line 9: m_navn[4] = 'april'
+Trace line 9: m_navn[5] = 'mai'
+Trace line 9: m_navn[6] = 'juni'
+Trace line 10: m_navn[7] = 'juli'
+Trace line 10: m_navn[8] = 'august'
+Trace line 10: m_navn[9] = 'september'
+Trace line 11: m_navn[10] = 'oktober'
+Trace line 11: m_navn[11] = 'november'
+Trace line 11: m_navn[12] = 'desember'
+Trace line 15: def finn_maaned
+Trace line 21: def les_maaned
+Trace line 29: def er_skuddaar
+Trace line 33: def finn_m_leng
+Trace line 38: def finn_dag_nr
+Trace line 53: Call function input with params ['Oppgi et år: ']
+Trace line 53: Call function int with params ['2023']
+Trace line 53: aar = 2023
+Trace line 54: Call function les_maaned with params []
+Trace line 22: while True: ...
+Trace line 23: Call function input with params ['Oppgi en måned: ']
+Trace line 23: m_id = 'november'
+Trace line 24: Call function finn_maaned with params ['november']
+Trace line 16: Call function len with params [[0, 'januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember']]
+Trace line 16: Call function range with params [1, 13]
+Trace line 16: For #1: m_ix = 1
+Trace line 16: For #2: m_ix = 2
+Trace line 16: For #3: m_ix = 3
+Trace line 16: For #4: m_ix = 4
+Trace line 16: For #5: m_ix = 5
+Trace line 16: For #6: m_ix = 6
+Trace line 16: For #7: m_ix = 7
+Trace line 16: For #8: m_ix = 8
+Trace line 16: For #9: m_ix = 9
+Trace line 16: For #10: m_ix = 10
+Trace line 16: For #11: m_ix = 11
+Trace line 17: if True alt #1: ...
+Trace line 17: return 11
+Trace line 24: m_num = 11
+Trace line 25: if True alt #1: ...
+Trace line 25: return 11
+Trace line 54: maaned = 11
+Trace line 55: Call function input with params ['Oppgi en dag: ']
+Trace line 55: Call function int with params ['25']
+Trace line 55: dag = 25
+Trace line 56: Call function finn_dag_nr with params [2023, 11, 25]
+Trace line 39: d_nr = 25
+Trace line 42: Call function range with params [1900, 2023]
+Trace line 42: For #1: aax = 1900
+Trace line 43: d_nr = 390
+Trace line 44: Call function er_skuddaar with params [1900]
+Trace line 30: return False
+Trace line 42: For #2: aax = 1901
+Trace line 43: d_nr = 755
+Trace line 44: Call function er_skuddaar with params [1901]
+Trace line 30: return False
+Trace line 42: For #3: aax = 1902
+Trace line 43: d_nr = 1120
+Trace line 44: Call function er_skuddaar with params [1902]
+Trace line 30: return False
+Trace line 42: For #4: aax = 1903
+Trace line 43: d_nr = 1485
+Trace line 44: Call function er_skuddaar with params [1903]
+Trace line 30: return False
+Trace line 42: For #5: aax = 1904
+Trace line 43: d_nr = 1850
+Trace line 44: Call function er_skuddaar with params [1904]
+Trace line 30: return 4
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 1851
+Trace line 42: For #6: aax = 1905
+Trace line 43: d_nr = 2216
+Trace line 44: Call function er_skuddaar with params [1905]
+Trace line 30: return False
+Trace line 42: For #7: aax = 1906
+Trace line 43: d_nr = 2581
+Trace line 44: Call function er_skuddaar with params [1906]
+Trace line 30: return False
+Trace line 42: For #8: aax = 1907
+Trace line 43: d_nr = 2946
+Trace line 44: Call function er_skuddaar with params [1907]
+Trace line 30: return False
+Trace line 42: For #9: aax = 1908
+Trace line 43: d_nr = 3311
+Trace line 44: Call function er_skuddaar with params [1908]
+Trace line 30: return 8
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 3312
+Trace line 42: For #10: aax = 1909
+Trace line 43: d_nr = 3677
+Trace line 44: Call function er_skuddaar with params [1909]
+Trace line 30: return False
+Trace line 42: For #11: aax = 1910
+Trace line 43: d_nr = 4042
+Trace line 44: Call function er_skuddaar with params [1910]
+Trace line 30: return False
+Trace line 42: For #12: aax = 1911
+Trace line 43: d_nr = 4407
+Trace line 44: Call function er_skuddaar with params [1911]
+Trace line 30: return False
+Trace line 42: For #13: aax = 1912
+Trace line 43: d_nr = 4772
+Trace line 44: Call function er_skuddaar with params [1912]
+Trace line 30: return 12
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 4773
+Trace line 42: For #14: aax = 1913
+Trace line 43: d_nr = 5138
+Trace line 44: Call function er_skuddaar with params [1913]
+Trace line 30: return False
+Trace line 42: For #15: aax = 1914
+Trace line 43: d_nr = 5503
+Trace line 44: Call function er_skuddaar with params [1914]
+Trace line 30: return False
+Trace line 42: For #16: aax = 1915
+Trace line 43: d_nr = 5868
+Trace line 44: Call function er_skuddaar with params [1915]
+Trace line 30: return False
+Trace line 42: For #17: aax = 1916
+Trace line 43: d_nr = 6233
+Trace line 44: Call function er_skuddaar with params [1916]
+Trace line 30: return 16
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 6234
+Trace line 42: For #18: aax = 1917
+Trace line 43: d_nr = 6599
+Trace line 44: Call function er_skuddaar with params [1917]
+Trace line 30: return False
+Trace line 42: For #19: aax = 1918
+Trace line 43: d_nr = 6964
+Trace line 44: Call function er_skuddaar with params [1918]
+Trace line 30: return False
+Trace line 42: For #20: aax = 1919
+Trace line 43: d_nr = 7329
+Trace line 44: Call function er_skuddaar with params [1919]
+Trace line 30: return False
+Trace line 42: For #21: aax = 1920
+Trace line 43: d_nr = 7694
+Trace line 44: Call function er_skuddaar with params [1920]
+Trace line 30: return 20
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 7695
+Trace line 42: For #22: aax = 1921
+Trace line 43: d_nr = 8060
+Trace line 44: Call function er_skuddaar with params [1921]
+Trace line 30: return False
+Trace line 42: For #23: aax = 1922
+Trace line 43: d_nr = 8425
+Trace line 44: Call function er_skuddaar with params [1922]
+Trace line 30: return False
+Trace line 42: For #24: aax = 1923
+Trace line 43: d_nr = 8790
+Trace line 44: Call function er_skuddaar with params [1923]
+Trace line 30: return False
+Trace line 42: For #25: aax = 1924
+Trace line 43: d_nr = 9155
+Trace line 44: Call function er_skuddaar with params [1924]
+Trace line 30: return 24
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 9156
+Trace line 42: For #26: aax = 1925
+Trace line 43: d_nr = 9521
+Trace line 44: Call function er_skuddaar with params [1925]
+Trace line 30: return False
+Trace line 42: For #27: aax = 1926
+Trace line 43: d_nr = 9886
+Trace line 44: Call function er_skuddaar with params [1926]
+Trace line 30: return False
+Trace line 42: For #28: aax = 1927
+Trace line 43: d_nr = 10251
+Trace line 44: Call function er_skuddaar with params [1927]
+Trace line 30: return False
+Trace line 42: For #29: aax = 1928
+Trace line 43: d_nr = 10616
+Trace line 44: Call function er_skuddaar with params [1928]
+Trace line 30: return 28
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 10617
+Trace line 42: For #30: aax = 1929
+Trace line 43: d_nr = 10982
+Trace line 44: Call function er_skuddaar with params [1929]
+Trace line 30: return False
+Trace line 42: For #31: aax = 1930
+Trace line 43: d_nr = 11347
+Trace line 44: Call function er_skuddaar with params [1930]
+Trace line 30: return False
+Trace line 42: For #32: aax = 1931
+Trace line 43: d_nr = 11712
+Trace line 44: Call function er_skuddaar with params [1931]
+Trace line 30: return False
+Trace line 42: For #33: aax = 1932
+Trace line 43: d_nr = 12077
+Trace line 44: Call function er_skuddaar with params [1932]
+Trace line 30: return 32
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 12078
+Trace line 42: For #34: aax = 1933
+Trace line 43: d_nr = 12443
+Trace line 44: Call function er_skuddaar with params [1933]
+Trace line 30: return False
+Trace line 42: For #35: aax = 1934
+Trace line 43: d_nr = 12808
+Trace line 44: Call function er_skuddaar with params [1934]
+Trace line 30: return False
+Trace line 42: For #36: aax = 1935
+Trace line 43: d_nr = 13173
+Trace line 44: Call function er_skuddaar with params [1935]
+Trace line 30: return False
+Trace line 42: For #37: aax = 1936
+Trace line 43: d_nr = 13538
+Trace line 44: Call function er_skuddaar with params [1936]
+Trace line 30: return 36
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 13539
+Trace line 42: For #38: aax = 1937
+Trace line 43: d_nr = 13904
+Trace line 44: Call function er_skuddaar with params [1937]
+Trace line 30: return False
+Trace line 42: For #39: aax = 1938
+Trace line 43: d_nr = 14269
+Trace line 44: Call function er_skuddaar with params [1938]
+Trace line 30: return False
+Trace line 42: For #40: aax = 1939
+Trace line 43: d_nr = 14634
+Trace line 44: Call function er_skuddaar with params [1939]
+Trace line 30: return False
+Trace line 42: For #41: aax = 1940
+Trace line 43: d_nr = 14999
+Trace line 44: Call function er_skuddaar with params [1940]
+Trace line 30: return 40
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 15000
+Trace line 42: For #42: aax = 1941
+Trace line 43: d_nr = 15365
+Trace line 44: Call function er_skuddaar with params [1941]
+Trace line 30: return False
+Trace line 42: For #43: aax = 1942
+Trace line 43: d_nr = 15730
+Trace line 44: Call function er_skuddaar with params [1942]
+Trace line 30: return False
+Trace line 42: For #44: aax = 1943
+Trace line 43: d_nr = 16095
+Trace line 44: Call function er_skuddaar with params [1943]
+Trace line 30: return False
+Trace line 42: For #45: aax = 1944
+Trace line 43: d_nr = 16460
+Trace line 44: Call function er_skuddaar with params [1944]
+Trace line 30: return 44
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 16461
+Trace line 42: For #46: aax = 1945
+Trace line 43: d_nr = 16826
+Trace line 44: Call function er_skuddaar with params [1945]
+Trace line 30: return False
+Trace line 42: For #47: aax = 1946
+Trace line 43: d_nr = 17191
+Trace line 44: Call function er_skuddaar with params [1946]
+Trace line 30: return False
+Trace line 42: For #48: aax = 1947
+Trace line 43: d_nr = 17556
+Trace line 44: Call function er_skuddaar with params [1947]
+Trace line 30: return False
+Trace line 42: For #49: aax = 1948
+Trace line 43: d_nr = 17921
+Trace line 44: Call function er_skuddaar with params [1948]
+Trace line 30: return 48
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 17922
+Trace line 42: For #50: aax = 1949
+Trace line 43: d_nr = 18287
+Trace line 44: Call function er_skuddaar with params [1949]
+Trace line 30: return False
+Trace line 42: For #51: aax = 1950
+Trace line 43: d_nr = 18652
+Trace line 44: Call function er_skuddaar with params [1950]
+Trace line 30: return False
+Trace line 42: For #52: aax = 1951
+Trace line 43: d_nr = 19017
+Trace line 44: Call function er_skuddaar with params [1951]
+Trace line 30: return False
+Trace line 42: For #53: aax = 1952
+Trace line 43: d_nr = 19382
+Trace line 44: Call function er_skuddaar with params [1952]
+Trace line 30: return 52
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 19383
+Trace line 42: For #54: aax = 1953
+Trace line 43: d_nr = 19748
+Trace line 44: Call function er_skuddaar with params [1953]
+Trace line 30: return False
+Trace line 42: For #55: aax = 1954
+Trace line 43: d_nr = 20113
+Trace line 44: Call function er_skuddaar with params [1954]
+Trace line 30: return False
+Trace line 42: For #56: aax = 1955
+Trace line 43: d_nr = 20478
+Trace line 44: Call function er_skuddaar with params [1955]
+Trace line 30: return False
+Trace line 42: For #57: aax = 1956
+Trace line 43: d_nr = 20843
+Trace line 44: Call function er_skuddaar with params [1956]
+Trace line 30: return 56
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 20844
+Trace line 42: For #58: aax = 1957
+Trace line 43: d_nr = 21209
+Trace line 44: Call function er_skuddaar with params [1957]
+Trace line 30: return False
+Trace line 42: For #59: aax = 1958
+Trace line 43: d_nr = 21574
+Trace line 44: Call function er_skuddaar with params [1958]
+Trace line 30: return False
+Trace line 42: For #60: aax = 1959
+Trace line 43: d_nr = 21939
+Trace line 44: Call function er_skuddaar with params [1959]
+Trace line 30: return False
+Trace line 42: For #61: aax = 1960
+Trace line 43: d_nr = 22304
+Trace line 44: Call function er_skuddaar with params [1960]
+Trace line 30: return 60
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 22305
+Trace line 42: For #62: aax = 1961
+Trace line 43: d_nr = 22670
+Trace line 44: Call function er_skuddaar with params [1961]
+Trace line 30: return False
+Trace line 42: For #63: aax = 1962
+Trace line 43: d_nr = 23035
+Trace line 44: Call function er_skuddaar with params [1962]
+Trace line 30: return False
+Trace line 42: For #64: aax = 1963
+Trace line 43: d_nr = 23400
+Trace line 44: Call function er_skuddaar with params [1963]
+Trace line 30: return False
+Trace line 42: For #65: aax = 1964
+Trace line 43: d_nr = 23765
+Trace line 44: Call function er_skuddaar with params [1964]
+Trace line 30: return 64
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 23766
+Trace line 42: For #66: aax = 1965
+Trace line 43: d_nr = 24131
+Trace line 44: Call function er_skuddaar with params [1965]
+Trace line 30: return False
+Trace line 42: For #67: aax = 1966
+Trace line 43: d_nr = 24496
+Trace line 44: Call function er_skuddaar with params [1966]
+Trace line 30: return False
+Trace line 42: For #68: aax = 1967
+Trace line 43: d_nr = 24861
+Trace line 44: Call function er_skuddaar with params [1967]
+Trace line 30: return False
+Trace line 42: For #69: aax = 1968
+Trace line 43: d_nr = 25226
+Trace line 44: Call function er_skuddaar with params [1968]
+Trace line 30: return 68
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 25227
+Trace line 42: For #70: aax = 1969
+Trace line 43: d_nr = 25592
+Trace line 44: Call function er_skuddaar with params [1969]
+Trace line 30: return False
+Trace line 42: For #71: aax = 1970
+Trace line 43: d_nr = 25957
+Trace line 44: Call function er_skuddaar with params [1970]
+Trace line 30: return False
+Trace line 42: For #72: aax = 1971
+Trace line 43: d_nr = 26322
+Trace line 44: Call function er_skuddaar with params [1971]
+Trace line 30: return False
+Trace line 42: For #73: aax = 1972
+Trace line 43: d_nr = 26687
+Trace line 44: Call function er_skuddaar with params [1972]
+Trace line 30: return 72
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 26688
+Trace line 42: For #74: aax = 1973
+Trace line 43: d_nr = 27053
+Trace line 44: Call function er_skuddaar with params [1973]
+Trace line 30: return False
+Trace line 42: For #75: aax = 1974
+Trace line 43: d_nr = 27418
+Trace line 44: Call function er_skuddaar with params [1974]
+Trace line 30: return False
+Trace line 42: For #76: aax = 1975
+Trace line 43: d_nr = 27783
+Trace line 44: Call function er_skuddaar with params [1975]
+Trace line 30: return False
+Trace line 42: For #77: aax = 1976
+Trace line 43: d_nr = 28148
+Trace line 44: Call function er_skuddaar with params [1976]
+Trace line 30: return 76
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 28149
+Trace line 42: For #78: aax = 1977
+Trace line 43: d_nr = 28514
+Trace line 44: Call function er_skuddaar with params [1977]
+Trace line 30: return False
+Trace line 42: For #79: aax = 1978
+Trace line 43: d_nr = 28879
+Trace line 44: Call function er_skuddaar with params [1978]
+Trace line 30: return False
+Trace line 42: For #80: aax = 1979
+Trace line 43: d_nr = 29244
+Trace line 44: Call function er_skuddaar with params [1979]
+Trace line 30: return False
+Trace line 42: For #81: aax = 1980
+Trace line 43: d_nr = 29609
+Trace line 44: Call function er_skuddaar with params [1980]
+Trace line 30: return 80
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 29610
+Trace line 42: For #82: aax = 1981
+Trace line 43: d_nr = 29975
+Trace line 44: Call function er_skuddaar with params [1981]
+Trace line 30: return False
+Trace line 42: For #83: aax = 1982
+Trace line 43: d_nr = 30340
+Trace line 44: Call function er_skuddaar with params [1982]
+Trace line 30: return False
+Trace line 42: For #84: aax = 1983
+Trace line 43: d_nr = 30705
+Trace line 44: Call function er_skuddaar with params [1983]
+Trace line 30: return False
+Trace line 42: For #85: aax = 1984
+Trace line 43: d_nr = 31070
+Trace line 44: Call function er_skuddaar with params [1984]
+Trace line 30: return 84
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 31071
+Trace line 42: For #86: aax = 1985
+Trace line 43: d_nr = 31436
+Trace line 44: Call function er_skuddaar with params [1985]
+Trace line 30: return False
+Trace line 42: For #87: aax = 1986
+Trace line 43: d_nr = 31801
+Trace line 44: Call function er_skuddaar with params [1986]
+Trace line 30: return False
+Trace line 42: For #88: aax = 1987
+Trace line 43: d_nr = 32166
+Trace line 44: Call function er_skuddaar with params [1987]
+Trace line 30: return False
+Trace line 42: For #89: aax = 1988
+Trace line 43: d_nr = 32531
+Trace line 44: Call function er_skuddaar with params [1988]
+Trace line 30: return 88
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 32532
+Trace line 42: For #90: aax = 1989
+Trace line 43: d_nr = 32897
+Trace line 44: Call function er_skuddaar with params [1989]
+Trace line 30: return False
+Trace line 42: For #91: aax = 1990
+Trace line 43: d_nr = 33262
+Trace line 44: Call function er_skuddaar with params [1990]
+Trace line 30: return False
+Trace line 42: For #92: aax = 1991
+Trace line 43: d_nr = 33627
+Trace line 44: Call function er_skuddaar with params [1991]
+Trace line 30: return False
+Trace line 42: For #93: aax = 1992
+Trace line 43: d_nr = 33992
+Trace line 44: Call function er_skuddaar with params [1992]
+Trace line 30: return 92
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 33993
+Trace line 42: For #94: aax = 1993
+Trace line 43: d_nr = 34358
+Trace line 44: Call function er_skuddaar with params [1993]
+Trace line 30: return False
+Trace line 42: For #95: aax = 1994
+Trace line 43: d_nr = 34723
+Trace line 44: Call function er_skuddaar with params [1994]
+Trace line 30: return False
+Trace line 42: For #96: aax = 1995
+Trace line 43: d_nr = 35088
+Trace line 44: Call function er_skuddaar with params [1995]
+Trace line 30: return False
+Trace line 42: For #97: aax = 1996
+Trace line 43: d_nr = 35453
+Trace line 44: Call function er_skuddaar with params [1996]
+Trace line 30: return 96
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 35454
+Trace line 42: For #98: aax = 1997
+Trace line 43: d_nr = 35819
+Trace line 44: Call function er_skuddaar with params [1997]
+Trace line 30: return False
+Trace line 42: For #99: aax = 1998
+Trace line 43: d_nr = 36184
+Trace line 44: Call function er_skuddaar with params [1998]
+Trace line 30: return False
+Trace line 42: For #100: aax = 1999
+Trace line 43: d_nr = 36549
+Trace line 44: Call function er_skuddaar with params [1999]
+Trace line 30: return False
+Trace line 42: For #101: aax = 2000
+Trace line 43: d_nr = 36914
+Trace line 44: Call function er_skuddaar with params [2000]
+Trace line 30: return True
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 36915
+Trace line 42: For #102: aax = 2001
+Trace line 43: d_nr = 37280
+Trace line 44: Call function er_skuddaar with params [2001]
+Trace line 30: return False
+Trace line 42: For #103: aax = 2002
+Trace line 43: d_nr = 37645
+Trace line 44: Call function er_skuddaar with params [2002]
+Trace line 30: return False
+Trace line 42: For #104: aax = 2003
+Trace line 43: d_nr = 38010
+Trace line 44: Call function er_skuddaar with params [2003]
+Trace line 30: return False
+Trace line 42: For #105: aax = 2004
+Trace line 43: d_nr = 38375
+Trace line 44: Call function er_skuddaar with params [2004]
+Trace line 30: return 4
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 38376
+Trace line 42: For #106: aax = 2005
+Trace line 43: d_nr = 38741
+Trace line 44: Call function er_skuddaar with params [2005]
+Trace line 30: return False
+Trace line 42: For #107: aax = 2006
+Trace line 43: d_nr = 39106
+Trace line 44: Call function er_skuddaar with params [2006]
+Trace line 30: return False
+Trace line 42: For #108: aax = 2007
+Trace line 43: d_nr = 39471
+Trace line 44: Call function er_skuddaar with params [2007]
+Trace line 30: return False
+Trace line 42: For #109: aax = 2008
+Trace line 43: d_nr = 39836
+Trace line 44: Call function er_skuddaar with params [2008]
+Trace line 30: return 8
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 39837
+Trace line 42: For #110: aax = 2009
+Trace line 43: d_nr = 40202
+Trace line 44: Call function er_skuddaar with params [2009]
+Trace line 30: return False
+Trace line 42: For #111: aax = 2010
+Trace line 43: d_nr = 40567
+Trace line 44: Call function er_skuddaar with params [2010]
+Trace line 30: return False
+Trace line 42: For #112: aax = 2011
+Trace line 43: d_nr = 40932
+Trace line 44: Call function er_skuddaar with params [2011]
+Trace line 30: return False
+Trace line 42: For #113: aax = 2012
+Trace line 43: d_nr = 41297
+Trace line 44: Call function er_skuddaar with params [2012]
+Trace line 30: return 12
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 41298
+Trace line 42: For #114: aax = 2013
+Trace line 43: d_nr = 41663
+Trace line 44: Call function er_skuddaar with params [2013]
+Trace line 30: return False
+Trace line 42: For #115: aax = 2014
+Trace line 43: d_nr = 42028
+Trace line 44: Call function er_skuddaar with params [2014]
+Trace line 30: return False
+Trace line 42: For #116: aax = 2015
+Trace line 43: d_nr = 42393
+Trace line 44: Call function er_skuddaar with params [2015]
+Trace line 30: return False
+Trace line 42: For #117: aax = 2016
+Trace line 43: d_nr = 42758
+Trace line 44: Call function er_skuddaar with params [2016]
+Trace line 30: return 16
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 42759
+Trace line 42: For #118: aax = 2017
+Trace line 43: d_nr = 43124
+Trace line 44: Call function er_skuddaar with params [2017]
+Trace line 30: return False
+Trace line 42: For #119: aax = 2018
+Trace line 43: d_nr = 43489
+Trace line 44: Call function er_skuddaar with params [2018]
+Trace line 30: return False
+Trace line 42: For #120: aax = 2019
+Trace line 43: d_nr = 43854
+Trace line 44: Call function er_skuddaar with params [2019]
+Trace line 30: return False
+Trace line 42: For #121: aax = 2020
+Trace line 43: d_nr = 44219
+Trace line 44: Call function er_skuddaar with params [2020]
+Trace line 30: return 20
+Trace line 44: if True alt #1: ...
+Trace line 44: d_nr = 44220
+Trace line 42: For #122: aax = 2021
+Trace line 43: d_nr = 44585
+Trace line 44: Call function er_skuddaar with params [2021]
+Trace line 30: return False
+Trace line 42: For #123: aax = 2022
+Trace line 43: d_nr = 44950
+Trace line 44: Call function er_skuddaar with params [2022]
+Trace line 30: return False
+Trace line 47: Call function range with params [1, 11]
+Trace line 47: For #1: mx = 1
+Trace line 48: Call function finn_m_leng with params [1, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 44981
+Trace line 47: For #2: mx = 2
+Trace line 48: Call function finn_m_leng with params [2, 2023]
+Trace line 34: Call function er_skuddaar with params [2023]
+Trace line 30: return False
+Trace line 35: return 28
+Trace line 48: d_nr = 45009
+Trace line 47: For #3: mx = 3
+Trace line 48: Call function finn_m_leng with params [3, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 45040
+Trace line 47: For #4: mx = 4
+Trace line 48: Call function finn_m_leng with params [4, 2023]
+Trace line 35: return 30
+Trace line 48: d_nr = 45070
+Trace line 47: For #5: mx = 5
+Trace line 48: Call function finn_m_leng with params [5, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 45101
+Trace line 47: For #6: mx = 6
+Trace line 48: Call function finn_m_leng with params [6, 2023]
+Trace line 35: return 30
+Trace line 48: d_nr = 45131
+Trace line 47: For #7: mx = 7
+Trace line 48: Call function finn_m_leng with params [7, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 45162
+Trace line 47: For #8: mx = 8
+Trace line 48: Call function finn_m_leng with params [8, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 45193
+Trace line 47: For #9: mx = 9
+Trace line 48: Call function finn_m_leng with params [9, 2023]
+Trace line 35: return 30
+Trace line 48: d_nr = 45223
+Trace line 47: For #10: mx = 10
+Trace line 48: Call function finn_m_leng with params [10, 2023]
+Trace line 35: return 31
+Trace line 48: d_nr = 45254
+Trace line 50: return 45254
+Trace line 56: u_dag = 'lørdag'
+Trace line 57: Call function str with params [25]
+Trace line 57: Call function print with params ['25.', 'november', 2023, 'er en', 'lørdag']
+Trace line 57: Expression statement produced None

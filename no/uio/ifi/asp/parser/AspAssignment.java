@@ -47,26 +47,25 @@ public class AspAssignment extends AspSmallStmt {
     //TODO: Endre variabler/struktur
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        if(subscriptions.size() > 0) {
-            String trcstr = name.value;
-            RuntimeValue nmeval = name.eval(curScope);
+        if (subscriptions.size() > 0) {
+            String str = name.value;
+            RuntimeValue v = name.eval(curScope);
 
-            for(int i = 0; i < subscriptions.size() - 1; i++) {
+            for (int i = 0; i < subscriptions.size() - 1; i++) {
                 RuntimeValue key = subscriptions.get(i).eval(curScope);
-                trcstr += "[" + key.showInfo() + "]";
-                nmeval = nmeval.evalSubscription(key, this);
+                str += "[" + key.showInfo() + "]";
+                v = v.evalSubscription(key, this);
             }
 
             RuntimeValue key = subscriptions.get(subscriptions.size() - 1).eval(curScope);
-            trcstr += "[" + key.showInfo() + "]";
+            str += "[" + key.showInfo() + "]";
             RuntimeValue val = expr.eval(curScope);
-            trace(trcstr + " = " + val.showInfo());
-            nmeval.evalAssignElem(key, val, this);
-        } 
-        else {
-            RuntimeValue evaledexpr = expr.eval(curScope);
-            curScope.assign(name.value, evaledexpr);
-            trace(name.value + " = " + evaledexpr.showInfo());
+            trace(str + " = " + val.showInfo());
+            v.evalAssignElem(key, val, this);
+        } else {
+            RuntimeValue exprV = expr.eval(curScope);
+            curScope.assign(name.value, exprV);
+            trace(name.value + " = " + exprV.showInfo());
         }
 
         return null;

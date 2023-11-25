@@ -11,7 +11,7 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public String showInfo() {
-        return toString();
+        return "'" + toString() + "'";
     }
 
     @Override
@@ -21,7 +21,7 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public String toString() {
-        return "'" + value + "'";
+        return value;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class RuntimeStringValue extends RuntimeValue {
     @Override
     public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeNoneValue) return new RuntimeBoolValue(true);
-        return new RuntimeBoolValue(value != v.getStringValue("", where));
+        return new RuntimeBoolValue(!value.equals(v.getStringValue("", where)));
     }
 
     @Override
