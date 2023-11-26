@@ -7,47 +7,47 @@ Trace line 23: Call function kun_sifre with params ['30010091558']
 Trace line 14: res = ''
 Trace line 15: Call function len with params ['30010091558']
 Trace line 15: Call function range with params [0, 11]
-Trace line 15: For #1: i = 0
+Trace line 15: for #1: i = 0
 Trace line 16: c = '3'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '3'
-Trace line 15: For #2: i = 1
+Trace line 15: for #2: i = 1
 Trace line 16: c = '0'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '30'
-Trace line 15: For #3: i = 2
+Trace line 15: for #3: i = 2
 Trace line 16: c = '0'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '300'
-Trace line 15: For #4: i = 3
+Trace line 15: for #4: i = 3
 Trace line 16: c = '1'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '3001'
-Trace line 15: For #5: i = 4
+Trace line 15: for #5: i = 4
 Trace line 16: c = '0'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '30010'
-Trace line 15: For #6: i = 5
+Trace line 15: for #6: i = 5
 Trace line 16: c = '0'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '300100'
-Trace line 15: For #7: i = 6
+Trace line 15: for #7: i = 6
 Trace line 16: c = '9'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '3001009'
-Trace line 15: For #8: i = 7
+Trace line 15: for #8: i = 7
 Trace line 16: c = '1'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '30010091'
-Trace line 15: For #9: i = 8
+Trace line 15: for #9: i = 8
 Trace line 16: c = '5'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '300100915'
-Trace line 15: For #10: i = 9
+Trace line 15: for #10: i = 9
 Trace line 16: c = '5'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '3001009155'
-Trace line 15: For #11: i = 10
+Trace line 15: for #11: i = 10
 Trace line 16: c = '8'
 Trace line 17: if True alt #1: ...
 Trace line 18: res = '30010091558'
@@ -59,548 +59,88 @@ Trace line 25: Call function len with params ['30010091558']
 Trace line 25: else: ...
 Trace line 28: sifre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 Trace line 29: Call function range with params [0, 11]
-Trace line 29: For #1: i = 0
+Trace line 29: for #1: i = 0
 Trace line 30: Call function int with params ['3']
 Trace line 30: sifre[0] = 3
-Trace line 29: For #2: i = 1
+Trace line 29: for #2: i = 1
 Trace line 30: Call function int with params ['0']
 Trace line 30: sifre[1] = 0
-Trace line 29: For #3: i = 2
+Trace line 29: for #3: i = 2
 Trace line 30: Call function int with params ['0']
 Trace line 30: sifre[2] = 0
-Trace line 29: For #4: i = 3
+Trace line 29: for #4: i = 3
 Trace line 30: Call function int with params ['1']
 Trace line 30: sifre[3] = 1
-Trace line 29: For #5: i = 4
+Trace line 29: for #5: i = 4
 Trace line 30: Call function int with params ['0']
 Trace line 30: sifre[4] = 0
-Trace line 29: For #6: i = 5
+Trace line 29: for #6: i = 5
 Trace line 30: Call function int with params ['0']
 Trace line 30: sifre[5] = 0
-Trace line 29: For #7: i = 6
+Trace line 29: for #7: i = 6
 Trace line 30: Call function int with params ['9']
 Trace line 30: sifre[6] = 9
-Trace line 29: For #8: i = 7
+Trace line 29: for #8: i = 7
 Trace line 30: Call function int with params ['1']
 Trace line 30: sifre[7] = 1
-Trace line 29: For #9: i = 8
+Trace line 29: for #9: i = 8
 Trace line 30: Call function int with params ['5']
 Trace line 30: sifre[8] = 5
-Trace line 29: For #10: i = 9
+Trace line 29: for #10: i = 9
 Trace line 30: Call function int with params ['5']
 Trace line 30: sifre[9] = 5
-Trace line 29: For #11: i = 10
+Trace line 29: for #11: i = 10
 Trace line 30: Call function int with params ['8']
 Trace line 30: sifre[10] = 8
 Trace line 31: Call function sjekk_kontrollsiffer with params [9, [3, 7, 6, 1, 8, 9, 4, 5, 2]]
 Trace line 8: sum = 0
 Trace line 9: Call function range with params [0, 9]
-Trace line 9: For #1: i = 0
+Trace line 9: for #1: i = 0
 Trace line 10: sum = 9
-Trace line 9: For #2: i = 1
+Trace line 9: for #2: i = 1
 Trace line 10: sum = 9
-Trace line 9: For #3: i = 2
+Trace line 9: for #3: i = 2
 Trace line 10: sum = 9
-Trace line 9: For #4: i = 3
+Trace line 9: for #4: i = 3
 Trace line 10: sum = 10
-Trace line 9: For #5: i = 4
+Trace line 9: for #5: i = 4
 Trace line 10: sum = 10
-Trace line 9: For #6: i = 5
+Trace line 9: for #6: i = 5
 Trace line 10: sum = 10
-Trace line 9: For #7: i = 6
+Trace line 9: for #7: i = 6
 Trace line 10: sum = 46
-Trace line 9: For #8: i = 7
+Trace line 9: for #8: i = 7
 Trace line 10: sum = 51
-Trace line 9: For #9: i = 8
+Trace line 9: for #9: i = 8
 Trace line 10: sum = 61
 Trace line 11: return True
 Trace line 31: Call function sjekk_kontrollsiffer with params [10, [5, 4, 3, 2, 7, 6, 5, 4, 3, 2]]
 Trace line 8: sum = 0
 Trace line 9: Call function range with params [0, 10]
-Trace line 9: For #1: i = 0
+Trace line 9: for #1: i = 0
 Trace line 10: sum = 15
-Trace line 9: For #2: i = 1
+Trace line 9: for #2: i = 1
 Trace line 10: sum = 15
-Trace line 9: For #3: i = 2
+Trace line 9: for #3: i = 2
 Trace line 10: sum = 15
-Trace line 9: For #4: i = 3
+Trace line 9: for #4: i = 3
 Trace line 10: sum = 17
-Trace line 9: For #5: i = 4
+Trace line 9: for #5: i = 4
 Trace line 10: sum = 17
-Trace line 9: For #6: i = 5
+Trace line 9: for #6: i = 5
 Trace line 10: sum = 17
-Trace line 9: For #7: i = 6
+Trace line 9: for #7: i = 6
 Trace line 10: sum = 62
-Trace line 9: For #8: i = 7
+Trace line 9: for #8: i = 7
 Trace line 10: sum = 66
-Trace line 9: For #9: i = 8
+Trace line 9: for #9: i = 8
 Trace line 10: sum = 81
-Trace line 9: For #10: i = 9
+Trace line 9: for #10: i = 9
 Trace line 10: sum = 91
 Trace line 11: return True
 Trace line 31: if True alt #1: ...
 Trace line 32: Call function print with params ['Fødselsnummer', '30010091558', 'er OK.']
 Trace line 32: Expression statement produced None
-Trace line 36: Call function input with params ['Fødselsnummer: ']
-Trace line 36: Call function kun_sifre with params ['19834761345']
-Trace line 14: res = ''
-Trace line 15: Call function len with params ['19834761345']
-Trace line 15: Call function range with params [0, 11]
-Trace line 15: For #1: i = 0
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1'
-Trace line 15: For #2: i = 1
-Trace line 16: c = '9'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19'
-Trace line 15: For #3: i = 2
-Trace line 16: c = '8'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198'
-Trace line 15: For #4: i = 3
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983'
-Trace line 15: For #5: i = 4
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834'
-Trace line 15: For #6: i = 5
-Trace line 16: c = '7'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347'
-Trace line 15: For #7: i = 6
-Trace line 16: c = '6'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476'
-Trace line 15: For #8: i = 7
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761'
-Trace line 15: For #9: i = 8
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347613'
-Trace line 15: For #10: i = 9
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476134'
-Trace line 15: For #11: i = 10
-Trace line 16: c = '5'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761345'
-Trace line 21: return '19834761345'
-Trace line 36: fnr = '19834761345'
-Trace line 24: while True: ...
-Trace line 25: Call function len with params ['19834761345']
-Trace line 25: Call function len with params ['19834761345']
-Trace line 25: else: ...
-Trace line 28: sifre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Trace line 29: Call function range with params [0, 11]
-Trace line 29: For #1: i = 0
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[0] = 1
-Trace line 29: For #2: i = 1
-Trace line 30: Call function int with params ['9']
-Trace line 30: sifre[1] = 9
-Trace line 29: For #3: i = 2
-Trace line 30: Call function int with params ['8']
-Trace line 30: sifre[2] = 8
-Trace line 29: For #4: i = 3
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[3] = 3
-Trace line 29: For #5: i = 4
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[4] = 4
-Trace line 29: For #6: i = 5
-Trace line 30: Call function int with params ['7']
-Trace line 30: sifre[5] = 7
-Trace line 29: For #7: i = 6
-Trace line 30: Call function int with params ['6']
-Trace line 30: sifre[6] = 6
-Trace line 29: For #8: i = 7
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[7] = 1
-Trace line 29: For #9: i = 8
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[8] = 3
-Trace line 29: For #10: i = 9
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[9] = 4
-Trace line 29: For #11: i = 10
-Trace line 30: Call function int with params ['5']
-Trace line 30: sifre[10] = 5
-Trace line 31: Call function sjekk_kontrollsiffer with params [9, [3, 7, 6, 1, 8, 9, 4, 5, 2]]
-Trace line 8: sum = 0
-Trace line 9: Call function range with params [0, 9]
-Trace line 9: For #1: i = 0
-Trace line 10: sum = 3
-Trace line 9: For #2: i = 1
-Trace line 10: sum = 66
-Trace line 9: For #3: i = 2
-Trace line 10: sum = 114
-Trace line 9: For #4: i = 3
-Trace line 10: sum = 117
-Trace line 9: For #5: i = 4
-Trace line 10: sum = 149
-Trace line 9: For #6: i = 5
-Trace line 10: sum = 212
-Trace line 9: For #7: i = 6
-Trace line 10: sum = 236
-Trace line 9: For #8: i = 7
-Trace line 10: sum = 241
-Trace line 9: For #9: i = 8
-Trace line 10: sum = 247
-Trace line 11: return False
-Trace line 31: else: ...
-Trace line 34: Call function print with params ['Fødselsnummer', '19834761345', 'har feil i kontrollsiffer.']
-Trace line 34: Expression statement produced None
-Trace line 36: Call function input with params ['Fødselsnummer: ']
-Trace line 36: Call function kun_sifre with params ['19834761344']
-Trace line 14: res = ''
-Trace line 15: Call function len with params ['19834761344']
-Trace line 15: Call function range with params [0, 11]
-Trace line 15: For #1: i = 0
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1'
-Trace line 15: For #2: i = 1
-Trace line 16: c = '9'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19'
-Trace line 15: For #3: i = 2
-Trace line 16: c = '8'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198'
-Trace line 15: For #4: i = 3
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983'
-Trace line 15: For #5: i = 4
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834'
-Trace line 15: For #6: i = 5
-Trace line 16: c = '7'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347'
-Trace line 15: For #7: i = 6
-Trace line 16: c = '6'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476'
-Trace line 15: For #8: i = 7
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761'
-Trace line 15: For #9: i = 8
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347613'
-Trace line 15: For #10: i = 9
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476134'
-Trace line 15: For #11: i = 10
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761344'
-Trace line 21: return '19834761344'
-Trace line 36: fnr = '19834761344'
-Trace line 24: while True: ...
-Trace line 25: Call function len with params ['19834761344']
-Trace line 25: Call function len with params ['19834761344']
-Trace line 25: else: ...
-Trace line 28: sifre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Trace line 29: Call function range with params [0, 11]
-Trace line 29: For #1: i = 0
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[0] = 1
-Trace line 29: For #2: i = 1
-Trace line 30: Call function int with params ['9']
-Trace line 30: sifre[1] = 9
-Trace line 29: For #3: i = 2
-Trace line 30: Call function int with params ['8']
-Trace line 30: sifre[2] = 8
-Trace line 29: For #4: i = 3
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[3] = 3
-Trace line 29: For #5: i = 4
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[4] = 4
-Trace line 29: For #6: i = 5
-Trace line 30: Call function int with params ['7']
-Trace line 30: sifre[5] = 7
-Trace line 29: For #7: i = 6
-Trace line 30: Call function int with params ['6']
-Trace line 30: sifre[6] = 6
-Trace line 29: For #8: i = 7
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[7] = 1
-Trace line 29: For #9: i = 8
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[8] = 3
-Trace line 29: For #10: i = 9
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[9] = 4
-Trace line 29: For #11: i = 10
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[10] = 4
-Trace line 31: Call function sjekk_kontrollsiffer with params [9, [3, 7, 6, 1, 8, 9, 4, 5, 2]]
-Trace line 8: sum = 0
-Trace line 9: Call function range with params [0, 9]
-Trace line 9: For #1: i = 0
-Trace line 10: sum = 3
-Trace line 9: For #2: i = 1
-Trace line 10: sum = 66
-Trace line 9: For #3: i = 2
-Trace line 10: sum = 114
-Trace line 9: For #4: i = 3
-Trace line 10: sum = 117
-Trace line 9: For #5: i = 4
-Trace line 10: sum = 149
-Trace line 9: For #6: i = 5
-Trace line 10: sum = 212
-Trace line 9: For #7: i = 6
-Trace line 10: sum = 236
-Trace line 9: For #8: i = 7
-Trace line 10: sum = 241
-Trace line 9: For #9: i = 8
-Trace line 10: sum = 247
-Trace line 11: return False
-Trace line 31: else: ...
-Trace line 34: Call function print with params ['Fødselsnummer', '19834761344', 'har feil i kontrollsiffer.']
-Trace line 34: Expression statement produced None
-Trace line 36: Call function input with params ['Fødselsnummer: ']
-Trace line 36: Call function kun_sifre with params ['19834761342']
-Trace line 14: res = ''
-Trace line 15: Call function len with params ['19834761342']
-Trace line 15: Call function range with params [0, 11]
-Trace line 15: For #1: i = 0
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1'
-Trace line 15: For #2: i = 1
-Trace line 16: c = '9'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19'
-Trace line 15: For #3: i = 2
-Trace line 16: c = '8'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198'
-Trace line 15: For #4: i = 3
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983'
-Trace line 15: For #5: i = 4
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834'
-Trace line 15: For #6: i = 5
-Trace line 16: c = '7'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347'
-Trace line 15: For #7: i = 6
-Trace line 16: c = '6'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476'
-Trace line 15: For #8: i = 7
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761'
-Trace line 15: For #9: i = 8
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347613'
-Trace line 15: For #10: i = 9
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476134'
-Trace line 15: For #11: i = 10
-Trace line 16: c = '2'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761342'
-Trace line 21: return '19834761342'
-Trace line 36: fnr = '19834761342'
-Trace line 24: while True: ...
-Trace line 25: Call function len with params ['19834761342']
-Trace line 25: Call function len with params ['19834761342']
-Trace line 25: else: ...
-Trace line 28: sifre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Trace line 29: Call function range with params [0, 11]
-Trace line 29: For #1: i = 0
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[0] = 1
-Trace line 29: For #2: i = 1
-Trace line 30: Call function int with params ['9']
-Trace line 30: sifre[1] = 9
-Trace line 29: For #3: i = 2
-Trace line 30: Call function int with params ['8']
-Trace line 30: sifre[2] = 8
-Trace line 29: For #4: i = 3
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[3] = 3
-Trace line 29: For #5: i = 4
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[4] = 4
-Trace line 29: For #6: i = 5
-Trace line 30: Call function int with params ['7']
-Trace line 30: sifre[5] = 7
-Trace line 29: For #7: i = 6
-Trace line 30: Call function int with params ['6']
-Trace line 30: sifre[6] = 6
-Trace line 29: For #8: i = 7
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[7] = 1
-Trace line 29: For #9: i = 8
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[8] = 3
-Trace line 29: For #10: i = 9
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[9] = 4
-Trace line 29: For #11: i = 10
-Trace line 30: Call function int with params ['2']
-Trace line 30: sifre[10] = 2
-Trace line 31: Call function sjekk_kontrollsiffer with params [9, [3, 7, 6, 1, 8, 9, 4, 5, 2]]
-Trace line 8: sum = 0
-Trace line 9: Call function range with params [0, 9]
-Trace line 9: For #1: i = 0
-Trace line 10: sum = 3
-Trace line 9: For #2: i = 1
-Trace line 10: sum = 66
-Trace line 9: For #3: i = 2
-Trace line 10: sum = 114
-Trace line 9: For #4: i = 3
-Trace line 10: sum = 117
-Trace line 9: For #5: i = 4
-Trace line 10: sum = 149
-Trace line 9: For #6: i = 5
-Trace line 10: sum = 212
-Trace line 9: For #7: i = 6
-Trace line 10: sum = 236
-Trace line 9: For #8: i = 7
-Trace line 10: sum = 241
-Trace line 9: For #9: i = 8
-Trace line 10: sum = 247
-Trace line 11: return False
-Trace line 31: else: ...
-Trace line 34: Call function print with params ['Fødselsnummer', '19834761342', 'har feil i kontrollsiffer.']
-Trace line 34: Expression statement produced None
-Trace line 36: Call function input with params ['Fødselsnummer: ']
-Trace line 36: Call function kun_sifre with params ['19834761234']
-Trace line 14: res = ''
-Trace line 15: Call function len with params ['19834761234']
-Trace line 15: Call function range with params [0, 11]
-Trace line 15: For #1: i = 0
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1'
-Trace line 15: For #2: i = 1
-Trace line 16: c = '9'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19'
-Trace line 15: For #3: i = 2
-Trace line 16: c = '8'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198'
-Trace line 15: For #4: i = 3
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983'
-Trace line 15: For #5: i = 4
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834'
-Trace line 15: For #6: i = 5
-Trace line 16: c = '7'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347'
-Trace line 15: For #7: i = 6
-Trace line 16: c = '6'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476'
-Trace line 15: For #8: i = 7
-Trace line 16: c = '1'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761'
-Trace line 15: For #9: i = 8
-Trace line 16: c = '2'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '198347612'
-Trace line 15: For #10: i = 9
-Trace line 16: c = '3'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '1983476123'
-Trace line 15: For #11: i = 10
-Trace line 16: c = '4'
-Trace line 17: if True alt #1: ...
-Trace line 18: res = '19834761234'
-Trace line 21: return '19834761234'
-Trace line 36: fnr = '19834761234'
-Trace line 24: while True: ...
-Trace line 25: Call function len with params ['19834761234']
-Trace line 25: Call function len with params ['19834761234']
-Trace line 25: else: ...
-Trace line 28: sifre = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-Trace line 29: Call function range with params [0, 11]
-Trace line 29: For #1: i = 0
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[0] = 1
-Trace line 29: For #2: i = 1
-Trace line 30: Call function int with params ['9']
-Trace line 30: sifre[1] = 9
-Trace line 29: For #3: i = 2
-Trace line 30: Call function int with params ['8']
-Trace line 30: sifre[2] = 8
-Trace line 29: For #4: i = 3
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[3] = 3
-Trace line 29: For #5: i = 4
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[4] = 4
-Trace line 29: For #6: i = 5
-Trace line 30: Call function int with params ['7']
-Trace line 30: sifre[5] = 7
-Trace line 29: For #7: i = 6
-Trace line 30: Call function int with params ['6']
-Trace line 30: sifre[6] = 6
-Trace line 29: For #8: i = 7
-Trace line 30: Call function int with params ['1']
-Trace line 30: sifre[7] = 1
-Trace line 29: For #9: i = 8
-Trace line 30: Call function int with params ['2']
-Trace line 30: sifre[8] = 2
-Trace line 29: For #10: i = 9
-Trace line 30: Call function int with params ['3']
-Trace line 30: sifre[9] = 3
-Trace line 29: For #11: i = 10
-Trace line 30: Call function int with params ['4']
-Trace line 30: sifre[10] = 4
-Trace line 31: Call function sjekk_kontrollsiffer with params [9, [3, 7, 6, 1, 8, 9, 4, 5, 2]]
-Trace line 8: sum = 0
-Trace line 9: Call function range with params [0, 9]
-Trace line 9: For #1: i = 0
-Trace line 10: sum = 3
-Trace line 9: For #2: i = 1
-Trace line 10: sum = 66
-Trace line 9: For #3: i = 2
-Trace line 10: sum = 114
-Trace line 9: For #4: i = 3
-Trace line 10: sum = 117
-Trace line 9: For #5: i = 4
-Trace line 10: sum = 149
-Trace line 9: For #6: i = 5
-Trace line 10: sum = 212
-Trace line 9: For #7: i = 6
-Trace line 10: sum = 236
-Trace line 9: For #8: i = 7
-Trace line 10: sum = 241
-Trace line 9: For #9: i = 8
-Trace line 10: sum = 245
-Trace line 11: return False
-Trace line 31: else: ...
-Trace line 34: Call function print with params ['Fødselsnummer', '19834761234', 'har feil i kontrollsiffer.']
-Trace line 34: Expression statement produced None
 Trace line 36: Call function input with params ['Fødselsnummer: ']
 Trace line 36: Call function kun_sifre with params ['']
 Trace line 14: res = ''

@@ -21,27 +21,27 @@ Trace line 11: return 60
 Trace line 9: return 1.0
 Trace line 29: x[0] = 1.0
 Trace line 31: Call function range with params [0, 11]
-Trace line 31: For #1: ix = 0
+Trace line 31: for #1: ix = 0
 Trace line 32: x[1] = 8.0
-Trace line 31: For #2: ix = 1
+Trace line 31: for #2: ix = 1
 Trace line 32: x[2] = 4.9375
-Trace line 31: For #3: ix = 2
+Trace line 31: for #3: ix = 2
 Trace line 32: x[3] = 3.987737341772152
-Trace line 31: For #4: ix = 3
+Trace line 31: for #4: ix = 3
 Trace line 32: x[4] = 3.87463446793002
-Trace line 31: For #5: ix = 4
+Trace line 31: for #5: ix = 4
 Trace line 32: x[5] = 3.872983698008724
-Trace line 31: For #6: ix = 5
+Trace line 31: for #6: ix = 5
 Trace line 32: x[6] = 3.872983346207433
-Trace line 31: For #7: ix = 6
+Trace line 31: for #7: ix = 6
 Trace line 32: x[7] = 3.872983346207417
-Trace line 31: For #8: ix = 7
+Trace line 31: for #8: ix = 7
 Trace line 32: x[8] = 3.872983346207417
-Trace line 31: For #9: ix = 8
+Trace line 31: for #9: ix = 8
 Trace line 32: x[9] = 3.872983346207417
-Trace line 31: For #10: ix = 9
+Trace line 31: for #10: ix = 9
 Trace line 32: x[10] = 3.872983346207417
-Trace line 31: For #11: ix = 10
+Trace line 31: for #11: ix = 10
 Trace line 32: x[11] = 3.872983346207417
 Trace line 34: return 3.872983346207417
 Trace line 39: sq2 = 3.872983346207417

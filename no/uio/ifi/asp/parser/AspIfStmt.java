@@ -58,7 +58,6 @@ public class AspIfStmt extends AspCompoundStmt {
         }
     }
 
-    //TODO: endre struktur/variabler
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         for (int i = 0; i < exprs.size(); i++) {
@@ -75,21 +74,4 @@ public class AspIfStmt extends AspCompoundStmt {
 
         return null;
     }
-
-    //TODO: ifStmt sin forrige eval som ikke fungerte
-    /* @Override
-    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        int index = -1;
-        for (int i = 0; i < exprs.size(); i++) {
-            RuntimeValue v = exprs.get(i).eval(curScope);
-            if (v.getBoolValue("if test", this)) {
-                index = i; 
-                break;
-            }
-        }
-        if (index != -1) suits.get(index).eval(curScope);
-        else if (index == -1 && exprs.size() < suits.size()) suits.get(suits.size()-1).eval(curScope);
-        trace("if stmt");
-        return null;
-    } */
 }

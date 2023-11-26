@@ -44,7 +44,6 @@ public class AspAssignment extends AspSmallStmt {
         expr.prettyPrint();
 	}
 
-    //TODO: Endre variabler/struktur
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         if (subscriptions.size() > 0) {
@@ -70,24 +69,4 @@ public class AspAssignment extends AspSmallStmt {
 
         return null;
     }
-
-    //TODO Forrige assignement eval som ikke fungerer
-	/* @Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        RuntimeValue inx = null;
-        RuntimeValue val = expr.eval(curScope);
-        curScope.assign(name.value, val);
-        RuntimeValue v = name.eval(curScope);
-
-        if (subscriptions.size() > 0) {
-            inx = subscriptions.get(0).eval(curScope);
-            v.evalAssignElem(inx, val, this);
-        } else if (subscriptions.size() > 1) {
-            inx = subscriptions.get(-1).eval(curScope);
-            v.evalAssignElem(inx, val, this);
-        }
-
-        trace("assignment");
-        return null;
-    } */
 }

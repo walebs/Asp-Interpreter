@@ -48,7 +48,7 @@ public class AspForStmt extends AspCompoundStmt {
         for (RuntimeValue x : v.value) {
             inx++;
             curScope.assign(name.value, x);
-            trace("For #" + Integer.toString(inx) + ": " + name.value + " = " + x.showInfo());
+            trace("for #" + Integer.toString(inx) + ": " + name.value + " = " + x.showInfo());
             suite.eval(curScope);
         }
         return null;
