@@ -1,0 +1,12 @@
+Trace line 5: def is_a_palindrome
+Trace line 12: Call function input with params ['A word: ']
+Trace line 12: query = 'hello'
+Trace line 13: Call function is_a_palindrome with params ['hello']
+Trace line 6: i1 = 0
+Trace line 6: Call function len with params ['hello']
+Trace line 6: i2 = 4
+Trace line 7: while True: ...
+Trace line 8: if True alt #1: ...
+Trace line 8: return False
+Trace line 13: Call function print with params ['"hello":', False]
+Trace line 13: Expression statement produced None

@@ -1,13 +1,10 @@
 package no.uio.ifi.asp.parser;
 
-import no.uio.ifi.asp.runtime.RuntimeListValue;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
-
-import java.util.ArrayList;
 
 public class AspSubscription extends AspPrimarySuffix {
     AspExpr expr;

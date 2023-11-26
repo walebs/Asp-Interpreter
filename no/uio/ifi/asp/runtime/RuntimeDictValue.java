@@ -2,7 +2,6 @@ package no.uio.ifi.asp.runtime;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeDictValue extends RuntimeValue {
@@ -36,6 +35,16 @@ public class RuntimeDictValue extends RuntimeValue {
     @Override
     public boolean getBoolValue(String what, AspSyntax where) {
         return value.isEmpty();
+    }
+
+    @Override
+    public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+        value.replace(inx.getStringValue("", where), val);
+    }
+
+    @Override
+    public RuntimeValue evalLen(AspSyntax where) {
+        return new RuntimeIntValue((long) value.size());
     }
 
     @Override

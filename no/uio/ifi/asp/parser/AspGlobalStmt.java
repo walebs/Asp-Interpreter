@@ -42,7 +42,10 @@ public class AspGlobalStmt extends AspSmallStmt {
 
 	@Override
 	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
+		for (AspName an : names) {
+            curScope.registerGlobalName(an.value);
+        }
+        //trace("global stmt");
+        return null;
 	}
 }

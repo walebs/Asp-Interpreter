@@ -1,0 +1,18 @@
+Trace line 8: def GCD
+Trace line 14: Call function input with params ['A number: ']
+Trace line 14: Call function int with params ['10']
+Trace line 14: v1 = 10
+Trace line 15: Call function input with params ['Another number: ']
+Trace line 15: Call function int with params ['10']
+Trace line 15: v2 = 10
+Trace line 17: Call function GCD with params [10, 10]
+Trace line 9: else: ...
+Trace line 12: Call function GCD with params [10, 0]
+Trace line 9: if True alt #1: ...
+Trace line 10: return 10
+Trace line 12: return 10
+Trace line 17: res = 10
+Trace line 18: Call function str with params [10]
+Trace line 18: Call function str with params [10]
+Trace line 18: Call function print with params ['GCD(10,10) =', 10]
+Trace line 18: Expression statement produced None

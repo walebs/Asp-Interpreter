@@ -139,8 +139,7 @@ public abstract class RuntimeValue {
 	    runtimeError("Assigning to an element not allowed for "+typeName()+"!", where);
     }
 
-    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, 
-				     AspSyntax where) {
+    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, AspSyntax where) {
         runtimeError("Function call '(...)' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
     }

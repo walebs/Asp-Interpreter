@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import no.uio.ifi.asp.parser.AspSyntax;
 
 public class RuntimeListValue extends RuntimeValue {
-    ArrayList<RuntimeValue> value;
+    public ArrayList<RuntimeValue> value;
 
     public RuntimeListValue(ArrayList<RuntimeValue> v) {
         value = v;
@@ -23,7 +23,7 @@ public class RuntimeListValue extends RuntimeValue {
     public String toString() {
         String str = "[";
         for (int i = 0; i < value.size(); i++) {
-            str += value.get(i);
+            str += value.get(i).showInfo();
             if (i < value.size()-1) str += ", ";
         }
         return str + "]";
@@ -32,6 +32,23 @@ public class RuntimeListValue extends RuntimeValue {
     @Override
     public boolean getBoolValue(String what, AspSyntax where) {
         return value.isEmpty();
+    }
+
+    @Override
+    public void evalAssignElem(RuntimeValue inx, RuntimeValue val, AspSyntax where) {
+        //value.add(val);
+        long index = inx.getIntValue("", where);
+        if (index < value.size() && index >= 0) {
+            value.set((int) index, val);
+        } 
+        else {
+            runtimeError("Index out of range", where);
+        }
+    }
+
+    @Override
+    public RuntimeValue evalLen(AspSyntax where) {
+        return new RuntimeIntValue((long) value.size());
     }
 
     @Override

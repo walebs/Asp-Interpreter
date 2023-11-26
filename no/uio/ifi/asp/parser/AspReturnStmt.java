@@ -30,7 +30,8 @@ public class AspReturnStmt extends AspSmallStmt {
     }
 
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
+        RuntimeValue v = expr.eval(curScope);
+        trace("return " + v.showInfo());
+        throw new RuntimeReturnValue(v, lineNum);
+    }
 }

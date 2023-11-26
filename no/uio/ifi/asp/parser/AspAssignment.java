@@ -44,10 +44,29 @@ public class AspAssignment extends AspSmallStmt {
         expr.prettyPrint();
 	}
 
-	@Override
-	RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'eval'");
-	}
+    @Override
+    RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        if (subscriptions.size() > 0) {
+            String str = name.value;
+            RuntimeValue v = name.eval(curScope);
 
+            for (int i = 0; i < subscriptions.size() - 1; i++) {
+                RuntimeValue key = subscriptions.get(i).eval(curScope);
+                str += "[" + key.showInfo() + "]";
+                v = v.evalSubscription(key, this);
+            }
+
+            RuntimeValue key = subscriptions.get(subscriptions.size() - 1).eval(curScope);
+            str += "[" + key.showInfo() + "]";
+            RuntimeValue val = expr.eval(curScope);
+            trace(str + " = " + val.showInfo());
+            v.evalAssignElem(key, val, this);
+        } else {
+            RuntimeValue exprV = expr.eval(curScope);
+            curScope.assign(name.value, exprV);
+            trace(name.value + " = " + exprV.showInfo());
+        }
+
+        return null;
+    }
 }

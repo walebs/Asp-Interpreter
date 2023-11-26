@@ -1,5 +1,6 @@
 package no.uio.ifi.asp.parser;
 
+import no.uio.ifi.asp.runtime.RuntimeFunc;
 import no.uio.ifi.asp.runtime.RuntimeReturnValue;
 import no.uio.ifi.asp.runtime.RuntimeScope;
 import no.uio.ifi.asp.runtime.RuntimeValue;
@@ -9,9 +10,9 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import java.util.ArrayList;
 
 public class AspFuncDef extends AspCompoundStmt {
-    AspName name;
-    AspSuite suite;
-    ArrayList<AspName> nameList = new ArrayList<>();
+    public AspName name;
+    public AspSuite suite;
+    public ArrayList<AspName> nameList = new ArrayList<>();
 
     AspFuncDef(int n) {
         super(n);
@@ -43,10 +44,9 @@ public class AspFuncDef extends AspCompoundStmt {
         name.prettyPrint();
         prettyWrite(" (");
         if (!nameList.isEmpty()) {
-           for (int i = 0; i < nameList.size(); i++) {
-            nameList.get(i).prettyPrint();
-
-            if (i+1 < nameList.size()) prettyWrite(", ");
+            for (int i = 0; i < nameList.size(); i++) {
+                nameList.get(i).prettyPrint();
+                if (i+1 < nameList.size()) prettyWrite(", ");
            }
         }
         prettyWrite(")");
@@ -57,8 +57,8 @@ public class AspFuncDef extends AspCompoundStmt {
 
     @Override
     RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        // TODO Auto-generated method stub
+        curScope.assign(name.value, new RuntimeFunc(name.value, this, curScope));
+        trace("def " + name.value);
         return null;
     }
-    
 }

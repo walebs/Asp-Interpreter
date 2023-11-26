@@ -25,7 +25,6 @@ public class RuntimeScope {
 		outer = oScope;
     }
 
-
     public void assign(String id, RuntimeValue val) {
 		if (globalNames.contains(id))
 			Main.globalScope.decls.put(id, val);
@@ -40,9 +39,9 @@ public class RuntimeScope {
 		} else {
 			RuntimeScope scope = this;
 			while (scope != null) {
-			RuntimeValue v = scope.decls.get(id);
-			if (v != null) return v;
-			scope = scope.outer;
+				RuntimeValue v = scope.decls.get(id);
+				if (v != null) return v;
+				scope = scope.outer;
 			}
 		}
 		RuntimeValue.runtimeError("Name " + id + " not defined!", where);

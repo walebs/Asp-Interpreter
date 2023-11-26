@@ -225,9 +225,10 @@ public class Scanner {
 			} else if (c == '"' || c == '\'') {
 				// finner stringen og legger den til som et Token
 				String str = "";
+				char cr = c;
 				pos++;
-
-				while (pos < line.length() && (line.charAt(pos) != '"' && line.charAt(pos) != '\'')) {
+				
+				while (pos < line.length() && line.charAt(pos) != cr) {
 					str += line.charAt(pos);
 					pos++;
 				}

@@ -29,7 +29,6 @@ public class AspExpr extends AspSyntax {
         return ae;
     }
 
-
     @Override
     public void prettyPrint() {
         for (int i = 0; i < andTests.size(); i++) {
@@ -37,7 +36,6 @@ public class AspExpr extends AspSyntax {
             if (i+1 < andTests.size()) prettyWrite(" or ");
         }
     }
-
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
